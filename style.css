@@ -1,0 +1,708 @@
+:root {
+  --verde-profundo: #1D281F;
+  --verde-serra: #2B3A2C;
+  --pedra: #C2AE8F;
+  --pedra-clara: #DDD0B8;
+  --off-white: #F4F0E8;
+  --branco-quente: #FAF7F0;
+  --preto-quente: #171713;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Outfit', sans-serif;
+
+  --motion-fast: 300ms;
+  --motion-normal: 700ms;
+  --motion-slow: 1200ms;
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--branco-quente);
+  color: var(--preto-quente);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+body::selection {
+  background: var(--pedra);
+  color: var(--verde-profundo);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: inherit;
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(3.4rem, 7vw, 7.6rem);
+  line-height: 0.95;
+}
+
+h2 {
+  font-size: clamp(2.6rem, 5vw, 5.2rem);
+  line-height: 1;
+}
+
+h3 {
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  line-height: 1.15;
+}
+
+p {
+  color: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1360px;
+  padding: 0 clamp(1.25rem, 4vw, 4rem);
+  width: 100%;
+}
+
+.section-kicker {
+  color: var(--pedra);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  margin-bottom: 1.35rem;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  margin: 0 auto 4.8rem;
+  max-width: 760px;
+  text-align: center;
+}
+
+.header {
+  align-items: center;
+  background: transparent;
+  border-bottom: 1px solid color-mix(in srgb, var(--pedra-clara) 22%, transparent);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  height: 78px;
+  left: 0;
+  padding: 0 clamp(1rem, 3vw, 3rem);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 20;
+}
+
+.header__nav,
+.header__cta {
+  align-items: center;
+  display: flex;
+}
+
+.header__nav {
+  gap: clamp(1rem, 2vw, 2.25rem);
+}
+
+.header__cta {
+  justify-content: flex-end;
+}
+
+.header__link,
+.header__button {
+  color: var(--branco-quente);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 18px color-mix(in srgb, var(--preto-quente) 38%, transparent);
+  text-transform: uppercase;
+  transition: color var(--motion-fast) var(--ease-smooth), border-color var(--motion-fast) var(--ease-smooth), background var(--motion-fast) var(--ease-smooth);
+}
+
+.header__link:hover {
+  color: var(--pedra);
+}
+
+.header__logo {
+  color: var(--branco-quente);
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-shadow: 0 1px 22px color-mix(in srgb, var(--preto-quente) 42%, transparent);
+}
+
+.header__button {
+  border: 0;
+  padding: 0;
+}
+
+.header__button:hover {
+  background: transparent;
+  color: var(--pedra-clara);
+}
+
+.hero {
+  align-items: flex-end;
+  display: flex;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(6rem, 10vw, 9rem) clamp(1.25rem, 4vw, 4rem) clamp(2.4rem, 6vw, 5.6rem);
+  position: relative;
+}
+
+.hero::after {
+  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--branco-quente) 86%, transparent) 100%);
+  bottom: -1px;
+  content: "";
+  height: 18vh;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  z-index: 0;
+}
+
+.hero__image {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 18%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 58%, transparent) 100%),
+    url("assets/images/hero-gramado.png") center/cover no-repeat;
+  inset: 0;
+  position: absolute;
+  transform: scale(1.02);
+  z-index: -1;
+}
+
+.hero__content {
+  color: var(--branco-quente);
+  max-width: 880px;
+  padding-bottom: clamp(1rem, 4vw, 4rem);
+  position: relative;
+  z-index: 1;
+}
+
+.hero__eyebrow {
+  color: var(--pedra-clara);
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  color: var(--branco-quente);
+  max-width: 820px;
+  text-shadow: 0 2px 32px color-mix(in srgb, var(--preto-quente) 34%, transparent);
+}
+
+.hero__subtitle {
+  color: var(--pedra-clara);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  font-weight: 300;
+  line-height: 1.8;
+  margin: 1.6rem 0 2.3rem;
+  max-width: 540px;
+  text-shadow: 0 1px 18px color-mix(in srgb, var(--preto-quente) 40%, transparent);
+}
+
+.hero__cta,
+.cta-consultivo__button {
+  border: 1px solid var(--pedra);
+  color: var(--branco-quente);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 500;
+  justify-content: center;
+  letter-spacing: 0.12em;
+  min-width: 180px;
+  padding: 1rem 1.4rem;
+  text-transform: uppercase;
+  transition: background var(--motion-fast) var(--ease-smooth), color var(--motion-fast) var(--ease-smooth), border-color var(--motion-fast) var(--ease-smooth);
+}
+
+.hero__cta:hover,
+.cta-consultivo__button:hover {
+  background: var(--pedra);
+  color: var(--verde-profundo);
+}
+
+.manifesto {
+  background: var(--branco-quente);
+  padding: clamp(6rem, 12vw, 12rem) 0;
+}
+
+.manifesto__inner {
+  max-width: 1060px;
+}
+
+.manifesto__text {
+  color: var(--verde-profundo);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.gramado {
+  background: var(--off-white);
+  padding: clamp(5rem, 10vw, 10rem) 0;
+}
+
+.gramado__layout {
+  align-items: stretch;
+  display: grid;
+  gap: clamp(3rem, 7vw, 7rem);
+  grid-template-columns: minmax(320px, 0.9fr) minmax(360px, 1fr);
+}
+
+.gramado__media {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 8%, transparent), color-mix(in srgb, var(--verde-profundo) 28%, transparent)),
+    url("assets/images/territorio-gramado.png") center/cover no-repeat;
+  min-height: 680px;
+}
+
+.gramado__content {
+  align-self: center;
+}
+
+.gramado h2 {
+  color: var(--verde-profundo);
+  margin-bottom: 3rem;
+}
+
+.gramado__grid {
+  border-top: 1px solid var(--pedra-clara);
+  display: grid;
+  gap: 0;
+}
+
+.gramado__block {
+  border-bottom: 1px solid var(--pedra-clara);
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: minmax(140px, 0.38fr) 1fr;
+  padding: 1.7rem 0;
+}
+
+.gramado__block h3 {
+  color: var(--verde-profundo);
+}
+
+.gramado__block p {
+  color: color-mix(in srgb, var(--preto-quente) 76%, var(--verde-serra));
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.experiencia {
+  background: var(--verde-profundo);
+  color: var(--branco-quente);
+  display: grid;
+  min-height: 92vh;
+  place-items: center;
+  position: relative;
+}
+
+.experiencia__image {
+  background:
+    linear-gradient(90deg, var(--verde-profundo) 0%, color-mix(in srgb, var(--verde-profundo) 78%, transparent) 44%, color-mix(in srgb, var(--verde-profundo) 16%, transparent) 100%),
+    url("assets/images/experiencia-interior.png") center/cover no-repeat;
+  inset: 0;
+  position: absolute;
+}
+
+.experiencia .container {
+  position: relative;
+}
+
+.experiencia__content {
+  max-width: 620px;
+  padding: clamp(6rem, 10vw, 10rem) 0;
+}
+
+.experiencia h2 {
+  color: var(--branco-quente);
+  margin-bottom: 2.2rem;
+}
+
+.experiencia p {
+  color: var(--pedra-clara);
+  font-size: 1.04rem;
+  font-weight: 300;
+  line-height: 1.9;
+  margin-bottom: 1.4rem;
+}
+
+.empreendimentos {
+  background: var(--branco-quente);
+  padding: clamp(5rem, 10vw, 10rem) 0;
+}
+
+.empreendimentos h2 {
+  color: var(--verde-profundo);
+}
+
+.empreendimentos__grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.empreendimento {
+  background: var(--off-white);
+  display: grid;
+  grid-template-rows: minmax(320px, 1fr) auto;
+  min-height: 620px;
+  overflow: hidden;
+}
+
+.empreendimento__image {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 10%, transparent), color-mix(in srgb, var(--verde-profundo) 36%, transparent)),
+    url("assets/images/empreendimento-fachada.png") center/cover no-repeat;
+  min-height: 320px;
+  transition: transform var(--motion-slow) var(--ease-smooth);
+}
+
+.empreendimento:hover .empreendimento__image {
+  transform: scale(1.035);
+}
+
+.empreendimento__content {
+  padding: clamp(1.6rem, 3vw, 2.5rem);
+}
+
+.empreendimento__location {
+  color: var(--pedra);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.95rem;
+  text-transform: uppercase;
+}
+
+.empreendimento__name {
+  color: var(--verde-profundo);
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: 1.2rem;
+}
+
+.empreendimento__concept {
+  color: color-mix(in srgb, var(--preto-quente) 78%, var(--verde-serra));
+  font-size: 0.96rem;
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+}
+
+.empreendimento__link {
+  color: var(--verde-profundo);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.empreendimento__link:hover {
+  color: var(--pedra);
+}
+
+.galeria {
+  background: var(--off-white);
+  padding: clamp(1.25rem, 3vw, 3rem);
+}
+
+.galeria__grid {
+  display: grid;
+  gap: clamp(1rem, 2vw, 2rem);
+  grid-template-columns: 1.1fr 0.9fr 1fr;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+.galeria__item {
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.galeria__item--large {
+  grid-row: span 2;
+  min-height: 760px;
+}
+
+.galeria__image {
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  min-height: inherit;
+  transition: transform var(--motion-slow) var(--ease-smooth);
+}
+
+.galeria__item:hover .galeria__image {
+  transform: scale(1.035);
+}
+
+.galeria__image--hero {
+  background-image: url("assets/images/hero-gramado.png");
+}
+
+.galeria__image--territorio {
+  background-image: url("assets/images/territorio-gramado.png");
+}
+
+.galeria__image--interior {
+  background-image: url("assets/images/experiencia-interior.png");
+}
+
+.galeria__image--fachada {
+  background-image: url("assets/images/empreendimento-fachada.png");
+}
+
+.cta-consultivo {
+  background: var(--verde-profundo);
+  color: var(--branco-quente);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  text-align: center;
+}
+
+.cta-consultivo h2 {
+  color: var(--branco-quente);
+  margin-bottom: 1.2rem;
+}
+
+.cta-consultivo p {
+  color: var(--pedra-clara);
+  font-weight: 300;
+  margin: 0 auto 2.4rem;
+  max-width: 520px;
+}
+
+.cta-consultivo__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cta-consultivo__button--primary {
+  background: var(--pedra);
+  color: var(--verde-profundo);
+}
+
+.footer {
+  background: var(--preto-quente);
+  color: var(--branco-quente);
+  padding: 4rem 0 2rem;
+}
+
+.footer__grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  margin-bottom: 3rem;
+}
+
+.footer__block h4 {
+  color: var(--pedra);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.footer__block p,
+.footer__block a {
+  color: var(--pedra-clara);
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+.footer__block a:hover {
+  color: var(--branco-quente);
+}
+
+.footer__bottom {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 28%, transparent);
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.footer__bottom p {
+  color: var(--pedra-clara);
+  font-size: 0.78rem;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--motion-normal) var(--ease-smooth), transform var(--motion-normal) var(--ease-smooth);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1080px) {
+  .header {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__logo {
+    justify-self: start;
+  }
+
+  .gramado__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .gramado__media {
+    min-height: 520px;
+  }
+
+  .empreendimentos__grid,
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .galeria__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  h1 {
+    font-size: clamp(2.65rem, 12vw, 3.4rem);
+  }
+
+  .header {
+    grid-template-columns: 1fr auto;
+    height: 68px;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__logo {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .header__cta {
+    grid-column: 2;
+    display: none;
+  }
+
+  .header__button {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    padding: 0.7rem 0.82rem;
+  }
+
+  .hero {
+    min-height: 92vh;
+    padding-top: 68px;
+  }
+
+  .hero__content {
+    max-width: 100%;
+    padding-bottom: 1rem;
+  }
+
+  .hero__title {
+    max-width: 20rem;
+    overflow-wrap: normal;
+  }
+
+  .hero__subtitle {
+    max-width: 20rem;
+  }
+
+  .gramado__media {
+    min-height: 420px;
+  }
+
+  .gramado__block {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .experiencia {
+    min-height: auto;
+  }
+
+  .experiencia__image {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 82%, transparent), color-mix(in srgb, var(--verde-profundo) 68%, transparent)),
+      url("assets/images/experiencia-interior.png") center/cover no-repeat;
+  }
+
+  .empreendimentos__grid,
+  .footer__grid,
+  .galeria__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .empreendimento {
+    min-height: auto;
+  }
+
+  .galeria__item,
+  .galeria__item--large {
+    min-height: 420px;
+  }
+
+  .cta-consultivo__button {
+    width: min(100%, 320px);
+  }
+}
+
+@media (max-width: 460px) {
+  .header__button {
+    font-size: 0.64rem;
+    min-width: auto;
+  }
+
+  .hero__cta {
+    width: 100%;
+  }
+
+  .section-kicker,
+  .hero__eyebrow {
+    letter-spacing: 0.14em;
+  }
+
+  .manifesto {
+    padding: 5rem 0;
+  }
+}
