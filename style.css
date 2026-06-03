@@ -500,6 +500,12 @@ p {
   min-height: 760px;
 }
 
+.galeria__item:nth-child(4) {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  min-height: 420px;
+}
+
 .galeria__image {
   background-position: center;
   background-size: cover;
@@ -513,19 +519,23 @@ p {
 }
 
 .galeria__image--hero {
-  background-image: url("assets/images/hero-gramado.png");
+  background-image: url("assets/images/galeria-ernesto-vista.jpg");
+  background-position: 54% center;
 }
 
 .galeria__image--territorio {
-  background-image: url("assets/images/territorio-gramado.png");
+  background-image: url("assets/images/galeria-manhattan-living.jpg");
+  background-position: 64% center;
 }
 
 .galeria__image--interior {
-  background-image: url("assets/images/experiencia-interior.png");
+  background-image: url("assets/images/galeria-ernesto-suite.jpg");
+  background-position: 56% center;
 }
 
 .galeria__image--fachada {
-  background-image: url("assets/images/empreendimento-fachada.png");
+  background-image: url("assets/images/galeria-manhattan-fachada.jpg");
+  background-position: center;
 }
 
 .cta-consultivo {
@@ -787,7 +797,14 @@ p {
 
   .galeria__item,
   .galeria__item--large {
+    grid-column: auto;
+    grid-row: auto;
     min-height: 420px;
+  }
+
+  .galeria__item:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .cta-consultivo__button {
