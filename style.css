@@ -474,9 +474,75 @@ p {
   color: var(--branco-quente);
 }
 
+.hero-transition {
+  align-items: end;
+  background: linear-gradient(180deg, var(--verde-profundo) 0%, var(--off-white) 76%, var(--branco-quente) 100%);
+  color: var(--branco-quente);
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+  margin-top: -1px;
+  min-height: clamp(360px, 42vw, 620px);
+  overflow: hidden;
+  padding: 0 clamp(1.25rem, 4vw, 4rem) clamp(4rem, 9vw, 8rem);
+  position: relative;
+}
+
+.hero-transition::before {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--verde-profundo) 72%, transparent), transparent 54%),
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--branco-quente) 72%, transparent) 100%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.hero-transition__media {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 18%, transparent), color-mix(in srgb, var(--verde-profundo) 42%, transparent)),
+    url("assets/images/experiencia-real.jpg") center/cover no-repeat;
+  height: clamp(300px, 38vw, 560px);
+  justify-self: end;
+  max-width: 420px;
+  position: relative;
+  transform: translateY(clamp(-4rem, -8vw, -7rem));
+  width: min(31vw, 420px);
+  z-index: 2;
+}
+
+.hero-transition__content {
+  border-top: 1px solid color-mix(in srgb, var(--verde-profundo) 24%, var(--pedra));
+  max-width: 760px;
+  padding-top: clamp(1.7rem, 3vw, 2.5rem);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-transition__content span {
+  color: var(--verde-serra);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  margin-bottom: 1.15rem;
+  text-transform: uppercase;
+}
+
+.hero-transition__content p {
+  color: var(--verde-profundo);
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.8vw, 5rem);
+  font-weight: 400;
+  line-height: 1.03;
+  max-width: 700px;
+  text-wrap: balance;
+}
+
 .manifesto {
   background: var(--branco-quente);
-  padding: clamp(6.5rem, 12vw, 12rem) 0 clamp(6rem, 10vw, 10rem);
+  padding: clamp(5.5rem, 10vw, 10rem) 0 clamp(6rem, 10vw, 10rem);
 }
 
 .manifesto__inner {
@@ -886,6 +952,16 @@ p {
     margin-top: 2.4rem;
   }
 
+  .hero-transition {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 2rem;
+  }
+
+  .hero-transition__media {
+    justify-self: start;
+    width: min(56vw, 420px);
+  }
+
   .gramado__layout {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1001,6 +1077,29 @@ p {
   .header__menu-button {
     font-size: 0;
     gap: 0;
+  }
+
+  .hero-transition {
+    gap: 1.6rem;
+    min-height: auto;
+    padding: 0 1.25rem 4.5rem;
+  }
+
+  .hero-transition__media {
+    height: 280px;
+    transform: translateY(-2.6rem);
+    width: min(68vw, 260px);
+  }
+
+  .hero-transition__content {
+    max-width: min(20rem, calc(100vw - 2.5rem));
+    padding-top: 1.4rem;
+  }
+
+  .hero-transition__content p {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 1.04;
+    max-width: min(20rem, calc(100vw - 2.5rem));
   }
 
   .manifesto {
