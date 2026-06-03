@@ -707,6 +707,30 @@ p {
   max-width: 430px;
 }
 
+.manifesto__points {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 38%, transparent);
+  display: grid;
+  gap: 0;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.manifesto__points span {
+  border-right: 1px solid color-mix(in srgb, var(--pedra) 28%, transparent);
+  color: var(--verde-profundo);
+  font-size: clamp(0.78rem, 0.9vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.55;
+  min-height: 112px;
+  padding: 1.45rem clamp(1rem, 2vw, 2rem) 0 0;
+  text-transform: uppercase;
+}
+
+.manifesto__points span:last-child {
+  border-right: 0;
+}
+
 .gramado {
   background: var(--off-white);
   overflow: hidden;
@@ -1306,6 +1330,21 @@ p {
     font-size: 0.96rem;
     line-height: 1.85;
     max-width: 20rem;
+  }
+
+  .manifesto__points {
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto__points span {
+    border-bottom: 1px solid color-mix(in srgb, var(--pedra) 28%, transparent);
+    border-right: 0;
+    min-height: auto;
+    padding: 1rem 0;
+  }
+
+  .manifesto__points span:last-child {
+    border-bottom: 0;
   }
 
   .gramado__media {
