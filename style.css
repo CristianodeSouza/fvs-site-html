@@ -483,7 +483,7 @@ p {
 
 .hero__content {
   color: var(--branco-quente);
-  max-width: 880px;
+  max-width: 940px;
   padding-bottom: clamp(1rem, 4vw, 4rem);
   position: relative;
   z-index: 2;
@@ -501,9 +501,9 @@ p {
 
 .hero__title {
   color: var(--branco-quente);
-  font-size: clamp(3rem, 4.7vw, 5.6rem);
-  line-height: 1.04;
-  max-width: 690px;
+  font-size: clamp(3.15rem, 5.2vw, 6.35rem);
+  line-height: 0.98;
+  max-width: 840px;
   text-shadow: 0 2px 32px color-mix(in srgb, var(--preto-quente) 34%, transparent);
 }
 
@@ -513,7 +513,7 @@ p {
   font-weight: 300;
   line-height: 1.8;
   margin: 1.6rem 0 2.3rem;
-  max-width: 540px;
+  max-width: 620px;
   text-shadow: 0 1px 18px color-mix(in srgb, var(--preto-quente) 40%, transparent);
 }
 
@@ -563,6 +563,26 @@ p {
 
 .hero__text-link:hover {
   color: var(--branco-quente);
+}
+
+.hero__proof {
+  border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 28%, transparent);
+  display: grid;
+  gap: 0.9rem clamp(1rem, 3vw, 3rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(2rem, 4vw, 4.2rem);
+  max-width: 760px;
+  padding-top: 1.15rem;
+}
+
+.hero__proof span {
+  color: var(--pedra-clara);
+  font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.55;
+  text-shadow: 0 1px 16px color-mix(in srgb, var(--preto-quente) 44%, transparent);
+  text-transform: uppercase;
 }
 
 .hero-transition {
@@ -1116,15 +1136,16 @@ p {
   }
 
   .hero__title {
-    font-size: clamp(2.35rem, 10vw, 3rem);
-    max-width: 18.6rem;
+    font-size: clamp(2.45rem, 10.4vw, 3.28rem);
+    line-height: 1.02;
+    max-width: 20rem;
     overflow-wrap: normal;
   }
 
   .hero__subtitle {
     font-size: 0.98rem;
     line-height: 1.75;
-    max-width: 19rem;
+    max-width: 20rem;
   }
 
   .hero__scene::before {
@@ -1163,6 +1184,19 @@ p {
 
   .hero__actions {
     gap: 0.95rem 1.1rem;
+  }
+
+  .hero__proof {
+    gap: 0.65rem;
+    grid-template-columns: 1fr;
+    margin-top: 1.8rem;
+    max-width: 20rem;
+    padding-top: 1rem;
+  }
+
+  .hero__proof span {
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
   }
 
   .header__menu-button {
