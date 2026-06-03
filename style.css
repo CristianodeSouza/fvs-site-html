@@ -1235,6 +1235,97 @@ p {
   max-width: 540px;
 }
 
+.tipologias {
+  background: var(--off-white);
+  padding: clamp(6rem, 10vw, 10rem) 0;
+}
+
+.tipologias__intro {
+  display: grid;
+  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.62fr);
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.tipologias__intro .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.tipologias__intro h2 {
+  color: var(--verde-profundo);
+  font-size: clamp(2.55rem, 5vw, 5.3rem);
+  line-height: 1;
+  max-width: 940px;
+}
+
+.tipologias__intro p {
+  align-self: end;
+  color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
+  font-size: clamp(1rem, 1.25vw, 1.14rem);
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+.tipologias__grid {
+  display: grid;
+  gap: clamp(1rem, 2vw, 2rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tipologia-card {
+  background: var(--branco-quente);
+  display: grid;
+  grid-template-rows: minmax(440px, 1fr) auto;
+  min-height: 760px;
+  overflow: hidden;
+}
+
+.tipologia-card__image {
+  background-color: var(--branco-quente);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 440px;
+  padding: 1rem;
+}
+
+.tipologia-card__image--tipo {
+  background-image: url("assets/images/manhattan-planta-tipo.jpg");
+}
+
+.tipologia-card__image--cobertura {
+  background-image: url("assets/images/manhattan-planta-cobertura.jpg");
+}
+
+.tipologia-card__content {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 32%, transparent);
+  padding: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.tipologia-card__content span {
+  color: var(--pedra);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.tipologia-card__content h3 {
+  color: var(--verde-profundo);
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  margin-bottom: 1.1rem;
+}
+
+.tipologia-card__content p {
+  color: color-mix(in srgb, var(--preto-quente) 74%, var(--verde-serra));
+  font-weight: 300;
+  line-height: 1.85;
+  max-width: 560px;
+}
+
 .decisao {
   background: var(--branco-quente);
   color: var(--preto-quente);
@@ -1684,6 +1775,15 @@ p {
     max-width: 680px;
   }
 
+  .tipologias__intro,
+  .tipologias__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tipologias__intro p {
+    max-width: 680px;
+  }
+
   .decisao__intro,
   .decisao__notes {
     grid-template-columns: minmax(0, 1fr);
@@ -2124,6 +2224,40 @@ p {
   .projeto-detalhe__proofs figcaption strong {
     font-size: clamp(1.3rem, 7vw, 1.8rem);
     max-width: min(18rem, 100%);
+  }
+
+  .tipologias {
+    padding: 5rem 0;
+  }
+
+  .tipologias__intro {
+    gap: 1.6rem;
+    margin-bottom: 3rem;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .tipologias__intro h2 {
+    font-size: clamp(2.1rem, 9.5vw, 2.85rem);
+    line-height: 1.06;
+  }
+
+  .tipologias__intro p {
+    font-size: 0.96rem;
+    line-height: 1.85;
+  }
+
+  .tipologia-card {
+    grid-template-rows: minmax(340px, auto) auto;
+    min-height: auto;
+  }
+
+  .tipologia-card__image {
+    min-height: 340px;
+  }
+
+  .tipologia-card__content h3,
+  .tipologia-card__content p {
+    max-width: min(20rem, calc(100vw - 3.2rem));
   }
 
   .decisao {
