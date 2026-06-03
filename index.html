@@ -23,10 +23,12 @@
 <body>
   <header class="header">
     <nav class="header__nav" aria-label="Navegação principal">
-      <a href="#manifesto" class="header__link">Manifesto</a>
+      <button class="header__menu-button" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Abrir menu">
+        <span></span>
+        Menu
+      </button>
       <a href="#gramado" class="header__link">Gramado</a>
-      <a href="#experiencia" class="header__link">Experiência</a>
-      <a href="#empreendimentos" class="header__link">Empreendimentos</a>
+      <a href="#empreendimentos" class="header__link">Residências</a>
     </nav>
 
     <a href="#hero" class="header__logo" aria-label="FVS Incorporações">FVS</a>
@@ -36,14 +38,36 @@
     </div>
   </header>
 
+  <div class="menu-panel" id="site-menu" aria-hidden="true">
+    <div class="menu-panel__inner">
+      <button class="menu-panel__close" type="button">Fechar</button>
+      <nav class="menu-panel__nav" aria-label="Menu principal">
+        <a href="#manifesto">Manifesto</a>
+        <a href="#gramado">Gramado</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#empreendimentos">Residências</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <p>Gramado, RS · residências para permanecer, receber e construir valor patrimonial com sentido.</p>
+    </div>
+  </div>
+
   <main>
     <section class="hero" id="hero" aria-label="FVS Incorporações em Gramado">
-      <div class="hero__image" aria-hidden="true"></div>
+      <div class="hero__scene" aria-hidden="true">
+        <div class="hero__image hero__image--main" data-hero-depth="0.18"></div>
+        <div class="hero__image hero__image--left" data-hero-depth="-0.08"></div>
+        <div class="hero__image hero__image--right" data-hero-depth="0.12"></div>
+        <div class="hero__image hero__image--lower" data-hero-depth="-0.14"></div>
+      </div>
       <div class="hero__content">
         <span class="hero__eyebrow">Gramado, Serra Gaúcha</span>
         <h1 class="hero__title">Morar em Gramado é escolher uma relação diferente com o tempo.</h1>
         <p class="hero__subtitle">Residências pensadas para viver a Serra com conforto, permanência e valor patrimonial.</p>
-        <a href="#contato" class="hero__cta">Agendar conversa</a>
+        <div class="hero__actions">
+          <a href="#contato" class="hero__cta">Agendar conversa</a>
+          <a href="#empreendimentos" class="hero__text-link">Ver residências</a>
+        </div>
       </div>
     </section>
 

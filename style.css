@@ -137,8 +137,14 @@ p {
 }
 
 .header__link,
-.header__button {
+.header__button,
+.header__menu-button,
+.menu-panel__close {
+  background: transparent;
+  border: 0;
   color: var(--branco-quente);
+  cursor: pointer;
+  font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 400;
   letter-spacing: 0.08em;
@@ -148,6 +154,44 @@ p {
 }
 
 .header__link:hover {
+  color: var(--pedra);
+}
+
+.header__menu-button {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.74rem;
+}
+
+.header__menu-button span {
+  background: currentColor;
+  display: block;
+  height: 1px;
+  position: relative;
+  width: 2.2rem;
+}
+
+.header__menu-button span::before,
+.header__menu-button span::after {
+  background: currentColor;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.header__menu-button span::before {
+  top: -0.36rem;
+}
+
+.header__menu-button span::after {
+  top: 0.36rem;
+  width: 62%;
+}
+
+.header__menu-button:hover,
+.menu-panel__close:hover {
   color: var(--pedra);
 }
 
@@ -170,8 +214,87 @@ p {
   color: var(--pedra-clara);
 }
 
+.menu-panel {
+  background:
+    linear-gradient(115deg, color-mix(in srgb, var(--verde-profundo) 96%, transparent) 0%, color-mix(in srgb, var(--preto-quente) 94%, transparent) 100%),
+    url("assets/images/galeria-ernesto-vista.jpg") center/cover no-repeat;
+  color: var(--branco-quente);
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transform: translateY(-1.5rem);
+  transition: opacity var(--motion-normal) var(--ease-smooth), transform var(--motion-normal) var(--ease-smooth), visibility var(--motion-normal) var(--ease-smooth);
+  visibility: hidden;
+  z-index: 40;
+}
+
+.menu-panel::after {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--verde-profundo) 82%, transparent), color-mix(in srgb, var(--verde-profundo) 42%, transparent));
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.menu-is-open {
+  overflow: hidden;
+}
+
+.menu-is-open .menu-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.menu-panel__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.34fr);
+  grid-template-rows: auto 1fr;
+  min-height: 100%;
+  padding: clamp(1.25rem, 4vw, 4rem);
+  position: relative;
+  z-index: 1;
+}
+
+.menu-panel__close {
+  align-self: start;
+  grid-column: 1 / -1;
+  justify-self: end;
+}
+
+.menu-panel__nav {
+  align-self: end;
+  display: grid;
+  gap: clamp(0.4rem, 1vw, 0.9rem);
+}
+
+.menu-panel__nav a {
+  color: var(--branco-quente);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 8.6rem);
+  font-weight: 400;
+  line-height: 0.92;
+  transition: color var(--motion-fast) var(--ease-smooth), transform var(--motion-fast) var(--ease-smooth);
+}
+
+.menu-panel__nav a:hover {
+  color: var(--pedra-clara);
+  transform: translateX(0.4rem);
+}
+
+.menu-panel__inner p {
+  align-self: end;
+  color: var(--pedra-clara);
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.9;
+  max-width: 360px;
+}
+
 .hero {
   align-items: flex-end;
+  background: var(--verde-profundo);
   display: flex;
   min-height: 100svh;
   overflow: hidden;
@@ -188,17 +311,83 @@ p {
   pointer-events: none;
   position: absolute;
   right: 0;
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero__image {
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 28%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 62%, transparent) 100%),
-    url("assets/images/hero-tempo-ernesto.jpg") center/cover no-repeat;
-  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: absolute;
-  transform: scale(1.02);
-  z-index: -1;
+  will-change: transform;
+}
+
+.hero__scene {
+  background: var(--verde-profundo);
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 0;
+}
+
+.hero__scene::before,
+.hero__scene::after {
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+}
+
+.hero__scene::before {
+  background:
+    radial-gradient(circle at 72% 14%, color-mix(in srgb, var(--pedra-clara) 18%, transparent), transparent 24%),
+    linear-gradient(90deg, color-mix(in srgb, var(--verde-profundo) 88%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 54%, transparent) 44%, color-mix(in srgb, var(--verde-profundo) 26%, transparent) 100%),
+    linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 30%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 72%, transparent) 100%);
+}
+
+.hero__scene::after {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 34%, transparent) 0%, transparent 30%, color-mix(in srgb, var(--verde-profundo) 58%, transparent) 100%);
+}
+
+.hero__image--main {
+  background-image: url("assets/images/hero-tempo-ernesto.jpg");
+  height: 92vh;
+  right: -2vw;
+  top: 5vh;
+  transform: translate3d(0, var(--hero-shift, 0px), 0) rotate(-5deg) scale(1.05);
+  width: min(66vw, 980px);
+  z-index: 1;
+}
+
+.hero__image--left {
+  background-image: url("assets/images/galeria-manhattan-fachada.jpg");
+  height: 44vh;
+  left: -6vw;
+  top: 11vh;
+  transform: translate3d(0, var(--hero-shift, 0px), 0) rotate(-9deg) scale(1.05);
+  width: min(35vw, 520px);
+  z-index: 0;
+}
+
+.hero__image--right {
+  background-image: url("assets/images/galeria-ernesto-vista.jpg");
+  height: 42vh;
+  right: 13vw;
+  top: -8vh;
+  transform: translate3d(0, var(--hero-shift, 0px), 0) rotate(8deg) scale(1.03);
+  width: min(34vw, 500px);
+  z-index: 2;
+}
+
+.hero__image--lower {
+  background-image: url("assets/images/galeria-manhattan-living.jpg");
+  bottom: -11vh;
+  height: 42vh;
+  right: 7vw;
+  transform: translate3d(0, var(--hero-shift, 0px), 0) rotate(7deg) scale(1.04);
+  width: min(38vw, 560px);
+  z-index: 2;
 }
 
 .hero__content {
@@ -206,7 +395,7 @@ p {
   max-width: 880px;
   padding-bottom: clamp(1rem, 4vw, 4rem);
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero__eyebrow {
@@ -237,6 +426,13 @@ p {
   text-shadow: 0 1px 18px color-mix(in srgb, var(--preto-quente) 40%, transparent);
 }
 
+.hero__actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem 1.6rem;
+}
+
 .hero__cta,
 .cta-consultivo__button {
   border: 1px solid var(--pedra);
@@ -263,6 +459,19 @@ p {
 .cta-consultivo__button:hover {
   background: var(--pedra);
   color: var(--verde-profundo);
+}
+
+.hero__text-link {
+  color: var(--pedra-clara);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color var(--motion-fast) var(--ease-smooth);
+}
+
+.hero__text-link:hover {
+  color: var(--branco-quente);
 }
 
 .manifesto {
@@ -658,11 +867,23 @@ p {
   }
 
   .header__nav {
+    display: flex;
+  }
+
+  .header__link {
     display: none;
   }
 
   .header__logo {
-    justify-self: start;
+    justify-self: center;
+  }
+
+  .menu-panel__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .menu-panel__inner p {
+    margin-top: 2.4rem;
   }
 
   .gramado__layout {
@@ -694,7 +915,9 @@ p {
   }
 
   .header__nav {
-    display: none;
+    display: flex;
+    grid-column: 2;
+    grid-row: 1;
   }
 
   .header__logo {
@@ -737,8 +960,47 @@ p {
     max-width: 19rem;
   }
 
-  .hero__image {
-    background-position: 64% center;
+  .hero__scene::before {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 78%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 54%, transparent) 48%, color-mix(in srgb, var(--verde-profundo) 82%, transparent) 100%);
+  }
+
+  .hero__image--main {
+    height: 78vh;
+    right: -28vw;
+    top: 10vh;
+    transform: translate3d(0, var(--hero-shift, 0px), 0) rotate(-4deg) scale(1.06);
+    width: 104vw;
+  }
+
+  .hero__image--left {
+    height: 29vh;
+    left: -24vw;
+    top: 8vh;
+    width: 62vw;
+  }
+
+  .hero__image--right {
+    height: 30vh;
+    right: -19vw;
+    top: -4vh;
+    width: 70vw;
+  }
+
+  .hero__image--lower {
+    bottom: -8vh;
+    height: 28vh;
+    right: -18vw;
+    width: 70vw;
+  }
+
+  .hero__actions {
+    gap: 0.95rem 1.1rem;
+  }
+
+  .header__menu-button {
+    font-size: 0;
+    gap: 0;
   }
 
   .manifesto {
@@ -871,9 +1133,25 @@ p {
 }
 
 @media (max-width: 460px) {
+  .header__menu-button {
+    font-size: 0;
+  }
+
+  .header__menu-button span {
+    width: 1.85rem;
+  }
+
   .header__button {
     font-size: 0.64rem;
     min-width: auto;
+  }
+
+  .header__logo {
+    font-size: 1.34rem;
+  }
+
+  .menu-panel__nav a {
+    font-size: clamp(2.8rem, 17vw, 4.4rem);
   }
 
   .hero__cta {
