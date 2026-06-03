@@ -23,6 +23,7 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -32,6 +33,7 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.7;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
 }
@@ -84,6 +86,7 @@ p {
 .container {
   margin: 0 auto;
   max-width: 1360px;
+  min-width: 0;
   padding: 0 clamp(1.25rem, 4vw, 4rem);
   width: 100%;
 }
