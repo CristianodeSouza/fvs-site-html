@@ -218,9 +218,9 @@ p {
 
 .hero__title {
   color: var(--branco-quente);
-  font-size: clamp(3rem, 5.2vw, 6.2rem);
-  line-height: 1.02;
-  max-width: 760px;
+  font-size: clamp(3rem, 4.7vw, 5.6rem);
+  line-height: 1.04;
+  max-width: 690px;
   text-shadow: 0 2px 32px color-mix(in srgb, var(--preto-quente) 34%, transparent);
 }
 
@@ -250,9 +250,10 @@ p {
 }
 
 .hero__cta {
-  background: color-mix(in srgb, var(--verde-profundo) 18%, transparent);
-  border-color: color-mix(in srgb, var(--pedra-clara) 72%, transparent);
+  background: transparent;
+  border-color: color-mix(in srgb, var(--pedra-clara) 52%, transparent);
   min-width: 0;
+  padding: 0.9rem 1.15rem;
 }
 
 .hero__cta:hover,
@@ -280,6 +281,7 @@ p {
 
 .gramado {
   background: var(--off-white);
+  overflow: hidden;
   padding: clamp(5rem, 10vw, 10rem) 0;
 }
 
@@ -288,17 +290,19 @@ p {
   display: grid;
   gap: clamp(3rem, 7vw, 7rem);
   grid-template-columns: minmax(320px, 0.9fr) minmax(360px, 1fr);
+  min-width: 0;
 }
 
 .gramado__media {
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 8%, transparent), color-mix(in srgb, var(--verde-profundo) 28%, transparent)),
-    url("assets/images/territorio-gramado.png") center/cover no-repeat;
+    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 12%, transparent), color-mix(in srgb, var(--verde-profundo) 34%, transparent)),
+    url("assets/images/territorio-gramado-real.jpg") center/cover no-repeat;
   min-height: 680px;
 }
 
 .gramado__content {
   align-self: center;
+  min-width: 0;
 }
 
 .gramado h2 {
@@ -310,6 +314,7 @@ p {
   border-top: 1px solid var(--pedra-clara);
   display: grid;
   gap: 0;
+  min-width: 0;
 }
 
 .gramado__block {
@@ -317,6 +322,7 @@ p {
   display: grid;
   gap: 1.4rem;
   grid-template-columns: minmax(140px, 0.38fr) 1fr;
+  min-width: 0;
   padding: 1.7rem 0;
 }
 
@@ -598,7 +604,7 @@ p {
   }
 
   .gramado__layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .gramado__media {
@@ -647,6 +653,8 @@ p {
 
   .hero {
     min-height: 92vh;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     padding-top: 68px;
   }
 
@@ -656,17 +664,41 @@ p {
   }
 
   .hero__title {
-    font-size: clamp(2.65rem, 11vw, 3.35rem);
-    max-width: 21rem;
+    font-size: clamp(2.35rem, 10vw, 3rem);
+    max-width: 18.6rem;
     overflow-wrap: normal;
   }
 
   .hero__subtitle {
-    max-width: 20rem;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    max-width: 19rem;
+  }
+
+  .hero__image {
+    background-position: 64% center;
   }
 
   .gramado__media {
     min-height: 420px;
+  }
+
+  .gramado__content,
+  .gramado__grid,
+  .gramado__block,
+  .gramado__block h3,
+  .gramado__block p {
+    max-width: min(19rem, calc(100vw - 2.5rem));
+  }
+
+  .gramado__block p {
+    font-size: 0.94rem;
+  }
+
+  .gramado h2 {
+    font-size: clamp(2.2rem, 10vw, 2.9rem);
+    line-height: 1.06;
+    max-width: min(19rem, calc(100vw - 2.5rem));
   }
 
   .gramado__block {
@@ -711,7 +743,7 @@ p {
   }
 
   .hero__cta {
-    width: 100%;
+    width: auto;
   }
 
   .section-kicker,
