@@ -759,7 +759,9 @@ p {
 
 .gramado h2 {
   color: var(--verde-profundo);
+  font-size: clamp(2.5rem, 4.5vw, 4.7rem);
   margin-bottom: 3rem;
+  max-width: 860px;
 }
 
 .gramado__grid {
@@ -785,7 +787,7 @@ p {
 .gramado__block p {
   color: color-mix(in srgb, var(--preto-quente) 76%, var(--verde-serra));
   font-size: 0.98rem;
-  line-height: 1.8;
+  line-height: 1.86;
 }
 
 .experiencia {
