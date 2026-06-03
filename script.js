@@ -73,7 +73,7 @@ if (heroImages.length && !prefersReducedMotion) {
 }
 
 const revealItems = document.querySelectorAll(
-  '.manifesto__inner, .gramado__media, .gramado__content, .experiencia__content, .section-heading, .empreendimento, .galeria__item, .cta-consultivo .container'
+  '.manifesto__inner, .gramado__media, .gramado__content, .experiencia__content, .section-heading, .empreendimento, .galeria__intro, .galeria__item, .cta-consultivo .container'
 );
 
 revealItems.forEach((item) => {
