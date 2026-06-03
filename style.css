@@ -1108,10 +1108,16 @@ p {
   padding: clamp(6rem, 11vw, 10rem) 0;
 }
 
+.cta-consultivo .container {
+  display: grid;
+  gap: clamp(3rem, 8vw, 8rem);
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.62fr);
+}
+
 .cta-consultivo h2 {
   color: var(--branco-quente);
   margin-bottom: 1.6rem;
-  max-width: 780px;
+  max-width: 860px;
 }
 
 .cta-consultivo p {
@@ -1121,6 +1127,31 @@ p {
   line-height: 1.9;
   margin: 0 0 2.8rem;
   max-width: 620px;
+}
+
+.cta-consultivo__panel {
+  align-self: end;
+  border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 32%, transparent);
+}
+
+.cta-consultivo__panel p {
+  border-bottom: 1px solid color-mix(in srgb, var(--pedra-clara) 22%, transparent);
+  color: var(--branco-quente);
+  display: grid;
+  font-size: 0.94rem;
+  gap: 1.2rem;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  line-height: 1.75;
+  margin: 0;
+  max-width: none;
+  padding: 1.25rem 0;
+}
+
+.cta-consultivo__panel span {
+  color: var(--pedra);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
 }
 
 .cta-consultivo__buttons {
@@ -1636,19 +1667,29 @@ p {
     max-width: min(17.5rem, 100%);
   }
 
+  .cta-consultivo .container {
+    grid-template-columns: 1fr;
+  }
+
   .cta-consultivo__button {
     width: min(100%, 320px);
   }
 
   .cta-consultivo h2,
   .cta-consultivo p,
-  .cta-consultivo__buttons {
+  .cta-consultivo__buttons,
+  .cta-consultivo__panel {
     max-width: min(20rem, calc(100vw - 2.5rem));
   }
 
   .cta-consultivo p {
     font-size: 0.96rem;
     line-height: 1.85;
+  }
+
+  .cta-consultivo__panel p {
+    gap: 0.85rem;
+    grid-template-columns: 2rem minmax(0, 1fr);
   }
 }
 
