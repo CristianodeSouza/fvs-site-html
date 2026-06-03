@@ -1028,6 +1028,13 @@ p {
     url("assets/images/manhattan-fachada-noturna.jpg");
 }
 
+.projeto-detalhe__image--ernesto-main {
+  background-image:
+    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 8%, transparent), color-mix(in srgb, var(--verde-profundo) 22%, transparent)),
+    url("assets/images/ernesto-living-varanda.jpg");
+  background-position: 54% center;
+}
+
 .projeto-detalhe__argument {
   align-content: end;
   background: var(--off-white);
@@ -1123,6 +1130,14 @@ p {
 
 .projeto-detalhe__thumb--manhattan-living {
   background-image: url("assets/images/manhattan-living-cobertura.jpg");
+}
+
+.projeto-detalhe__thumb--ernesto-suite {
+  background-image: url("assets/images/ernesto-suite.jpg");
+}
+
+.projeto-detalhe__thumb--ernesto-estar {
+  background-image: url("assets/images/ernesto-estar-cozinha.jpg");
 }
 
 .projeto-detalhe__proofs figcaption {
