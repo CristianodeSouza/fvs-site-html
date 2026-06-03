@@ -973,6 +973,187 @@ p {
   color: var(--pedra);
 }
 
+.projeto-detalhe {
+  background: var(--verde-profundo);
+  color: var(--branco-quente);
+  padding: clamp(6rem, 10vw, 10rem) 0;
+}
+
+.projeto-detalhe__intro {
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.64fr);
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.projeto-detalhe__intro .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.projeto-detalhe__intro h2 {
+  color: var(--branco-quente);
+  font-size: clamp(2.8rem, 5.8vw, 6rem);
+  line-height: 0.98;
+  max-width: 920px;
+}
+
+.projeto-detalhe__intro p {
+  align-self: end;
+  color: var(--pedra-clara);
+  font-size: clamp(1rem, 1.25vw, 1.14rem);
+  font-weight: 300;
+  line-height: 1.95;
+}
+
+.projeto-detalhe__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.48fr);
+  min-height: 720px;
+}
+
+.projeto-detalhe__image,
+.projeto-detalhe__thumb {
+  background-position: center;
+  background-size: cover;
+}
+
+.projeto-detalhe__image {
+  min-height: 620px;
+}
+
+.projeto-detalhe__image--manhattan-main {
+  background-image:
+    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 8%, transparent), color-mix(in srgb, var(--verde-profundo) 20%, transparent)),
+    url("assets/images/manhattan-fachada-noturna.jpg");
+}
+
+.projeto-detalhe__argument {
+  align-content: end;
+  background: var(--off-white);
+  color: var(--preto-quente);
+  display: grid;
+  padding: clamp(2rem, 4vw, 4rem);
+}
+
+.projeto-detalhe__eyebrow {
+  color: var(--pedra);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.projeto-detalhe__argument h3 {
+  color: var(--verde-profundo);
+  font-size: clamp(2rem, 3.4vw, 3.6rem);
+  margin-bottom: 1.4rem;
+}
+
+.projeto-detalhe__argument p {
+  color: color-mix(in srgb, var(--preto-quente) 76%, var(--verde-serra));
+  font-weight: 300;
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.projeto-detalhe__argument dl {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 42%, transparent);
+  display: grid;
+}
+
+.projeto-detalhe__argument dl div {
+  border-bottom: 1px solid color-mix(in srgb, var(--pedra) 30%, transparent);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  padding: 1rem 0;
+}
+
+.projeto-detalhe__argument dt {
+  color: var(--pedra);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.projeto-detalhe__argument dd {
+  color: color-mix(in srgb, var(--preto-quente) 76%, var(--verde-serra));
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.72;
+}
+
+.projeto-detalhe__proofs {
+  display: grid;
+  gap: clamp(1rem, 2vw, 2rem);
+  grid-template-columns: 0.85fr 1.15fr;
+  margin-top: clamp(1rem, 2vw, 2rem);
+}
+
+.projeto-detalhe__proofs figure {
+  background: color-mix(in srgb, var(--verde-serra) 80%, var(--preto-quente));
+  min-height: 440px;
+  overflow: hidden;
+  position: relative;
+}
+
+.projeto-detalhe__proofs figure::after {
+  background: linear-gradient(180deg, transparent 36%, color-mix(in srgb, var(--verde-profundo) 78%, transparent));
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.projeto-detalhe__thumb {
+  height: 100%;
+  min-height: inherit;
+  transition: transform var(--motion-slow) var(--ease-smooth);
+}
+
+.projeto-detalhe__proofs figure:hover .projeto-detalhe__thumb {
+  transform: scale(1.035);
+}
+
+.projeto-detalhe__thumb--manhattan-hall {
+  background-image: url("assets/images/manhattan-hall.jpg");
+}
+
+.projeto-detalhe__thumb--manhattan-living {
+  background-image: url("assets/images/manhattan-living-cobertura.jpg");
+}
+
+.projeto-detalhe__proofs figcaption {
+  bottom: 0;
+  color: var(--branco-quente);
+  display: grid;
+  gap: 0.7rem;
+  left: 0;
+  padding: clamp(1.3rem, 2.8vw, 2.5rem);
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.projeto-detalhe__proofs figcaption span {
+  color: var(--pedra-clara);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.projeto-detalhe__proofs figcaption strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.1vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.08;
+  max-width: 540px;
+}
+
 .galeria {
   background: var(--off-white);
   padding: clamp(5rem, 9vw, 9rem) 0 clamp(1.25rem, 3vw, 3rem);
@@ -1294,6 +1475,19 @@ p {
 
   .galeria__grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .projeto-detalhe__intro,
+  .projeto-detalhe__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .projeto-detalhe__intro p {
+    max-width: 680px;
+  }
+
+  .projeto-detalhe__layout {
+    min-height: auto;
   }
 
   .galeria__intro {
@@ -1627,6 +1821,59 @@ p {
   .empreendimento__facts div {
     grid-template-columns: 1fr;
     gap: 0.45rem;
+  }
+
+  .projeto-detalhe {
+    padding: 5rem 0;
+  }
+
+  .projeto-detalhe__intro {
+    gap: 1.6rem;
+    margin-bottom: 3rem;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .projeto-detalhe__intro h2 {
+    font-size: clamp(2.25rem, 10vw, 3.05rem);
+    line-height: 1.04;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .projeto-detalhe__intro p {
+    font-size: 0.96rem;
+    line-height: 1.85;
+  }
+
+  .projeto-detalhe__image {
+    min-height: 460px;
+  }
+
+  .projeto-detalhe__argument {
+    padding: 2rem 1.6rem;
+  }
+
+  .projeto-detalhe__argument h3,
+  .projeto-detalhe__argument p,
+  .projeto-detalhe__argument dl {
+    max-width: min(20rem, calc(100vw - 3.2rem));
+  }
+
+  .projeto-detalhe__argument dl div {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .projeto-detalhe__proofs {
+    grid-template-columns: 1fr;
+  }
+
+  .projeto-detalhe__proofs figure {
+    min-height: 430px;
+  }
+
+  .projeto-detalhe__proofs figcaption strong {
+    font-size: clamp(1.3rem, 7vw, 1.8rem);
+    max-width: min(18rem, 100%);
   }
 
   .galeria {
