@@ -315,7 +315,7 @@ p {
 .menu-panel__nav {
   align-self: end;
   display: grid;
-  gap: clamp(0.2rem, 0.8vw, 0.72rem);
+  gap: clamp(0.15rem, 0.5vw, 0.46rem);
 }
 
 .menu-panel__nav a {
@@ -324,12 +324,12 @@ p {
   color: var(--branco-quente);
   display: grid;
   font-family: var(--font-display);
-  font-size: clamp(3rem, 7.4vw, 7.8rem);
+  font-size: clamp(2.8rem, 5.8vw, 6rem);
   font-weight: 400;
   gap: clamp(1rem, 2vw, 2rem);
   grid-template-columns: 3.4rem minmax(0, 1fr);
-  line-height: 0.9;
-  padding-bottom: clamp(0.45rem, 0.9vw, 0.9rem);
+  line-height: 0.88;
+  padding-bottom: clamp(0.36rem, 0.7vw, 0.72rem);
   transition: color var(--motion-fast) var(--ease-smooth), transform var(--motion-fast) var(--ease-smooth), border-color var(--motion-fast) var(--ease-smooth);
 }
 
