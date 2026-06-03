@@ -190,8 +190,8 @@ p {
 
 .hero__image {
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 18%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 58%, transparent) 100%),
-    url("assets/images/hero-gramado.png") center/cover no-repeat;
+    linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 28%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 62%, transparent) 100%),
+    url("assets/images/hero-tempo-ernesto.jpg") center/cover no-repeat;
   inset: 0;
   position: absolute;
   transform: scale(1.02);
@@ -218,7 +218,9 @@ p {
 
 .hero__title {
   color: var(--branco-quente);
-  max-width: 820px;
+  font-size: clamp(3rem, 5.2vw, 6.2rem);
+  line-height: 1.02;
+  max-width: 760px;
   text-shadow: 0 2px 32px color-mix(in srgb, var(--preto-quente) 34%, transparent);
 }
 
@@ -245,6 +247,12 @@ p {
   padding: 1rem 1.4rem;
   text-transform: uppercase;
   transition: background var(--motion-fast) var(--ease-smooth), color var(--motion-fast) var(--ease-smooth), border-color var(--motion-fast) var(--ease-smooth);
+}
+
+.hero__cta {
+  background: color-mix(in srgb, var(--verde-profundo) 18%, transparent);
+  border-color: color-mix(in srgb, var(--pedra-clara) 72%, transparent);
+  min-width: 0;
 }
 
 .hero__cta:hover,
@@ -640,7 +648,8 @@ p {
   }
 
   .hero__title {
-    max-width: 20rem;
+    font-size: clamp(2.65rem, 11vw, 3.35rem);
+    max-width: 21rem;
     overflow-wrap: normal;
   }
 
