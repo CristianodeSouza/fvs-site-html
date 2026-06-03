@@ -73,7 +73,7 @@ if (heroImages.length && !prefersReducedMotion) {
 }
 
 const revealItems = document.querySelectorAll(
-  '.manifesto__inner, .gramado__media, .gramado__content, .experiencia__content, .section-heading, .empreendimento, .projeto-detalhe__intro, .projeto-detalhe__layout, .projeto-detalhe__proofs figure, .decisao__intro, .decisao__card, .decisao__notes, .galeria__intro, .galeria__item, .cta-consultivo .container'
+  '.manifesto__inner, .metodo-fvs__intro, .metodo-fvs__steps article, .gramado__media, .gramado__content, .experiencia__content, .section-heading, .empreendimento, .projeto-detalhe__intro, .projeto-detalhe__layout, .projeto-detalhe__proofs figure, .decisao__intro, .decisao__card, .decisao__notes, .galeria__intro, .galeria__item, .cta-consultivo .container'
 );
 
 revealItems.forEach((item) => {
