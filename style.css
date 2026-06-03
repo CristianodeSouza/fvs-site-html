@@ -107,6 +107,15 @@ p {
   text-align: center;
 }
 
+.section-heading p {
+  color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.85;
+  margin: 1.4rem auto 0;
+  max-width: 560px;
+}
+
 .header {
   align-items: center;
   background: transparent;
@@ -871,8 +880,8 @@ p {
 .empreendimento {
   background: var(--off-white);
   display: grid;
-  grid-template-rows: minmax(320px, 1fr) auto;
-  min-height: 620px;
+  grid-template-rows: minmax(360px, 0.92fr) auto;
+  min-height: 760px;
   overflow: hidden;
 }
 
@@ -897,7 +906,7 @@ p {
 }
 
 .empreendimento__content {
-  padding: clamp(1.6rem, 3vw, 2.5rem);
+  padding: clamp(1.8rem, 3vw, 2.8rem);
 }
 
 .empreendimento__location {
@@ -917,9 +926,39 @@ p {
 
 .empreendimento__concept {
   color: color-mix(in srgb, var(--preto-quente) 78%, var(--verde-serra));
-  font-size: 0.96rem;
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
   line-height: 1.8;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.empreendimento__facts {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 42%, transparent);
+  display: grid;
+  gap: 0;
+  margin-bottom: 2rem;
+}
+
+.empreendimento__facts div {
+  border-bottom: 1px solid color-mix(in srgb, var(--pedra) 28%, transparent);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(90px, 0.28fr) minmax(0, 1fr);
+  padding: 1.05rem 0;
+}
+
+.empreendimento__facts dt {
+  color: var(--pedra);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.empreendimento__facts dd {
+  color: color-mix(in srgb, var(--preto-quente) 76%, var(--verde-serra));
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.7;
 }
 
 .empreendimento__link {
@@ -1160,6 +1199,21 @@ p {
 }
 
 @media (max-width: 760px) {
+  .section-heading {
+    max-width: 18.5rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2.05rem, 9vw, 2.45rem);
+    line-height: 1.06;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  .section-heading p {
+    max-width: 18rem;
+  }
+
   h1 {
     font-size: clamp(2.65rem, 12vw, 3.4rem);
   }
@@ -1460,6 +1514,11 @@ p {
 
   .empreendimento {
     min-height: auto;
+  }
+
+  .empreendimento__facts div {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
   }
 
   .galeria__item,
