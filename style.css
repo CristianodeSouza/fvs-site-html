@@ -1817,6 +1817,16 @@ p {
   max-width: 620px;
 }
 
+.cta-consultivo__note {
+  border-left: 1px solid var(--pedra);
+  color: var(--branco-quente) !important;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.3vw, 2.2rem) !important;
+  line-height: 1.18 !important;
+  margin: 0 0 clamp(2rem, 4vw, 3.2rem) !important;
+  padding-left: clamp(1rem, 2vw, 1.6rem);
+}
+
 .cta-consultivo__panel {
   align-self: end;
   border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 32%, transparent);
