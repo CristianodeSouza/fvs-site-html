@@ -1323,6 +1323,42 @@ p {
   max-width: 540px;
 }
 
+.projeto-detalhe__criteria {
+  border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 24%, transparent);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(2rem, 4vw, 4rem);
+}
+
+.projeto-detalhe__criteria article {
+  border-bottom: 1px solid color-mix(in srgb, var(--pedra-clara) 18%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--pedra-clara) 14%, transparent);
+  display: grid;
+  min-height: 280px;
+  padding: clamp(1.25rem, 2.4vw, 2rem);
+}
+
+.projeto-detalhe__criteria article:last-child {
+  border-right: 0;
+}
+
+.projeto-detalhe__criteria span {
+  color: var(--pedra);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.projeto-detalhe__criteria p {
+  align-self: end;
+  color: var(--pedra-clara);
+  font-size: clamp(0.94rem, 1.05vw, 1rem);
+  font-weight: 300;
+  line-height: 1.82;
+  margin: 0;
+}
+
 .tipologias {
   background: var(--off-white);
   padding: clamp(6rem, 10vw, 10rem) 0;
@@ -2071,6 +2107,14 @@ p {
     min-height: auto;
   }
 
+  .projeto-detalhe__criteria {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projeto-detalhe__criteria article:nth-child(2n) {
+    border-right: 0;
+  }
+
   .galeria__intro {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.7rem;
@@ -2543,6 +2587,21 @@ p {
   .projeto-detalhe__proofs figcaption strong {
     font-size: clamp(1.3rem, 7vw, 1.8rem);
     max-width: min(18rem, 100%);
+  }
+
+  .projeto-detalhe__criteria {
+    grid-template-columns: 1fr;
+  }
+
+  .projeto-detalhe__criteria article {
+    border-right: 0;
+    min-height: auto;
+    padding: 1.4rem 0;
+  }
+
+  .projeto-detalhe__criteria p {
+    margin-top: 2.5rem;
+    max-width: min(20rem, calc(100vw - 2.5rem));
   }
 
   .tipologias {
