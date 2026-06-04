@@ -922,6 +922,32 @@ p {
   line-height: 1.86;
 }
 
+.gramado__thesis {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 44%, transparent);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  padding-top: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.gramado__thesis p {
+  color: var(--verde-profundo);
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.4vw, 2.5rem);
+  line-height: 1.12;
+  margin: 0;
+  max-width: 760px;
+}
+
+.gramado__thesis span {
+  color: var(--pedra);
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.85rem;
+  text-transform: uppercase;
+}
+
 .experiencia {
   background: var(--verde-profundo);
   color: var(--branco-quente);
@@ -2552,6 +2578,15 @@ p {
 
   .gramado__block p {
     font-size: 0.94rem;
+  }
+
+  .gramado__thesis,
+  .gramado__thesis p {
+    max-width: min(19rem, calc(100vw - 2.5rem));
+  }
+
+  .gramado__thesis p {
+    font-size: clamp(1.35rem, 7vw, 1.9rem);
   }
 
   .gramado h2 {
