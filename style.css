@@ -888,9 +888,16 @@ p {
   position: relative;
 }
 
+.experiencia__layout {
+  align-items: end;
+  display: grid;
+  gap: clamp(3rem, 7vw, 7rem);
+  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.58fr);
+  padding: clamp(6rem, 10vw, 10rem) 0;
+}
+
 .experiencia__content {
   max-width: 680px;
-  padding: clamp(6rem, 10vw, 10rem) 0;
 }
 
 .experiencia h2 {
@@ -927,6 +934,60 @@ p {
   min-height: 72px;
   padding: 1.1rem 1.1rem 1.1rem 0;
   text-transform: uppercase;
+}
+
+.experiencia__moments {
+  display: grid;
+  gap: 0.9rem;
+  justify-self: end;
+  width: min(100%, 390px);
+}
+
+.experiencia__moment {
+  align-items: end;
+  aspect-ratio: 1 / 0.72;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 8%, transparent), color-mix(in srgb, var(--verde-profundo) 70%, transparent)),
+    var(--moment-image) center/cover no-repeat;
+  border: 1px solid color-mix(in srgb, var(--pedra-clara) 18%, transparent);
+  display: grid;
+  margin: 0;
+  min-height: 190px;
+  overflow: hidden;
+  padding: 1.2rem;
+  position: relative;
+}
+
+.experiencia__moment--arrival {
+  --moment-image: url("assets/images/manhattan-fachada-noturna.jpg");
+}
+
+.experiencia__moment--living {
+  --moment-image: url("assets/images/manhattan-living-cobertura.jpg");
+  transform: translateX(-2.2rem);
+}
+
+.experiencia__moment--rest {
+  --moment-image: url("assets/images/ernesto-suite.jpg");
+}
+
+.experiencia__moment span {
+  color: var(--pedra-clara);
+  font-size: 0.7rem;
+  font-weight: 500;
+  left: 1.2rem;
+  letter-spacing: 0.16em;
+  position: absolute;
+  text-transform: uppercase;
+  top: 1rem;
+}
+
+.experiencia__moment figcaption {
+  color: var(--branco-quente);
+  font-family: var(--font-display);
+  font-size: clamp(1.34rem, 2vw, 1.78rem);
+  line-height: 1.08;
+  max-width: 16rem;
 }
 
 .empreendimentos {
@@ -2206,9 +2267,14 @@ p {
     min-height: auto;
   }
 
+  .experiencia__layout {
+    gap: 2.2rem;
+    grid-template-columns: 1fr;
+    padding: 5rem 0;
+  }
+
   .experiencia__content {
     max-width: min(20rem, calc(100vw - 2.5rem));
-    padding: 5rem 0;
   }
 
   .experiencia h2 {
@@ -2231,6 +2297,25 @@ p {
   .experiencia__scenes span {
     min-height: auto;
     padding: 0.95rem 0;
+  }
+
+  .experiencia__moments {
+    justify-self: start;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .experiencia__moment {
+    aspect-ratio: 1 / 0.82;
+    min-height: 0;
+    padding: 1rem;
+  }
+
+  .experiencia__moment--living {
+    transform: none;
+  }
+
+  .experiencia__moment figcaption {
+    font-size: clamp(1.18rem, 6vw, 1.52rem);
   }
 
   .experiencia__image {
