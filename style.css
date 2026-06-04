@@ -1451,6 +1451,31 @@ p {
   max-width: 560px;
 }
 
+.tipologia-card__reading {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 36%, transparent);
+  display: grid;
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.tipologia-card__reading p {
+  border-bottom: 1px solid color-mix(in srgb, var(--pedra) 26%, transparent);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 5.8rem minmax(0, 1fr);
+  margin: 0;
+  max-width: none;
+  padding: 1rem 0;
+}
+
+.tipologia-card__reading p span {
+  color: var(--pedra);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
 .decisao {
   background: var(--branco-quente);
   color: var(--preto-quente);
@@ -2637,6 +2662,11 @@ p {
   .tipologia-card__content h3,
   .tipologia-card__content p {
     max-width: min(20rem, calc(100vw - 3.2rem));
+  }
+
+  .tipologia-card__reading p {
+    gap: 0.45rem;
+    grid-template-columns: 1fr;
   }
 
   .decisao {
