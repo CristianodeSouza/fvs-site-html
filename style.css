@@ -741,6 +741,34 @@ p {
   border-right: 0;
 }
 
+.manifesto__contrast {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 38%, transparent);
+  display: grid;
+  gap: clamp(1rem, 3vw, 3rem);
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-top: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.manifesto__contrast p {
+  color: color-mix(in srgb, var(--preto-quente) 74%, var(--verde-serra));
+  font-size: clamp(0.96rem, 1.1vw, 1.06rem);
+  font-weight: 300;
+  line-height: 1.85;
+  margin: 0;
+  max-width: 520px;
+}
+
+.manifesto__contrast span {
+  color: var(--pedra);
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+}
+
 .metodo-fvs {
   background: var(--off-white);
   padding: clamp(6rem, 10vw, 10rem) 0;
@@ -2423,6 +2451,17 @@ p {
 
   .manifesto__points span:last-child {
     border-bottom: 0;
+  }
+
+  .manifesto__contrast {
+    gap: 1.35rem;
+    grid-template-columns: 1fr;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .manifesto__contrast p {
+    font-size: 0.94rem;
+    line-height: 1.78;
   }
 
   .metodo-fvs {
