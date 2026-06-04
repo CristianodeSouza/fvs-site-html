@@ -992,7 +992,7 @@ p {
 
 .empreendimentos {
   background: var(--branco-quente);
-  padding: clamp(5rem, 10vw, 10rem) 0;
+  padding: clamp(5rem, 10vw, 10rem) 0 clamp(4rem, 8vw, 8rem);
 }
 
 .empreendimentos h2 {
@@ -1001,23 +1001,33 @@ p {
 
 .empreendimentos__grid {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 3rem);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.6rem);
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .empreendimento {
-  background: var(--off-white);
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 42%, transparent);
   display: grid;
-  grid-template-rows: minmax(360px, 0.92fr) auto;
-  min-height: 760px;
+  gap: clamp(1.2rem, 3vw, 3rem);
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.58fr);
+  min-height: 640px;
   overflow: hidden;
+  padding-top: clamp(1rem, 2vw, 1.4rem);
+}
+
+.empreendimento--ernesto {
+  grid-template-columns: minmax(320px, 0.58fr) minmax(0, 0.92fr);
+}
+
+.empreendimento--ernesto .empreendimento__image {
+  order: 2;
 }
 
 .empreendimento__image {
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 10%, transparent), color-mix(in srgb, var(--verde-profundo) 36%, transparent)),
+    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 4%, transparent), color-mix(in srgb, var(--verde-profundo) 28%, transparent)),
     var(--empreendimento-image) center/cover no-repeat;
-  min-height: 320px;
+  min-height: 620px;
   transition: transform var(--motion-slow) var(--ease-smooth);
 }
 
@@ -1034,7 +1044,20 @@ p {
 }
 
 .empreendimento__content {
-  padding: clamp(1.8rem, 3vw, 2.8rem);
+  align-content: end;
+  background: var(--off-white);
+  display: grid;
+  min-width: 0;
+  padding: clamp(1.8rem, 4vw, 4rem);
+}
+
+.empreendimento__number {
+  color: var(--pedra);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  margin-bottom: clamp(2.8rem, 8vw, 8rem);
+  text-transform: uppercase;
 }
 
 .empreendimento__location {
@@ -1048,15 +1071,18 @@ p {
 
 .empreendimento__name {
   color: var(--verde-profundo);
-  font-size: clamp(2rem, 3vw, 3rem);
-  margin-bottom: 1.2rem;
+  font-size: clamp(3.2rem, 6vw, 6.4rem);
+  line-height: 0.9;
+  margin-bottom: clamp(1.2rem, 2vw, 1.8rem);
 }
 
 .empreendimento__concept {
   color: color-mix(in srgb, var(--preto-quente) 78%, var(--verde-serra));
-  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  font-size: clamp(1.08rem, 1.35vw, 1.28rem);
   line-height: 1.8;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  max-width: 34rem;
+  overflow-wrap: anywhere;
 }
 
 .empreendimento__facts {
@@ -1962,6 +1988,15 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 
+  .empreendimentos__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .empreendimento,
+  .empreendimento--ernesto {
+    grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.7fr);
+  }
+
   .galeria__grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -2410,7 +2445,36 @@ p {
   }
 
   .empreendimento {
+    grid-template-columns: minmax(0, 1fr);
     min-height: auto;
+  }
+
+  .empreendimento--ernesto {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .empreendimento--ernesto .empreendimento__image {
+    order: 0;
+  }
+
+  .empreendimento__image {
+    min-height: 420px;
+  }
+
+  .empreendimento__content {
+    padding: 2rem 1.25rem;
+  }
+
+  .empreendimento__content > * {
+    max-width: min(20rem, calc(100vw - 3rem));
+  }
+
+  .empreendimento__number {
+    margin-bottom: 3rem;
+  }
+
+  .empreendimento__name {
+    font-size: clamp(2.8rem, 16vw, 4.2rem);
   }
 
   .empreendimento__facts div {
