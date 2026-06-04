@@ -835,6 +835,34 @@ p {
   max-width: 560px;
 }
 
+.metodo-fvs__proof {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 42%, transparent);
+  display: grid;
+  gap: clamp(1rem, 3vw, 3rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  padding-top: clamp(1.7rem, 3vw, 2.6rem);
+}
+
+.metodo-fvs__proof p {
+  color: color-mix(in srgb, var(--preto-quente) 74%, var(--verde-serra));
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.85;
+  margin: 0;
+  max-width: 580px;
+}
+
+.metodo-fvs__proof span {
+  color: var(--pedra);
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+}
+
 .gramado {
   background: var(--off-white);
   overflow: hidden;
@@ -2152,7 +2180,8 @@ p {
   }
 
   .metodo-fvs__intro,
-  .metodo-fvs__steps article {
+  .metodo-fvs__steps article,
+  .metodo-fvs__proof {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -2497,6 +2526,16 @@ p {
   .metodo-fvs__steps p {
     font-size: 0.94rem;
     max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .metodo-fvs__proof {
+    gap: 1.35rem;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .metodo-fvs__proof p {
+    font-size: 0.94rem;
+    line-height: 1.78;
   }
 
   .gramado__media {
