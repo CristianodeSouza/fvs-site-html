@@ -1438,6 +1438,78 @@ p {
   margin-bottom: 0.65rem;
 }
 
+.seguranca-decisao {
+  background: var(--verde-profundo);
+  color: var(--branco-quente);
+  padding: clamp(6rem, 10vw, 10rem) 0;
+}
+
+.seguranca-decisao__intro {
+  display: grid;
+  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.62fr);
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.seguranca-decisao__intro .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.seguranca-decisao__intro h2 {
+  color: var(--branco-quente);
+  font-size: clamp(2.55rem, 5vw, 5.35rem);
+  line-height: 1;
+  max-width: 900px;
+}
+
+.seguranca-decisao__intro p {
+  align-self: end;
+  color: var(--pedra-clara);
+  font-size: clamp(1rem, 1.25vw, 1.14rem);
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+.seguranca-decisao__grid {
+  border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 28%, transparent);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.seguranca-decisao__grid article {
+  border-bottom: 1px solid color-mix(in srgb, var(--pedra-clara) 22%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--pedra-clara) 18%, transparent);
+  display: grid;
+  min-height: 420px;
+  padding: clamp(1.4rem, 2.6vw, 2.4rem);
+}
+
+.seguranca-decisao__grid article:nth-child(4) {
+  border-right: 0;
+}
+
+.seguranca-decisao__grid span {
+  color: var(--pedra);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.seguranca-decisao__grid h3 {
+  color: var(--branco-quente);
+  font-size: clamp(1.8rem, 2.6vw, 2.9rem);
+  line-height: 1.06;
+  margin: auto 0 1.2rem;
+}
+
+.seguranca-decisao__grid p {
+  color: var(--pedra-clara);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.82;
+}
+
 .galeria {
   background: var(--off-white);
   padding: clamp(5rem, 9vw, 9rem) 0 clamp(1.25rem, 3vw, 3rem);
@@ -1795,6 +1867,22 @@ p {
 
   .decisao__card + .decisao__card {
     border-left: 0;
+  }
+
+  .seguranca-decisao__intro {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .seguranca-decisao__intro p {
+    max-width: 680px;
+  }
+
+  .seguranca-decisao__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seguranca-decisao__grid article:nth-child(2n) {
+    border-right: 0;
   }
 
   .projeto-detalhe__intro p {
@@ -2298,6 +2386,46 @@ p {
   .decisao__notes {
     gap: 1.2rem;
     max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .seguranca-decisao {
+    padding: 5rem 0;
+  }
+
+  .seguranca-decisao__intro {
+    gap: 1.6rem;
+    margin-bottom: 3rem;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .seguranca-decisao__intro h2 {
+    font-size: clamp(2.1rem, 9.5vw, 2.85rem);
+    line-height: 1.06;
+  }
+
+  .seguranca-decisao__intro p {
+    font-size: 0.96rem;
+    line-height: 1.85;
+  }
+
+  .seguranca-decisao__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .seguranca-decisao__grid article {
+    border-right: 0;
+    min-height: auto;
+    padding: 1.45rem 0;
+  }
+
+  .seguranca-decisao__grid h3,
+  .seguranca-decisao__grid p {
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .seguranca-decisao__grid h3 {
+    font-size: clamp(1.65rem, 8vw, 2.3rem);
+    margin: 3rem 0 1rem;
   }
 
   .galeria {
