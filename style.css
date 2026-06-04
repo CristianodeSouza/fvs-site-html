@@ -1291,7 +1291,8 @@ p {
 }
 
 .projeto-detalhe__thumb--ernesto-estar {
-  background-image: url("assets/images/ernesto-estar-cozinha.jpg");
+  background-image: url("assets/images/ernesto-living-varanda.jpg");
+  background-position: 56% center;
 }
 
 .projeto-detalhe__proofs figcaption {
