@@ -1694,6 +1694,17 @@ p {
   line-height: 1.82;
 }
 
+.seguranca-decisao__close {
+  border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 24%, transparent);
+  color: var(--branco-quente);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 4.3rem);
+  line-height: 1.02;
+  margin: clamp(2rem, 4vw, 4rem) 0 0 auto;
+  max-width: 820px;
+  padding-top: clamp(1.8rem, 3vw, 2.8rem);
+}
+
 .galeria {
   background: var(--off-white);
   padding: clamp(5rem, 9vw, 9rem) 0 clamp(1.25rem, 3vw, 3rem);
@@ -2796,6 +2807,12 @@ p {
   .seguranca-decisao__grid h3 {
     font-size: clamp(1.65rem, 8vw, 2.3rem);
     margin: 3rem 0 1rem;
+  }
+
+  .seguranca-decisao__close {
+    font-size: clamp(1.9rem, 9vw, 2.65rem);
+    margin-left: 0;
+    max-width: min(20rem, calc(100vw - 2.5rem));
   }
 
   .galeria {
