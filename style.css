@@ -1701,6 +1701,69 @@ p {
   background-position: center;
 }
 
+.galeria__proof-strip {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin: clamp(1rem, 2vw, 2rem) auto 0;
+  max-width: 1480px;
+}
+
+.galeria-proof {
+  align-items: end;
+  aspect-ratio: 1 / 1.24;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 6%, transparent), color-mix(in srgb, var(--verde-profundo) 78%, transparent)),
+    var(--proof-image) center/cover no-repeat;
+  display: grid;
+  margin: 0;
+  min-height: 320px;
+  overflow: hidden;
+  padding: clamp(1rem, 1.8vw, 1.45rem);
+}
+
+.galeria-proof--manhattan-hall {
+  --proof-image: url("assets/images/manhattan-hall.jpg");
+}
+
+.galeria-proof--manhattan-living {
+  --proof-image: url("assets/images/manhattan-living-cobertura.jpg");
+}
+
+.galeria-proof--manhattan-noite {
+  --proof-image: url("assets/images/manhattan-fachada-noturna.jpg");
+}
+
+.galeria-proof--ernesto-varanda {
+  --proof-image: url("assets/images/ernesto-living-varanda.jpg");
+}
+
+.galeria-proof--ernesto-estar {
+  --proof-image: url("assets/images/ernesto-estar-cozinha.jpg");
+}
+
+.galeria-proof--ernesto-suite {
+  --proof-image: url("assets/images/ernesto-suite.jpg");
+}
+
+.galeria-proof figcaption {
+  color: var(--branco-quente);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.3vw, 1.32rem);
+  line-height: 1.16;
+}
+
+.galeria-proof figcaption span {
+  color: var(--pedra-clara);
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+}
+
 .cta-consultivo {
   background: var(--verde-profundo);
   color: var(--branco-quente);
@@ -2558,6 +2621,20 @@ p {
   .galeria__item figcaption strong {
     font-size: clamp(1.28rem, 7vw, 1.75rem);
     max-width: min(17.5rem, 100%);
+  }
+
+  .galeria__proof-strip {
+    grid-template-columns: 1fr;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .galeria-proof {
+    aspect-ratio: 1 / 0.92;
+    min-height: 0;
+  }
+
+  .galeria-proof figcaption {
+    font-size: clamp(1.16rem, 6vw, 1.5rem);
   }
 
   .cta-consultivo .container {
