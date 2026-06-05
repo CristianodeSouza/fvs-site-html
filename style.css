@@ -769,6 +769,80 @@ p {
   text-transform: uppercase;
 }
 
+.institucional-fvs {
+  background: var(--branco-quente);
+  color: var(--preto-quente);
+  padding: clamp(5.5rem, 9vw, 9rem) 0;
+}
+
+.institucional-fvs__inner {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 40%, transparent);
+  display: grid;
+  gap: clamp(2.4rem, 5vw, 5.5rem);
+  padding-top: clamp(2.4rem, 5vw, 4.5rem);
+}
+
+.institucional-fvs__intro {
+  display: grid;
+  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 0.96fr) minmax(300px, 0.55fr);
+}
+
+.institucional-fvs__intro .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.institucional-fvs__intro h2 {
+  color: var(--verde-profundo);
+  font-size: clamp(2.5rem, 4.8vw, 5.15rem);
+  line-height: 1.02;
+  max-width: 900px;
+}
+
+.institucional-fvs__intro p {
+  align-self: end;
+  color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
+  font-size: clamp(1rem, 1.18vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.9;
+  max-width: 460px;
+}
+
+.institucional-fvs__grid {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 36%, transparent);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.institucional-fvs__grid article {
+  border-right: 1px solid color-mix(in srgb, var(--pedra) 28%, transparent);
+  min-height: 260px;
+  padding: clamp(1.4rem, 2.6vw, 2.4rem) clamp(1.1rem, 2.5vw, 2rem) 0 0;
+}
+
+.institucional-fvs__grid article:last-child {
+  border-right: 0;
+}
+
+.institucional-fvs__grid span {
+  color: var(--pedra);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
+  text-transform: uppercase;
+}
+
+.institucional-fvs__grid p {
+  color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
+  font-size: clamp(0.96rem, 1.08vw, 1.04rem);
+  font-weight: 300;
+  line-height: 1.82;
+  max-width: 360px;
+}
+
 .metodo-fvs {
   background: var(--off-white);
   padding: clamp(6rem, 10vw, 10rem) 0;
@@ -2206,13 +2280,34 @@ p {
   }
 
   .metodo-fvs__intro,
+  .institucional-fvs__intro,
   .metodo-fvs__steps article,
   .metodo-fvs__proof {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .metodo-fvs__intro p {
+  .metodo-fvs__intro p,
+  .institucional-fvs__intro p {
     max-width: 680px;
+  }
+
+  .institucional-fvs__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .institucional-fvs__grid article {
+    border-bottom: 1px solid color-mix(in srgb, var(--pedra) 28%, transparent);
+    border-right: 0;
+    min-height: auto;
+    padding: 1.5rem 0;
+  }
+
+  .institucional-fvs__grid article:last-child {
+    border-bottom: 0;
+  }
+
+  .institucional-fvs__grid span {
+    margin-bottom: 1.1rem;
   }
 
   .tipologias__intro,
@@ -2521,6 +2616,27 @@ p {
 
   .metodo-fvs {
     padding: 5rem 0;
+  }
+
+  .institucional-fvs {
+    padding: 5rem 0;
+  }
+
+  .institucional-fvs__intro {
+    gap: 1.6rem;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .institucional-fvs__intro h2 {
+    font-size: clamp(2.15rem, 10vw, 3rem);
+    line-height: 1.05;
+  }
+
+  .institucional-fvs__intro p,
+  .institucional-fvs__grid p {
+    font-size: 0.96rem;
+    line-height: 1.85;
+    max-width: min(20rem, calc(100vw - 2.5rem));
   }
 
   .metodo-fvs__intro {
