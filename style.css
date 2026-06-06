@@ -1980,7 +1980,7 @@ p {
 }
 
 .produto-imagens__item--ernesto-estar {
-  --product-image: url("assets/images/ernesto-estar-cozinha.jpg");
+  --product-image: url("assets/images/galeria-ernesto-vista.jpg");
   transform: translateY(clamp(1.5rem, 4vw, 3rem));
 }
 
@@ -2612,7 +2612,7 @@ p {
 }
 
 .galeria-proof--ernesto-estar {
-  --proof-image: url("assets/images/ernesto-estar-cozinha.jpg");
+  --proof-image: url("assets/images/galeria-ernesto-vista.jpg");
 }
 
 .galeria-proof--ernesto-suite {
