@@ -20,6 +20,7 @@
   --type-section-title: clamp(2.25rem, 3.5vw, 3rem);
   --type-section-subtitle: clamp(1.55rem, 2.4vw, 1.75rem);
   --type-editorial-large: clamp(2.55rem, 4.4vw, 4.6rem);
+  --header-height: 78px;
 }
 
 * {
@@ -30,7 +31,7 @@
 
 html {
   overflow-x: hidden;
-  scroll-padding-top: 112px;
+  scroll-padding-top: calc(var(--header-height) + 28px);
   scroll-behavior: smooth;
 }
 
@@ -2799,7 +2800,7 @@ p {
 
 main > section,
 .hero-transition {
-  scroll-margin-top: 112px;
+  scroll-margin-top: calc(var(--header-height) + 28px);
 }
 
 .hero__title {
@@ -4070,5 +4071,395 @@ main > section,
   .cta-consultivo__panel p {
     font-size: clamp(1.45rem, 6.4vw, 1.75rem);
     line-height: 1.16;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+  .hero {
+    align-items: flex-end;
+    min-height: 100svh;
+    padding: calc(var(--header-height) + 1.1rem) clamp(1.25rem, 4vw, 4rem) 1.55rem;
+  }
+
+  .hero__content {
+    max-width: 760px;
+    padding-bottom: 0;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 0.72rem;
+  }
+
+  .hero__title {
+    font-size: clamp(3.15rem, 4.45vw, 4.05rem);
+    line-height: 1;
+    max-width: 760px;
+  }
+
+  .hero__subtitle {
+    font-size: clamp(0.96rem, 1.35vw, 1.1rem);
+    line-height: 1.68;
+    margin: 1rem 0 1.15rem;
+    max-width: 560px;
+  }
+
+  .hero__actions {
+    gap: 0.85rem 1rem;
+  }
+
+  .hero__cta {
+    padding: 0.72rem 1rem;
+  }
+
+  .hero__proof {
+    display: none;
+  }
+
+  .manifesto {
+    padding: calc(var(--header-height) + 2.2rem) 0 clamp(3rem, 6vw, 5rem);
+  }
+
+  .manifesto__inner {
+    gap: 1.8rem clamp(2rem, 5vw, 5rem);
+    padding-top: 2rem;
+  }
+
+  .manifesto__text {
+    font-size: clamp(2.45rem, 4.3vw, 3.9rem);
+    line-height: 1.03;
+    max-width: 760px;
+  }
+
+  .manifesto__support {
+    font-size: 0.98rem;
+    line-height: 1.72;
+  }
+
+  .manifesto__points span {
+    min-height: 76px;
+    padding-top: 1.05rem;
+  }
+
+  .manifesto__contrast {
+    margin-top: 1rem;
+    padding-top: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 68px;
+    --type-hero: clamp(2.35rem, 10vw, 3.2rem);
+    --type-section-title: clamp(2rem, 8vw, 2.65rem);
+    --type-section-subtitle: clamp(1.35rem, 6vw, 1.65rem);
+    --type-editorial-large: clamp(2.05rem, 9vw, 3rem);
+  }
+
+  html {
+    scroll-padding-top: calc(var(--header-height) + 18px);
+  }
+
+  body {
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  .container {
+    width: min(100% - 2rem, 100%);
+  }
+
+  .header {
+    background: color-mix(in srgb, var(--branco-quente) 98%, transparent);
+    border-bottom-color: color-mix(in srgb, var(--pedra) 34%, transparent);
+    grid-template-columns: 1fr auto;
+    height: var(--header-height);
+    padding: 0 1rem;
+  }
+
+  .header__nav {
+    order: 2;
+    justify-content: end;
+  }
+
+  .header__logo {
+    color: var(--verde-profundo);
+    justify-self: start;
+    order: 1;
+    text-shadow: none;
+  }
+
+  .header__menu-button {
+    color: var(--verde-profundo);
+    font-size: 0;
+    gap: 0;
+    text-shadow: none;
+  }
+
+  .header__menu-button span {
+    width: 2.1rem;
+  }
+
+  .brand-signature__mark {
+    font-size: 1.12rem;
+    letter-spacing: 0.15em;
+  }
+
+  .brand-signature__rule {
+    width: 3.55rem;
+  }
+
+  .brand-signature__tagline {
+    font-size: 0.36rem;
+    letter-spacing: 0.34em;
+  }
+
+  .menu-panel__inner {
+    min-height: 100svh;
+    padding: 1rem;
+  }
+
+  .menu-panel__nav {
+    gap: 0.2rem;
+  }
+
+  .menu-panel__nav a {
+    font-size: clamp(2rem, 12vw, 3.4rem);
+    grid-template-columns: 2.1rem minmax(0, 1fr);
+    line-height: 0.98;
+  }
+
+  .hero {
+    align-items: end;
+    min-height: 100svh;
+    padding: calc(var(--header-height) + 1.3rem) 1rem 1.4rem;
+  }
+
+  .hero__image--main {
+    height: 84svh;
+    right: -28vw;
+    top: 8svh;
+    width: 124vw;
+  }
+
+  .hero__image--left,
+  .hero__image--right,
+  .hero__image--lower {
+    display: none;
+  }
+
+  .hero__scene::before {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 84%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 60%, transparent) 42%, color-mix(in srgb, var(--verde-profundo) 88%, transparent) 100%),
+      linear-gradient(90deg, color-mix(in srgb, var(--verde-profundo) 92%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 52%, transparent) 100%);
+  }
+
+  .hero__content {
+    max-width: 100%;
+    padding-bottom: 0;
+  }
+
+  .hero__eyebrow {
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    line-height: 1.55;
+    margin-bottom: 0.75rem;
+    max-width: 19rem;
+  }
+
+  .hero__title {
+    font-size: var(--type-hero);
+    line-height: 1.02;
+    max-width: 19rem;
+  }
+
+  .hero__subtitle {
+    font-size: 0.96rem;
+    line-height: 1.68;
+    margin: 1rem 0 1.1rem;
+    max-width: 19rem;
+  }
+
+  .hero__actions {
+    align-items: stretch;
+    display: grid;
+    gap: 0.75rem;
+    max-width: 19rem;
+  }
+
+  .hero__cta,
+  .hero__text-link {
+    width: 100%;
+  }
+
+  .hero__cta {
+    padding: 0.82rem 1rem;
+  }
+
+  .hero__proof {
+    display: none;
+  }
+
+  .hero-transition,
+  .manifesto,
+  .institucional-fvs,
+  .gramado,
+  .leitura-mercado,
+  .investir-serra,
+  .experiencia,
+  .empreendimentos,
+  .metodo-fvs,
+  .projeto-detalhe,
+  .tipologias,
+  .decisao,
+  .seguranca-decisao,
+  .confianca-fvs,
+  .galeria,
+  .cta-consultivo {
+    padding-block: 4rem;
+  }
+
+  .hero-transition,
+  .manifesto__inner,
+  .institucional-fvs__inner,
+  .gramado__layout,
+  .leitura-mercado__inner,
+  .investir-serra__inner,
+  .experiencia__layout,
+  .empreendimentos .container,
+  .metodo-fvs .container,
+  .projeto-detalhe .container,
+  .tipologias .container,
+  .decisao .container,
+  .seguranca-decisao .container,
+  .confianca-fvs__inner,
+  .cta-consultivo .container {
+    max-width: 100%;
+  }
+
+  .manifesto__inner,
+  .institucional-fvs__intro,
+  .gramado__content,
+  .leitura-mercado__intro,
+  .investir-serra__intro,
+  .experiencia__content,
+  .section-heading,
+  .projeto-detalhe__intro,
+  .tipologias__intro,
+  .decisao__intro,
+  .seguranca-decisao__intro,
+  .confianca-fvs__intro,
+  .galeria__intro,
+  .cta-consultivo__content {
+    gap: 1.35rem;
+    max-width: 100%;
+  }
+
+  .manifesto__text,
+  .hero-transition__content > p,
+  .institucional-fvs__intro h2,
+  .metodo-fvs__intro h2,
+  .gramado__content h2,
+  .leitura-mercado__intro h2,
+  .investir-serra__intro h2,
+  .experiencia h2,
+  .section-heading h2,
+  .projeto-detalhe__intro h2,
+  .tipologias__intro h2,
+  .decisao__intro h2,
+  .seguranca-decisao__intro h2,
+  .confianca-fvs__intro h2,
+  .galeria__intro h2,
+  .cta-consultivo h2 {
+    font-size: clamp(1.95rem, 7vw, 2.35rem);
+    line-height: 1.08;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  .manifesto__text,
+  .hero-transition__content > p {
+    font-size: clamp(2.05rem, 8.4vw, 2.8rem);
+  }
+
+  .gramado__content {
+    order: 1;
+  }
+
+  .gramado__media {
+    min-height: 280px;
+    order: 2;
+  }
+
+  .manifesto__support,
+  .institucional-fvs__intro p,
+  .gramado__block p,
+  .gramado__thesis p,
+  .leitura-mercado__intro p,
+  .leitura-mercado__data p,
+  .investir-serra__intro p,
+  .investir-serra__grid p,
+  .experiencia p,
+  .empreendimento__description,
+  .projeto-detalhe__intro p,
+  .produto-especifico__intro p,
+  .tipologias__intro p,
+  .decisao__intro p,
+  .seguranca-decisao__intro p,
+  .confianca-fvs__intro p,
+  .confianca-fvs__grid p,
+  .galeria__intro p,
+  .cta-consultivo__content p {
+    max-width: 100%;
+  }
+
+  .gramado__grid,
+  .manifesto__points,
+  .leitura-mercado__data,
+  .investir-serra__grid,
+  .institucional-fvs__stats,
+  .institucional-fvs__grid,
+  .produto-especifico__grid,
+  .confianca-fvs__grid,
+  .seguranca-decisao__grid {
+    max-width: 100%;
+  }
+
+  .manifesto__points span {
+    min-height: auto;
+    padding: 1rem 0;
+  }
+
+  .leitura-mercado__data strong,
+  .institucional-fvs__stats strong,
+  .produto-especifico__grid strong {
+    font-size: clamp(1.9rem, 9vw, 2.55rem);
+  }
+
+  .produto-especifico__features {
+    max-width: 100%;
+  }
+
+  .produto-imagens__item,
+  .projeto-detalhe__image,
+  .tipologia-card__image {
+    min-height: 300px;
+  }
+
+  .galeria__grid,
+  .galeria__proof-strip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .galeria__item,
+  .galeria-proof {
+    min-height: 330px;
+  }
+
+  .footer__lead,
+  .footer__grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
