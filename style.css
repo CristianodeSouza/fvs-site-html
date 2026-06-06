@@ -15,6 +15,11 @@
   --motion-normal: 700ms;
   --motion-slow: 1200ms;
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --type-hero: clamp(3.15rem, 5vw, 5rem);
+  --type-section-title: clamp(2.25rem, 3.5vw, 3rem);
+  --type-section-subtitle: clamp(1.55rem, 2.4vw, 1.75rem);
+  --type-editorial-large: clamp(2.55rem, 4.4vw, 4.6rem);
 }
 
 * {
@@ -25,7 +30,7 @@
 
 html {
   overflow-x: hidden;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 112px;
   scroll-behavior: smooth;
 }
 
@@ -141,7 +146,8 @@ p {
 }
 
 .header-is-scrolled .header {
-  background: color-mix(in srgb, var(--branco-quente) 94%, transparent);
+  backdrop-filter: blur(16px);
+  background: color-mix(in srgb, var(--branco-quente) 98%, transparent);
   border-bottom-color: color-mix(in srgb, var(--pedra) 42%, transparent);
   box-shadow: 0 18px 48px color-mix(in srgb, var(--preto-quente) 8%, transparent);
 }
@@ -2791,6 +2797,70 @@ p {
   transform: translateY(0);
 }
 
+main > section,
+.hero-transition {
+  scroll-margin-top: 112px;
+}
+
+.hero__title {
+  font-size: var(--type-hero);
+  line-height: 1;
+}
+
+.manifesto__text,
+.hero-transition__content > p {
+  font-size: var(--type-editorial-large);
+  line-height: 1.04;
+}
+
+.institucional-fvs__intro h2,
+.metodo-fvs__intro h2,
+.gramado__content h2,
+.leitura-mercado__intro h2,
+.investir-serra__intro h2,
+.experiencia h2,
+.section-heading h2,
+.projeto-detalhe__intro h2,
+.tipologias__intro h2,
+.decisao__intro h2,
+.seguranca-decisao__intro h2,
+.confianca-fvs__intro h2,
+.galeria__intro h2,
+.cta-consultivo h2 {
+  font-size: var(--type-section-title);
+  line-height: 1.08;
+  max-width: 760px;
+}
+
+.gramado__block h3,
+.investir-serra__grid h3,
+.metodo-fvs__steps h3,
+.empreendimento__content h3,
+.projeto-detalhe__argument h3,
+.produto-especifico__intro h3,
+.localizacao-produto h3,
+.tipologia-card h3,
+.decisao__card h3,
+.seguranca-decisao__grid h3,
+.confianca-fvs__grid h3,
+.cta-consultivo__panel p {
+  font-size: var(--type-section-subtitle);
+  line-height: 1.16;
+}
+
+.leitura-mercado__data strong,
+.institucional-fvs__stats strong,
+.produto-especifico__grid strong {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.02;
+}
+
+.seguranca-decisao__close,
+.footer__lead p {
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  line-height: 1.08;
+}
+
 @media (max-width: 1080px) {
   .header {
     grid-template-columns: auto 1fr auto;
@@ -3982,5 +4052,23 @@ p {
     font-size: 0.96rem;
     line-height: 1.85;
     max-width: 20rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .gramado__block h3,
+  .investir-serra__grid h3,
+  .metodo-fvs__steps h3,
+  .empreendimento__content h3,
+  .projeto-detalhe__argument h3,
+  .produto-especifico__intro h3,
+  .localizacao-produto h3,
+  .tipologia-card h3,
+  .decisao__card h3,
+  .seguranca-decisao__grid h3,
+  .confianca-fvs__grid h3,
+  .cta-consultivo__panel p {
+    font-size: clamp(1.45rem, 6.4vw, 1.75rem);
+    line-height: 1.16;
   }
 }
