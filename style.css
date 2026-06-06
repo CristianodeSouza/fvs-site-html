@@ -2,10 +2,11 @@
   --verde-profundo: #1D281F;
   --verde-serra: #2B3A2C;
   --pedra: #C2AE8F;
-  --pedra-clara: #DDD0B8;
+  --pedra-clara: #DDD0BB;
+  --cobre: #8C6A3F;
   --off-white: #F4F0E8;
   --branco-quente: #FAF7F0;
-  --preto-quente: #171713;
+  --preto-quente: #1A1A18;
 
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'Outfit', sans-serif;
@@ -223,11 +224,38 @@ p {
 
 .header__logo {
   color: var(--branco-quente);
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
   text-shadow: 0 1px 22px color-mix(in srgb, var(--preto-quente) 42%, transparent);
+}
+
+.brand-signature {
+  align-items: center;
+  display: inline-grid;
+  gap: 0.22rem;
+  justify-items: center;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.brand-signature__mark {
+  font-family: var(--font-display);
+  font-size: clamp(1.28rem, 1.8vw, 1.58rem);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+}
+
+.brand-signature__rule {
+  background: var(--cobre);
+  display: block;
+  height: 1px;
+  opacity: 0.78;
+  width: min(4.25rem, 100%);
+}
+
+.brand-signature__tagline {
+  font-family: var(--font-body);
+  font-size: 0.42rem;
+  font-weight: 300;
+  letter-spacing: 0.42em;
 }
 
 .header__button {
@@ -322,11 +350,10 @@ p {
 
 .menu-panel__brand {
   color: var(--branco-quente);
-  font-family: var(--font-display);
+}
+
+.menu-panel__brand .brand-signature__mark {
   font-size: clamp(1.35rem, 2vw, 1.9rem);
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  line-height: 1;
 }
 
 .menu-panel__nav {
@@ -805,6 +832,42 @@ p {
   max-width: 460px;
 }
 
+.institucional-fvs__stats {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 34%, transparent);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.institucional-fvs__stats article {
+  border-right: 1px solid color-mix(in srgb, var(--pedra) 24%, transparent);
+  min-height: 180px;
+  padding: clamp(1.25rem, 2.4vw, 2rem) clamp(1rem, 2vw, 1.6rem) 0 0;
+}
+
+.institucional-fvs__stats article:last-child {
+  border-right: 0;
+}
+
+.institucional-fvs__stats strong {
+  color: var(--verde-profundo);
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.15rem, 3.8vw, 4.4rem);
+  font-weight: 400;
+  line-height: 0.95;
+  margin-bottom: 1rem;
+}
+
+.institucional-fvs__stats span {
+  color: color-mix(in srgb, var(--preto-quente) 68%, var(--verde-serra));
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
 .institucional-fvs__grid {
   border-top: 1px solid color-mix(in srgb, var(--pedra) 36%, transparent);
   display: grid;
@@ -1110,6 +1173,87 @@ p {
   max-width: none;
   padding-top: 1rem;
   text-transform: uppercase;
+}
+
+.investir-serra {
+  background: var(--off-white);
+  color: var(--preto-quente);
+  padding: clamp(5.5rem, 9vw, 9rem) 0;
+}
+
+.investir-serra__inner {
+  display: grid;
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+.investir-serra__intro {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 42%, transparent);
+  display: grid;
+  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 0.98fr) minmax(300px, 0.56fr);
+  padding-top: clamp(2.4rem, 5vw, 4.5rem);
+}
+
+.investir-serra__intro .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.investir-serra__intro h2 {
+  color: var(--verde-profundo);
+  font-size: clamp(2.55rem, 5vw, 5.35rem);
+  line-height: 1;
+  max-width: 920px;
+}
+
+.investir-serra__intro p {
+  align-self: end;
+  color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.9;
+  max-width: 520px;
+}
+
+.investir-serra__grid {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 36%, transparent);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.investir-serra__grid article {
+  border-right: 1px solid color-mix(in srgb, var(--pedra) 26%, transparent);
+  min-height: 360px;
+  padding: clamp(1.4rem, 2.6vw, 2.4rem) clamp(1rem, 2.2vw, 1.8rem) 0 0;
+}
+
+.investir-serra__grid article:last-child {
+  border-right: 0;
+}
+
+.investir-serra__grid span {
+  color: var(--cobre);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  margin-bottom: clamp(2.2rem, 5vw, 4.2rem);
+  text-transform: uppercase;
+}
+
+.investir-serra__grid h3 {
+  color: var(--verde-profundo);
+  font-size: clamp(1.85rem, 2.8vw, 3.05rem);
+  line-height: 1.04;
+  margin-bottom: 1rem;
+}
+
+.investir-serra__grid p {
+  color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.82;
+  max-width: 320px;
 }
 
 .experiencia {
@@ -1713,6 +1857,18 @@ p {
   margin-bottom: 0.75rem;
 }
 
+.produto-especifico__features li span {
+  color: var(--branco-quente);
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  margin-bottom: 0.18rem;
+  text-transform: uppercase;
+}
+
 .produto-especifico__features li::marker {
   color: var(--pedra);
 }
@@ -2202,6 +2358,86 @@ p {
   padding-top: clamp(1.8rem, 3vw, 2.8rem);
 }
 
+.confianca-fvs {
+  background: var(--branco-quente);
+  color: var(--preto-quente);
+  padding: clamp(5.5rem, 9vw, 9rem) 0;
+}
+
+.confianca-fvs__inner {
+  display: grid;
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+.confianca-fvs__intro {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 42%, transparent);
+  display: grid;
+  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.62fr);
+  padding-top: clamp(2.4rem, 5vw, 4.5rem);
+}
+
+.confianca-fvs__intro .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.confianca-fvs__intro h2 {
+  color: var(--verde-profundo);
+  font-size: clamp(2.55rem, 5vw, 5.35rem);
+  line-height: 1;
+  max-width: 920px;
+}
+
+.confianca-fvs__intro p {
+  align-self: end;
+  color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.9;
+  max-width: 520px;
+}
+
+.confianca-fvs__grid {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 36%, transparent);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.confianca-fvs__grid article {
+  border-right: 1px solid color-mix(in srgb, var(--pedra) 26%, transparent);
+  display: grid;
+  min-height: 390px;
+  padding: clamp(1.4rem, 2.6vw, 2.4rem) clamp(1rem, 2.2vw, 1.8rem) 0 0;
+}
+
+.confianca-fvs__grid article:last-child {
+  border-right: 0;
+}
+
+.confianca-fvs__grid span {
+  color: var(--cobre);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.confianca-fvs__grid h3 {
+  color: var(--verde-profundo);
+  font-size: clamp(1.8rem, 2.6vw, 2.9rem);
+  line-height: 1.06;
+  margin: auto 0 1.1rem;
+}
+
+.confianca-fvs__grid p {
+  color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.82;
+}
+
 .galeria {
   background: var(--off-white);
   padding: clamp(5rem, 9vw, 9rem) 0 clamp(1.25rem, 3vw, 3rem);
@@ -2484,10 +2720,19 @@ p {
 
 .footer__logo {
   color: var(--branco-quente);
-  font-family: var(--font-display);
+  justify-self: start;
+}
+
+.footer__logo .brand-signature__mark {
   font-size: clamp(2.4rem, 5vw, 4.8rem);
-  letter-spacing: 0.16em;
-  line-height: 1;
+}
+
+.footer__logo .brand-signature__rule {
+  width: min(9rem, 100%);
+}
+
+.footer__logo .brand-signature__tagline {
+  font-size: clamp(0.48rem, 1vw, 0.72rem);
 }
 
 .footer__lead p {
@@ -2625,6 +2870,8 @@ p {
   .metodo-fvs__intro,
   .institucional-fvs__intro,
   .leitura-mercado__intro,
+  .investir-serra__intro,
+  .confianca-fvs__intro,
   .metodo-fvs__steps article,
   .metodo-fvs__proof {
     grid-template-columns: minmax(0, 1fr);
@@ -2632,26 +2879,38 @@ p {
 
   .metodo-fvs__intro p,
   .institucional-fvs__intro p,
-  .leitura-mercado__intro p {
+  .leitura-mercado__intro p,
+  .investir-serra__intro p,
+  .confianca-fvs__intro p {
     max-width: 680px;
   }
 
-  .leitura-mercado__data {
+  .leitura-mercado__data,
+  .investir-serra__grid,
+  .confianca-fvs__grid,
+  .institucional-fvs__stats {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .leitura-mercado__data article {
+  .leitura-mercado__data article,
+  .investir-serra__grid article,
+  .confianca-fvs__grid article,
+  .institucional-fvs__stats article {
     border-bottom: 1px solid color-mix(in srgb, var(--pedra-clara) 18%, transparent);
     border-right: 0;
     min-height: auto;
     padding: 1.55rem 0;
   }
 
-  .leitura-mercado__data article:last-child {
+  .leitura-mercado__data article:last-child,
+  .investir-serra__grid article:last-child,
+  .confianca-fvs__grid article:last-child,
+  .institucional-fvs__stats article:last-child {
     border-bottom: 0;
   }
 
-  .leitura-mercado__data span {
+  .leitura-mercado__data span,
+  .investir-serra__grid span {
     margin-bottom: 1.2rem;
   }
 
@@ -3013,6 +3272,11 @@ p {
     padding: 5rem 0;
   }
 
+  .investir-serra,
+  .confianca-fvs {
+    padding: 5rem 0;
+  }
+
   .institucional-fvs__intro {
     gap: 1.6rem;
     max-width: min(20rem, calc(100vw - 2.5rem));
@@ -3030,17 +3294,25 @@ p {
     max-width: min(20rem, calc(100vw - 2.5rem));
   }
 
-  .leitura-mercado__intro {
+  .leitura-mercado__intro,
+  .investir-serra__intro,
+  .confianca-fvs__intro {
     gap: 1.6rem;
     max-width: min(20rem, calc(100vw - 2.5rem));
   }
 
-  .leitura-mercado__intro h2 {
+  .leitura-mercado__intro h2,
+  .investir-serra__intro h2,
+  .confianca-fvs__intro h2 {
     font-size: clamp(2.1rem, 9.5vw, 2.85rem);
     line-height: 1.05;
   }
 
   .leitura-mercado__intro p,
+  .investir-serra__intro p,
+  .investir-serra__grid p,
+  .confianca-fvs__intro p,
+  .confianca-fvs__grid p,
   .leitura-mercado__data p,
   .leitura-mercado__source {
     font-size: 0.94rem;
@@ -3048,12 +3320,25 @@ p {
     max-width: min(20rem, calc(100vw - 2.5rem));
   }
 
-  .leitura-mercado__data {
+  .leitura-mercado__data,
+  .investir-serra__grid,
+  .confianca-fvs__grid,
+  .institucional-fvs__stats {
     max-width: min(20rem, calc(100vw - 2.5rem));
   }
 
   .leitura-mercado__data strong {
     font-size: clamp(2.1rem, 10vw, 3.05rem);
+  }
+
+  .institucional-fvs__stats strong {
+    font-size: clamp(2rem, 9.5vw, 3rem);
+  }
+
+  .investir-serra__grid h3,
+  .confianca-fvs__grid h3 {
+    font-size: clamp(1.7rem, 8vw, 2.4rem);
+    margin: 0 0 0.9rem;
   }
 
   .metodo-fvs__intro {
