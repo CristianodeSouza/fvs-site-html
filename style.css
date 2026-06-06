@@ -1630,6 +1630,201 @@ p {
   margin: 0;
 }
 
+.produto-especifico {
+  border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 28%, transparent);
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-top: clamp(4rem, 7vw, 7rem);
+  padding-top: clamp(2.2rem, 4vw, 3.6rem);
+}
+
+.produto-especifico__intro {
+  display: grid;
+  gap: clamp(1.6rem, 5vw, 6rem);
+  grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.5fr);
+}
+
+.produto-especifico__intro .section-kicker {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.produto-especifico__intro h3 {
+  color: var(--branco-quente);
+  font-size: clamp(2.1rem, 3.6vw, 4rem);
+  line-height: 1.04;
+  max-width: 780px;
+}
+
+.produto-especifico__grid {
+  border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 22%, transparent);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.produto-especifico__grid article {
+  border-right: 1px solid color-mix(in srgb, var(--pedra-clara) 16%, transparent);
+  min-height: 260px;
+  padding: clamp(1.3rem, 2.5vw, 2.2rem) clamp(1rem, 2vw, 1.8rem) 0 0;
+}
+
+.produto-especifico__grid article:last-child {
+  border-right: 0;
+}
+
+.produto-especifico__grid span {
+  color: var(--pedra);
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  margin-bottom: clamp(2.4rem, 4vw, 4rem);
+  text-transform: uppercase;
+}
+
+.produto-especifico__grid strong {
+  color: var(--branco-quente);
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.1vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.produto-especifico__grid p,
+.produto-especifico__features li {
+  color: var(--pedra-clara);
+  font-size: 0.94rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.produto-especifico__features {
+  border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 22%, transparent);
+  columns: 2;
+  gap: clamp(2rem, 6vw, 7rem);
+  list-style-position: inside;
+  padding-top: clamp(1.4rem, 3vw, 2.4rem);
+}
+
+.produto-especifico__features li {
+  break-inside: avoid;
+  margin-bottom: 0.75rem;
+}
+
+.produto-especifico__features li::marker {
+  color: var(--pedra);
+}
+
+.localizacao-produto {
+  background: color-mix(in srgb, var(--verde-serra) 76%, var(--preto-quente));
+  display: grid;
+  gap: clamp(2rem, 5vw, 6rem);
+  grid-template-columns: minmax(0, 0.65fr) minmax(280px, 0.5fr);
+  margin-top: clamp(3rem, 6vw, 6rem);
+  padding: clamp(2rem, 4vw, 4rem);
+}
+
+.localizacao-produto h3 {
+  color: var(--branco-quente);
+  font-size: clamp(2rem, 3.6vw, 3.9rem);
+  line-height: 1.04;
+  max-width: 720px;
+}
+
+.localizacao-produto p {
+  color: var(--pedra-clara);
+  font-weight: 300;
+  line-height: 1.9;
+  margin-top: 1.4rem;
+  max-width: 560px;
+}
+
+.localizacao-produto dl {
+  border-top: 1px solid color-mix(in srgb, var(--pedra-clara) 22%, transparent);
+  display: grid;
+}
+
+.localizacao-produto dl div {
+  border-bottom: 1px solid color-mix(in srgb, var(--pedra-clara) 18%, transparent);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 1rem 0;
+}
+
+.localizacao-produto dt,
+.localizacao-produto dd {
+  color: var(--pedra-clara);
+  font-size: 0.9rem;
+}
+
+.localizacao-produto dd {
+  color: var(--pedra);
+  white-space: nowrap;
+}
+
+.produto-imagens {
+  display: grid;
+  gap: clamp(1rem, 2vw, 2rem);
+  grid-template-columns: 1.15fr 0.85fr 1fr;
+  margin-top: clamp(2rem, 4vw, 4rem);
+}
+
+.produto-imagens__item {
+  align-items: end;
+  background: var(--product-image) center/cover no-repeat;
+  display: grid;
+  min-height: clamp(320px, 34vw, 520px);
+  overflow: hidden;
+  padding: 1.2rem;
+  position: relative;
+}
+
+.produto-imagens__item::after {
+  background: linear-gradient(180deg, transparent 38%, color-mix(in srgb, var(--verde-profundo) 78%, transparent));
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.produto-imagens__item figcaption {
+  color: var(--branco-quente);
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  line-height: 1.08;
+  max-width: 16rem;
+  position: relative;
+  z-index: 1;
+}
+
+.produto-imagens__item--manhattan-fachada {
+  --product-image: url("assets/images/manhattan-fachada-noturna.jpg");
+}
+
+.produto-imagens__item--manhattan-living {
+  --product-image: url("assets/images/manhattan-living-cobertura.jpg");
+  transform: translateY(clamp(1.5rem, 4vw, 3rem));
+}
+
+.produto-imagens__item--manhattan-hall {
+  --product-image: url("assets/images/manhattan-hall.jpg");
+}
+
+.produto-imagens__item--ernesto-varanda {
+  --product-image: url("assets/images/ernesto-living-varanda.jpg");
+}
+
+.produto-imagens__item--ernesto-estar {
+  --product-image: url("assets/images/ernesto-estar-cozinha.jpg");
+  transform: translateY(clamp(1.5rem, 4vw, 3rem));
+}
+
+.produto-imagens__item--ernesto-suite {
+  --product-image: url("assets/images/ernesto-suite.jpg");
+}
+
 .tipologias {
   background: var(--off-white);
   padding: clamp(6rem, 10vw, 10rem) 0;
@@ -1712,6 +1907,38 @@ p {
   color: var(--verde-profundo);
   font-size: clamp(1.9rem, 3vw, 3rem);
   margin-bottom: 1.1rem;
+}
+
+.tipologia-card__metrics {
+  border-top: 1px solid color-mix(in srgb, var(--pedra) 34%, transparent);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1.25rem;
+}
+
+.tipologia-card__metrics div {
+  border-right: 1px solid color-mix(in srgb, var(--pedra) 24%, transparent);
+  padding: 1rem 0.85rem 1rem 0;
+}
+
+.tipologia-card__metrics div:last-child {
+  border-right: 0;
+}
+
+.tipologia-card__metrics dt {
+  color: var(--pedra);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+
+.tipologia-card__metrics dd {
+  color: var(--verde-profundo);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  line-height: 1;
 }
 
 .tipologia-card__content p {
@@ -2389,7 +2616,9 @@ p {
   }
 
   .projeto-detalhe__intro,
-  .projeto-detalhe__layout {
+  .projeto-detalhe__layout,
+  .produto-especifico__intro,
+  .localizacao-produto {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -2494,6 +2723,34 @@ p {
 
   .projeto-detalhe__criteria {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .produto-especifico__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .produto-imagens {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .produto-imagens__item--manhattan-living,
+  .produto-imagens__item--ernesto-estar {
+    transform: none;
+  }
+
+  .produto-especifico__grid article {
+    border-bottom: 1px solid color-mix(in srgb, var(--pedra-clara) 18%, transparent);
+    border-right: 0;
+    min-height: auto;
+    padding: 1.45rem 0;
+  }
+
+  .produto-especifico__grid article:last-child {
+    border-bottom: 0;
+  }
+
+  .produto-especifico__grid span {
+    margin-bottom: 1rem;
   }
 
   .projeto-detalhe__criteria article:nth-child(2n) {
@@ -3054,6 +3311,50 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .produto-especifico {
+    margin-top: 3rem;
+  }
+
+  .produto-especifico__intro,
+  .localizacao-produto {
+    gap: 1.5rem;
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .produto-especifico__intro h3,
+  .localizacao-produto h3 {
+    font-size: clamp(1.8rem, 8.5vw, 2.45rem);
+    line-height: 1.06;
+  }
+
+  .produto-especifico__grid,
+  .produto-especifico__features,
+  .produto-imagens,
+  .localizacao-produto dl {
+    max-width: min(20rem, calc(100vw - 2.5rem));
+  }
+
+  .produto-imagens__item {
+    min-height: 340px;
+  }
+
+  .produto-imagens__item figcaption {
+    font-size: clamp(1.24rem, 6vw, 1.65rem);
+  }
+
+  .produto-especifico__features {
+    columns: 1;
+  }
+
+  .localizacao-produto {
+    padding: 1.6rem 1.25rem;
+  }
+
+  .localizacao-produto dl div {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
   .projeto-detalhe__criteria article {
     border-right: 0;
     min-height: auto;
@@ -3095,8 +3396,23 @@ p {
   }
 
   .tipologia-card__content h3,
-  .tipologia-card__content p {
+  .tipologia-card__content p,
+  .tipologia-card__metrics {
     max-width: min(20rem, calc(100vw - 3.2rem));
+  }
+
+  .tipologia-card__metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .tipologia-card__metrics div {
+    border-bottom: 1px solid color-mix(in srgb, var(--pedra) 22%, transparent);
+    border-right: 0;
+    padding: 0.85rem 0;
+  }
+
+  .tipologia-card__metrics div:last-child {
+    border-bottom: 0;
   }
 
   .tipologia-card__reading p {
