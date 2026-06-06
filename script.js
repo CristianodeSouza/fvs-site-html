@@ -5,6 +5,10 @@ const menuClose = document.querySelector('.menu-panel__close');
 const heroImages = document.querySelectorAll('[data-hero-depth]');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const setHeaderContrast = () => {
+  body.classList.toggle('header-is-scrolled', window.scrollY > 24);
+};
+
 const setMenuState = (isOpen) => {
   if (!menuButton || !menuPanel) {
     return;
@@ -30,6 +34,9 @@ document.addEventListener('keydown', (event) => {
     setMenuState(false);
   }
 });
+
+setHeaderContrast();
+window.addEventListener('scroll', setHeaderContrast, { passive: true });
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', (event) => {
