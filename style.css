@@ -232,7 +232,7 @@ p {
 .header__logo {
   color: var(--branco-quente);
   text-shadow: 0 1px 22px color-mix(in srgb, var(--preto-quente) 42%, transparent);
-  width: clamp(3.15rem, 4.7vw, 4.5rem);
+  width: clamp(2.35rem, 3.4vw, 3.15rem);
 }
 
 .brand-signature {
@@ -379,7 +379,7 @@ p {
 
 .menu-panel__brand {
   color: var(--branco-quente);
-  width: clamp(3.6rem, 5vw, 4.8rem);
+  width: clamp(2.7rem, 3.8vw, 3.4rem);
 }
 
 .menu-panel__brand .brand-signature__mark {
@@ -2863,7 +2863,7 @@ body:not(.is-loaded) .hero__image--main {
 .footer__logo {
   color: var(--branco-quente);
   justify-self: start;
-  width: clamp(12rem, 22vw, 20rem);
+  width: clamp(8rem, 13vw, 12rem);
 }
 
 .footer__logo .brand-signature__mark {
@@ -4308,7 +4308,7 @@ main > section,
     justify-self: start;
     order: 1;
     text-shadow: none;
-    width: 3.6rem;
+    width: 2.7rem;
   }
 
   .header__logo .brand-signature__image--light {
