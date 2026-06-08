@@ -520,12 +520,12 @@ p {
 
 .hero__scene::before {
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--verde-profundo) 90%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 68%, transparent) 38%, color-mix(in srgb, var(--verde-profundo) 22%, transparent) 76%, color-mix(in srgb, var(--verde-profundo) 8%, transparent) 100%),
-    linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 14%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 40%, transparent) 100%);
+    linear-gradient(90deg, color-mix(in srgb, var(--verde-profundo) 74%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 48%, transparent) 38%, color-mix(in srgb, var(--verde-profundo) 12%, transparent) 76%, transparent 100%),
+    linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 8%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 20%, transparent) 100%);
 }
 
 .hero__scene::after {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 18%, transparent) 0%, transparent 42%, color-mix(in srgb, var(--verde-profundo) 48%, transparent) 100%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--preto-quente) 10%, transparent) 0%, transparent 50%, color-mix(in srgb, var(--verde-profundo) 26%, transparent) 100%);
 }
 
 .hero__image--main {
@@ -3308,7 +3308,7 @@ main > section,
 
   .hero__scene::before {
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 78%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 54%, transparent) 48%, color-mix(in srgb, var(--verde-profundo) 82%, transparent) 100%);
+      linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 58%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 34%, transparent) 48%, color-mix(in srgb, var(--verde-profundo) 62%, transparent) 100%);
   }
 
   .hero__image--main {
@@ -4381,8 +4381,8 @@ main > section,
 
   .hero__scene::before {
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 84%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 60%, transparent) 42%, color-mix(in srgb, var(--verde-profundo) 88%, transparent) 100%),
-      linear-gradient(90deg, color-mix(in srgb, var(--verde-profundo) 92%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 52%, transparent) 100%);
+      linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 62%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 38%, transparent) 42%, color-mix(in srgb, var(--verde-profundo) 66%, transparent) 100%),
+      linear-gradient(90deg, color-mix(in srgb, var(--verde-profundo) 66%, transparent) 0%, color-mix(in srgb, var(--verde-profundo) 26%, transparent) 100%);
   }
 
   .hero__content {
