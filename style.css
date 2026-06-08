@@ -232,15 +232,34 @@ p {
 .header__logo {
   color: var(--branco-quente);
   text-shadow: 0 1px 22px color-mix(in srgb, var(--preto-quente) 42%, transparent);
+  width: clamp(3.15rem, 4.7vw, 4.5rem);
 }
 
 .brand-signature {
   align-items: center;
-  display: inline-grid;
-  gap: 0.22rem;
+  display: inline-flex;
   justify-items: center;
   line-height: 1;
   text-transform: uppercase;
+}
+
+.brand-signature__image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.brand-signature__image--dark {
+  display: none;
+}
+
+.header-is-scrolled .header__logo .brand-signature__image--light {
+  display: none;
+}
+
+.header-is-scrolled .header__logo .brand-signature__image--dark {
+  display: block;
 }
 
 .brand-signature__mark {
@@ -360,6 +379,7 @@ p {
 
 .menu-panel__brand {
   color: var(--branco-quente);
+  width: clamp(3.6rem, 5vw, 4.8rem);
 }
 
 .menu-panel__brand .brand-signature__mark {
@@ -2843,6 +2863,7 @@ body:not(.is-loaded) .hero__image--main {
 .footer__logo {
   color: var(--branco-quente);
   justify-self: start;
+  width: clamp(12rem, 22vw, 20rem);
 }
 
 .footer__logo .brand-signature__mark {
@@ -4287,6 +4308,15 @@ main > section,
     justify-self: start;
     order: 1;
     text-shadow: none;
+    width: 3.6rem;
+  }
+
+  .header__logo .brand-signature__image--light {
+    display: none;
+  }
+
+  .header__logo .brand-signature__image--dark {
+    display: block;
   }
 
   .header__menu-button {
