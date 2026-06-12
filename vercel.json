@@ -1,0 +1,54 @@
+{
+  "redirects": [
+    {
+      "source": "/empreendimentos",
+      "destination": "/empreendimentos-imobiliarios",
+      "permanent": true
+    },
+    {
+      "source": "/manhattan-residence-gramado",
+      "destination": "/empreendimentos-imobiliarios/manhattan-residence-imovel-melhor-bairro-de-gramado-planalto-metro-quadrado-mais-caro-da-cidade",
+      "permanent": true
+    },
+    {
+      "source": "/empreendimentos/manhattan-residence-bairro-planalto-gramado",
+      "destination": "/empreendimentos-imobiliarios/manhattan-residence-imovel-melhor-bairro-de-gramado-planalto-metro-quadrado-mais-caro-da-cidade",
+      "permanent": true
+    },
+    {
+      "source": "/empreendimentos-imobiliarios/manhattan-residence-bairro-planalto-gramado",
+      "destination": "/empreendimentos-imobiliarios/manhattan-residence-imovel-melhor-bairro-de-gramado-planalto-metro-quadrado-mais-caro-da-cidade",
+      "permanent": true
+    },
+    {
+      "source": "/ernesto-142-gramado",
+      "destination": "/empreendimentos-imobiliarios/ernesto-142-imovel-lancamento-localizado-no-centro-gramado",
+      "permanent": true
+    },
+    {
+      "source": "/empreendimentos/ernesto-142-lancamento-centro-gramado",
+      "destination": "/empreendimentos-imobiliarios/ernesto-142-imovel-lancamento-localizado-no-centro-gramado",
+      "permanent": true
+    },
+    {
+      "source": "/empreendimentos-imobiliarios/ernesto-142-lancamento-centro-gramado",
+      "destination": "/empreendimentos-imobiliarios/ernesto-142-imovel-lancamento-localizado-no-centro-gramado",
+      "permanent": true
+    },
+    {
+      "source": "/empreendimentos-imobiliarios/empreendimentos-imobiliarios/ernesto-142-imovel-lancamento-localizado-no-centro-gramado",
+      "destination": "/empreendimentos-imobiliarios/ernesto-142-imovel-lancamento-localizado-no-centro-gramado",
+      "permanent": true
+    },
+    {
+      "source": "/por-que-investir-em-gramado",
+      "destination": "/por-que-investir-em-imoveis-em-gramado",
+      "permanent": true
+    },
+    {
+      "source": "/porque-investir-em-imoveis-gramado",
+      "destination": "/por-que-investir-em-imoveis-em-gramado",
+      "permanent": true
+    }
+  ]
+}
