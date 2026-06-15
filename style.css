@@ -3207,6 +3207,123 @@ body:not(.is-loaded) .hero__image--main {
   color: var(--verde-profundo);
 }
 
+/* Site-wide editorial composition pass */
+@media (min-width: 1081px) {
+  .institucional-fvs,
+  .gramado,
+  .leitura-mercado,
+  .investir-serra,
+  .experiencia,
+  .empreendimentos,
+  .projeto-detalhe,
+  .tipologias,
+  .decisao,
+  .seguranca-decisao,
+  .galeria,
+  .cta-consultivo {
+    padding-block: clamp(4.8rem, 7vw, 7.4rem);
+  }
+
+  .institucional-fvs__intro,
+  .gramado__layout,
+  .leitura-mercado__inner,
+  .investir-serra__inner,
+  .experiencia__layout,
+  .projeto-detalhe__intro,
+  .tipologias__intro,
+  .decisao__intro,
+  .seguranca-decisao__intro,
+  .galeria__intro,
+  .cta-consultivo .container {
+    gap: clamp(2rem, 5vw, 5.4rem);
+  }
+
+  .institucional-fvs__intro h2,
+  .gramado__content h2,
+  .leitura-mercado__intro h2,
+  .investir-serra__intro h2,
+  .experiencia h2,
+  .section-heading h2,
+  .projeto-detalhe__intro h2,
+  .tipologias__intro h2,
+  .decisao__intro h2,
+  .seguranca-decisao__intro h2,
+  .galeria__intro h2,
+  .cta-consultivo h2 {
+    font-size: clamp(1.9rem, 2.8vw, 3.2rem);
+    line-height: 1.1;
+    max-width: 760px;
+  }
+
+  .gramado__block h3,
+  .investir-serra__grid h3,
+  .empreendimento__content h3,
+  .projeto-detalhe__argument h3,
+  .produto-especifico__intro h3,
+  .localizacao-produto h3,
+  .tipologia-card h3,
+  .decisao__card h3,
+  .seguranca-decisao__grid h3 {
+    font-size: clamp(1.25rem, 1.8vw, 1.9rem);
+    line-height: 1.16;
+  }
+
+  .leitura-mercado__data strong,
+  .institucional-fvs__stats strong,
+  .produto-especifico__grid strong {
+    font-size: clamp(1.7rem, 2.5vw, 2.55rem);
+    line-height: 1.08;
+  }
+
+  .seguranca-decisao__close {
+    font-size: clamp(1.9rem, 3vw, 3.35rem);
+    line-height: 1.12;
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 900px) {
+  .manifesto__intro,
+  .metodo-fvs__intro,
+  .confianca-fvs__intro,
+  .page-split,
+  .page-grid,
+  .page-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .manifesto__intro {
+    min-height: auto;
+  }
+
+  .manifesto__support {
+    align-self: start;
+    max-width: 40rem;
+  }
+
+  .manifesto__points,
+  .manifesto__contrast {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .manifesto__points span {
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--pedra) 24%, transparent);
+  }
+
+  .manifesto__points span:last-child {
+    border-bottom: 0;
+  }
+
+  .confianca-fvs__grid,
+  .seguranca-decisao__grid,
+  .institucional-fvs__stats,
+  .institucional-fvs__grid,
+  .investir-serra__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 main > section,
 .hero-transition {
   scroll-margin-top: calc(var(--header-height) + 28px);
