@@ -1035,14 +1035,14 @@ body:not(.is-loaded) .hero__image--main {
 
 .metodo-fvs {
   background: var(--off-white);
-  padding: clamp(6rem, 10vw, 10rem) 0;
+  padding: clamp(5rem, 7.5vw, 7.5rem) 0;
 }
 
 .metodo-fvs__intro {
   display: grid;
-  gap: clamp(2rem, 6vw, 7rem);
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.62fr);
-  margin-bottom: clamp(3rem, 7vw, 6rem);
+  gap: clamp(2rem, 5vw, 5.5rem);
+  grid-template-columns: minmax(0, 0.78fr) minmax(300px, 0.42fr);
+  margin-bottom: clamp(2.4rem, 4.8vw, 4.6rem);
 }
 
 .metodo-fvs__intro .section-kicker {
@@ -1052,17 +1052,18 @@ body:not(.is-loaded) .hero__image--main {
 
 .metodo-fvs__intro h2 {
   color: var(--verde-profundo);
-  font-size: clamp(2.6rem, 5vw, 5.3rem);
-  line-height: 1;
-  max-width: 900px;
+  font-size: clamp(2.1rem, 3.2vw, 3.65rem);
+  line-height: 1.08;
+  max-width: 720px;
 }
 
 .metodo-fvs__intro p {
   align-self: end;
   color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
-  font-size: clamp(1rem, 1.25vw, 1.14rem);
+  font-size: clamp(0.94rem, 1vw, 1rem);
   font-weight: 300;
-  line-height: 1.9;
+  line-height: 1.78;
+  max-width: 430px;
 }
 
 .metodo-fvs__steps {
@@ -1074,9 +1075,9 @@ body:not(.is-loaded) .hero__image--main {
   align-items: start;
   border-bottom: 1px solid color-mix(in srgb, var(--pedra) 34%, transparent);
   display: grid;
-  gap: clamp(1.5rem, 4vw, 4rem);
-  grid-template-columns: 4rem minmax(220px, 0.46fr) minmax(0, 0.7fr);
-  padding: clamp(1.7rem, 3vw, 2.8rem) 0;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  grid-template-columns: 3.6rem minmax(220px, 0.38fr) minmax(0, 0.72fr);
+  padding: clamp(1.35rem, 2.2vw, 2rem) 0;
 }
 
 .metodo-fvs__steps span {
@@ -1088,15 +1089,16 @@ body:not(.is-loaded) .hero__image--main {
 
 .metodo-fvs__steps h3 {
   color: var(--verde-profundo);
-  font-size: clamp(1.8rem, 3vw, 3rem);
-  line-height: 1.05;
+  font-size: clamp(1.35rem, 2vw, 2.05rem);
+  line-height: 1.14;
 }
 
 .metodo-fvs__steps p {
   color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
+  font-size: clamp(0.92rem, 0.98vw, 0.98rem);
   font-weight: 300;
-  line-height: 1.85;
-  max-width: 560px;
+  line-height: 1.75;
+  max-width: 520px;
 }
 
 .metodo-fvs__proof {
@@ -2515,20 +2517,20 @@ body:not(.is-loaded) .hero__image--main {
 .confianca-fvs {
   background: var(--branco-quente);
   color: var(--preto-quente);
-  padding: clamp(5.5rem, 9vw, 9rem) 0;
+  padding: clamp(5rem, 7.5vw, 7.4rem) 0;
 }
 
 .confianca-fvs__inner {
   display: grid;
-  gap: clamp(3rem, 6vw, 6rem);
+  gap: clamp(2.4rem, 4.8vw, 4.6rem);
 }
 
 .confianca-fvs__intro {
   border-top: 1px solid color-mix(in srgb, var(--pedra) 42%, transparent);
   display: grid;
-  gap: clamp(2rem, 6vw, 7rem);
-  grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.62fr);
-  padding-top: clamp(2.4rem, 5vw, 4.5rem);
+  gap: clamp(2rem, 5vw, 5.5rem);
+  grid-template-columns: minmax(0, 0.78fr) minmax(300px, 0.42fr);
+  padding-top: clamp(2rem, 3.8vw, 3.6rem);
 }
 
 .confianca-fvs__intro .section-kicker {
@@ -2538,18 +2540,18 @@ body:not(.is-loaded) .hero__image--main {
 
 .confianca-fvs__intro h2 {
   color: var(--verde-profundo);
-  font-size: clamp(2.55rem, 5vw, 5.35rem);
-  line-height: 1;
-  max-width: 920px;
+  font-size: clamp(2.05rem, 3.05vw, 3.45rem);
+  line-height: 1.1;
+  max-width: 760px;
 }
 
 .confianca-fvs__intro p {
   align-self: end;
   color: color-mix(in srgb, var(--preto-quente) 72%, var(--verde-serra));
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.94rem, 1vw, 1rem);
   font-weight: 300;
-  line-height: 1.9;
-  max-width: 520px;
+  line-height: 1.78;
+  max-width: 430px;
 }
 
 .confianca-fvs__grid {
@@ -2561,8 +2563,8 @@ body:not(.is-loaded) .hero__image--main {
 .confianca-fvs__grid article {
   border-right: 1px solid color-mix(in srgb, var(--pedra) 26%, transparent);
   display: grid;
-  min-height: 390px;
-  padding: clamp(1.4rem, 2.6vw, 2.4rem) clamp(1rem, 2.2vw, 1.8rem) 0 0;
+  min-height: clamp(260px, 24vw, 320px);
+  padding: clamp(1.2rem, 2vw, 1.8rem) clamp(1rem, 2vw, 1.5rem) 0 0;
 }
 
 .confianca-fvs__grid article:last-child {
@@ -2580,8 +2582,8 @@ body:not(.is-loaded) .hero__image--main {
 
 .confianca-fvs__grid h3 {
   color: var(--verde-profundo);
-  font-size: clamp(1.8rem, 2.6vw, 2.9rem);
-  line-height: 1.06;
+  font-size: clamp(1.28rem, 1.75vw, 1.85rem);
+  line-height: 1.15;
   margin: auto 0 1.1rem;
 }
 
