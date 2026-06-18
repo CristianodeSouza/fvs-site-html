@@ -1046,7 +1046,7 @@ body:not(.is-loaded) .hero__image--main {
 
 .metodo-fvs {
   background: var(--off-white);
-  padding: clamp(4.2rem, 6.5vw, 6.4rem) 0 clamp(1.2rem, 2.4vw, 2rem);
+  padding: clamp(4.2rem, 6.5vw, 6.4rem) 0 0;
 }
 
 .metodo-fvs__intro {
@@ -1143,7 +1143,7 @@ body:not(.is-loaded) .hero__image--main {
 .gramado {
   background: var(--off-white);
   overflow: hidden;
-  padding: clamp(5rem, 10vw, 10rem) 0;
+  padding: clamp(5rem, 10vw, 10rem) 0 clamp(3rem, 5.2vw, 4.8rem);
 }
 
 .gramado__layout {
@@ -1532,11 +1532,16 @@ body:not(.is-loaded) .hero__image--main {
 
 .empreendimentos {
   background: var(--branco-quente);
-  padding: clamp(5rem, 10vw, 10rem) 0 clamp(4rem, 8vw, 8rem);
+  padding: clamp(3rem, 5.2vw, 4.8rem) 0 clamp(4rem, 8vw, 8rem);
 }
 
 .empreendimentos h2 {
   color: var(--verde-profundo);
+}
+
+.empreendimentos .section-heading {
+  border-top: 0;
+  padding-top: 0;
 }
 
 .empreendimentos__grid {
@@ -2544,9 +2549,9 @@ body:not(.is-loaded) .hero__image--main {
 }
 
 .confianca-fvs {
-  background: var(--branco-quente);
+  background: var(--off-white);
   color: var(--preto-quente);
-  padding: clamp(2.2rem, 3.4vw, 3.2rem) 0 clamp(4.4rem, 7vw, 6.4rem);
+  padding: clamp(1.4rem, 2.4vw, 2.2rem) 0 clamp(4rem, 6.2vw, 5.6rem);
 }
 
 .confianca-fvs__inner {
@@ -2555,11 +2560,10 @@ body:not(.is-loaded) .hero__image--main {
 }
 
 .confianca-fvs__intro {
-  border-top: 1px solid color-mix(in srgb, var(--pedra) 42%, transparent);
   display: grid;
   gap: clamp(1.6rem, 3.8vw, 4rem);
   grid-template-columns: minmax(0, 0.78fr) minmax(300px, 0.42fr);
-  padding-top: clamp(1.4rem, 2.4vw, 2.4rem);
+  padding-top: 0;
 }
 
 .confianca-fvs__intro .section-kicker {
@@ -3249,6 +3253,14 @@ body:not(.is-loaded) .hero__image--main {
     padding-block: clamp(4.8rem, 7vw, 7.4rem);
   }
 
+  .gramado {
+    padding-block: clamp(4.8rem, 7vw, 7.4rem) clamp(1.2rem, 2vw, 2rem);
+  }
+
+  .empreendimentos {
+    padding-block: clamp(1.2rem, 2vw, 2rem) clamp(4.8rem, 7vw, 7.4rem);
+  }
+
   .institucional-fvs__intro,
   .gramado__layout,
   .leitura-mercado__inner,
@@ -3861,7 +3873,7 @@ main > section,
   }
 
   .metodo-fvs {
-    padding: 5rem 0 1.4rem;
+    padding: 5rem 0 0;
   }
 
   .institucional-fvs {
@@ -3874,7 +3886,7 @@ main > section,
 
   .investir-serra,
   .confianca-fvs {
-    padding: 2.8rem 0 5rem;
+    padding: 1.6rem 0 5rem;
   }
 
   .institucional-fvs__intro {
@@ -4860,11 +4872,19 @@ main > section,
   }
 
   .metodo-fvs {
-    padding-bottom: 1.2rem;
+    padding-bottom: 0;
   }
 
   .confianca-fvs {
-    padding-top: 2.4rem;
+    padding-top: 1.4rem;
+  }
+
+  .gramado {
+    padding-bottom: 2.6rem;
+  }
+
+  .empreendimentos {
+    padding-top: 2.6rem;
   }
 
   .hero-transition,
