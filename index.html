@@ -21,7 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="assets/images/hero-tempo-ernesto.jpg" fetchpriority="high">
+  <link rel="preload" as="video" href="assets/videos/fvs-incorporadora-gramado.mp4" type="video/mp4">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="canonical" href="https://fvsinc.com.br/">
@@ -79,7 +79,11 @@
   <main>
     <section class="hero" id="hero" aria-label="FVS Incorporações em Gramado">
       <div class="hero__scene" aria-hidden="true">
-        <div class="hero__image hero__image--main" data-hero-depth="0.18"></div>
+        <div class="hero__image hero__image--main" data-hero-depth="0.18">
+          <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/images/hero-gramado.png">
+            <source src="assets/videos/fvs-incorporadora-gramado.mp4" type="video/mp4">
+          </video>
+        </div>
         <div class="hero__image hero__image--left" data-hero-depth="-0.08"></div>
         <div class="hero__image hero__image--right" data-hero-depth="0.12"></div>
         <div class="hero__image hero__image--lower" data-hero-depth="-0.14"></div>

@@ -498,6 +498,7 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
+  overflow: hidden;
   will-change: transform;
 }
 
@@ -529,13 +530,23 @@ p {
 }
 
 .hero__image--main {
-  background-image: url("assets/images/galeria-ernesto-vista.jpg");
+  background-image: url("assets/images/hero-gramado.png");
   height: 100%;
   inset: 0;
   opacity: 0.96;
   transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.04);
   width: 100%;
   z-index: 1;
+}
+
+.hero__video {
+  display: block;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  width: 100%;
 }
 
 .hero__image--left,
