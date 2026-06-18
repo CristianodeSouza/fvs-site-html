@@ -1208,9 +1208,7 @@ body:not(.is-loaded) .hero__image--main {
 }
 
 .gramado__thesis {
-  border-top: 1px solid color-mix(in srgb, var(--pedra) 44%, transparent);
-  margin-top: clamp(2rem, 4vw, 3.5rem);
-  padding-top: clamp(1.5rem, 3vw, 2.4rem);
+  margin-top: clamp(1.6rem, 3vw, 2.6rem);
 }
 
 .gramado__thesis p {
