@@ -3252,6 +3252,64 @@ body:not(.is-loaded) .hero__image--main {
   transform: translateY(0) scale(1);
 }
 
+.has-local-visual-motion [data-motion] {
+  transition-delay: calc(var(--motion-order, 0) * 95ms);
+  will-change: clip-path, filter, opacity, transform;
+}
+
+.has-local-visual-motion [data-motion="title"] {
+  filter: blur(10px);
+  opacity: 0;
+  transform: translate3d(0, 78px, 0) scale(0.94);
+  transition:
+    filter 1150ms var(--ease-smooth),
+    opacity 1050ms var(--ease-smooth),
+    transform 1200ms var(--ease-smooth);
+}
+
+.has-local-visual-motion [data-motion="copy"] {
+  filter: blur(8px);
+  opacity: 0;
+  transform: translate3d(42px, 62px, 0);
+  transition:
+    filter 1050ms var(--ease-smooth),
+    opacity 980ms var(--ease-smooth),
+    transform 1180ms var(--ease-smooth);
+}
+
+.has-local-visual-motion [data-motion="card"] {
+  filter: blur(8px) saturate(0.82);
+  opacity: 0;
+  transform: translate3d(0, 92px, 0) scale(0.91);
+  transition:
+    filter 1050ms var(--ease-smooth),
+    opacity 950ms var(--ease-smooth),
+    transform 1180ms var(--ease-smooth);
+}
+
+.has-local-visual-motion [data-motion="image"] {
+  clip-path: inset(18% 0 18% 0);
+  filter: blur(8px) saturate(0.78) contrast(0.92);
+  opacity: 0;
+  transform: translate3d(0, 96px, 0) scale(0.88);
+  transition:
+    clip-path 1250ms var(--ease-smooth),
+    filter 1150ms var(--ease-smooth),
+    opacity 950ms var(--ease-smooth),
+    transform 1300ms var(--ease-smooth);
+}
+
+.has-local-visual-motion [data-motion].motion-in {
+  clip-path: inset(0 0 0 0);
+  filter: blur(0) saturate(1) contrast(1);
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.has-local-visual-motion [data-motion="image"].motion-in {
+  transform: translate3d(0, 0, 0) scale(1.01);
+}
+
 .page-main {
   background: var(--branco-quente);
   color: var(--preto-quente);
@@ -5254,32 +5312,47 @@ main > section,
   }
 
   .menu-panel__inner {
+    align-content: start;
+    gap: 1.2rem;
+    grid-template-rows: auto auto auto;
     min-height: 100svh;
     padding: 1rem 1rem 1.4rem;
   }
 
   .menu-panel__nav {
-    gap: 0;
+    align-self: start;
+    gap: 0.18rem;
+    margin-top: clamp(2.4rem, 10svh, 4.6rem);
   }
 
   .menu-panel__nav a {
     font-size: clamp(1.25rem, 5.4vw, 1.62rem);
-    grid-template-columns: 2.1rem minmax(0, 1fr);
+    gap: 1rem;
+    grid-template-columns: 2.4rem minmax(0, 1fr);
     line-height: 1.06;
-    padding: 0.38rem 0;
+    padding: 0.54rem 0;
+  }
+
+  .menu-panel__context {
+    align-self: start;
+    margin-top: 1rem;
+    padding-top: 1.15rem;
   }
 
   .hero {
     align-items: end;
-    min-height: 100svh;
-    padding: calc(var(--header-height) + 1.3rem) 1rem 1.4rem;
+    min-height: 94svh;
+    padding: calc(var(--header-height) + 1.3rem) 1rem clamp(2.4rem, 8svh, 4.5rem);
   }
 
   .hero__image--main {
+    bottom: auto;
     height: 84svh;
-    right: -28vw;
+    left: 0;
+    right: auto;
     top: 8svh;
-    width: 124vw;
+    transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1);
+    width: 100vw;
   }
 
   .hero__image--left,
@@ -5630,8 +5703,8 @@ main > section,
   }
 
   .page-hero {
-    min-height: 78vh;
-    padding: calc(var(--header-height) + 3rem) 1.1rem 3rem;
+    min-height: clamp(470px, 68svh, 610px);
+    padding: calc(var(--header-height) + 2.2rem) 1.1rem 2.7rem;
   }
 
   .page-hero__content {
@@ -5653,7 +5726,12 @@ main > section,
   }
 
   .page-section {
-    padding: 4rem 1rem;
+    padding: 3.15rem 1rem;
+  }
+
+  .page-section__heading {
+    gap: 0.8rem;
+    margin-bottom: 1.75rem;
   }
 
   .page-grid,
@@ -5685,6 +5763,35 @@ main > section,
   .page-cta a {
     justify-content: center;
     text-align: center;
+  }
+
+  .has-local-visual-motion [data-motion] {
+    transition-delay: calc(var(--motion-order, 0) * 70ms);
+  }
+
+  .has-local-visual-motion [data-motion="title"] {
+    filter: blur(6px);
+    transform: translate3d(0, 48px, 0) scale(0.97);
+  }
+
+  .has-local-visual-motion [data-motion="copy"] {
+    filter: blur(5px);
+    transform: translate3d(0, 42px, 0);
+  }
+
+  .has-local-visual-motion [data-motion="card"] {
+    filter: blur(5px) saturate(0.88);
+    transform: translate3d(0, 52px, 0) scale(0.96);
+  }
+
+  .has-local-visual-motion [data-motion="image"] {
+    clip-path: inset(10% 0 10% 0);
+    filter: blur(5px) saturate(0.84) contrast(0.94);
+    transform: translate3d(0, 48px, 0) scale(0.95);
+  }
+
+  .has-local-visual-motion [data-motion="image"].motion-in {
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 

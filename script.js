@@ -179,14 +179,15 @@ const initGsapMotion = async () => {
     const { gsap, ScrollTrigger } = window;
     gsap.registerPlugin(ScrollTrigger);
     body.classList.add('has-gsap-motion');
+    const isMobileViewport = window.matchMedia('(max-width: 760px)').matches;
 
     const animateIn = (selector, options = {}) => {
       gsap.utils.toArray(selector).forEach((element, index) => {
         gsap.fromTo(element, {
           autoAlpha: 0,
-          y: options.y ?? 72,
-          scale: options.scale ?? 0.96,
-          filter: options.filter ?? 'blur(10px)'
+          y: isMobileViewport ? (options.mobileY ?? 44) : (options.y ?? 72),
+          scale: isMobileViewport ? (options.mobileScale ?? 0.97) : (options.scale ?? 0.96),
+          filter: isMobileViewport ? (options.mobileFilter ?? 'blur(6px)') : (options.filter ?? 'blur(10px)')
         }, {
           autoAlpha: 1,
           y: 0,
@@ -207,21 +208,28 @@ const initGsapMotion = async () => {
 
     animateIn('.section-heading, .manifesto__inner, .projeto-detalhe__intro, .galeria__intro, .ernesto-gallery__intro, .investment-article', {
       y: 88,
+      mobileY: 56,
       scale: 0.97,
+      mobileScale: 0.98,
       duration: 1.35
     });
 
     animateIn('.empreendimento, .produto-especifico__grid article, .tipologia-card, .decisao__card, .confianca-fvs__grid article, .page-card, .investment-pillar, .investment-proof-card', {
       y: 68,
+      mobileY: 46,
       scale: 0.94,
+      mobileScale: 0.97,
       stagger: 0.1,
       duration: 1.2
     });
 
     animateIn('.produto-imagens__item, .galeria__item, .galeria-proof, .ernesto-gallery__item', {
       y: 96,
+      mobileY: 52,
       scale: 0.92,
+      mobileScale: 0.96,
       filter: 'blur(8px)',
+      mobileFilter: 'blur(5px)',
       stagger: 0.055,
       duration: 1.15
     });
@@ -244,8 +252,8 @@ const initGsapMotion = async () => {
     });
 
     gsap.to('.hero__image--main', {
-      yPercent: 10,
-      scale: 1.09,
+      yPercent: isMobileViewport ? 4 : 10,
+      scale: isMobileViewport ? 1.045 : 1.09,
       ease: 'none',
       scrollTrigger: {
         trigger: '.hero',
@@ -257,11 +265,11 @@ const initGsapMotion = async () => {
 
     gsap.utils.toArray('.empreendimento__image, .galeria__image, .produto-imagens__item, .ernesto-gallery__item img').forEach((element) => {
       gsap.fromTo(element, {
-        yPercent: -5,
-        scale: 1.04
+        yPercent: isMobileViewport ? -2 : -5,
+        scale: isMobileViewport ? 1.015 : 1.04
       }, {
-        yPercent: 7,
-        scale: 1.1,
+        yPercent: isMobileViewport ? 3 : 7,
+        scale: isMobileViewport ? 1.04 : 1.1,
         ease: 'none',
         scrollTrigger: {
           trigger: element.closest('section, article, a') || element,
@@ -275,6 +283,81 @@ const initGsapMotion = async () => {
     ScrollTrigger.refresh();
   } catch (error) {
     body.classList.remove('has-gsap-motion');
+  }
+};
+
+const initLocalVisualMotion = () => {
+  if (prefersReducedMotion) {
+    return;
+  }
+
+  const motionGroups = [
+    {
+      selector: '.manifesto__text, .section-heading h2, .projeto-detalhe__intro h2, .tipologias__intro h2, .decisao__intro h2, .investment-article h2, .page-section__heading h2',
+      type: 'title'
+    },
+    {
+      selector: '.manifesto__support, .section-heading p, .gramado__content, .page-copy, .investment-article p',
+      type: 'copy'
+    },
+    {
+      selector: '.empreendimento, .produto-especifico__grid article, .tipologia-card, .decisao__card, .confianca-fvs__grid article, .page-card, .investment-pillar, .investment-proof-card',
+      type: 'card'
+    },
+    {
+      selector: '.empreendimento__image, .produto-imagens__item, .galeria__item, .galeria-proof, .ernesto-gallery__item',
+      type: 'image'
+    }
+  ];
+
+  const motionItems = [];
+  const counters = new Map();
+
+  motionGroups.forEach(({ selector, type }) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      if (element.dataset.motionReady === 'true') {
+        return;
+      }
+
+      const section = element.closest('section, main, footer') || body;
+      const sectionIndex = counters.get(section) || 0;
+
+      element.dataset.motionReady = 'true';
+      element.dataset.motion = type;
+      element.style.setProperty('--motion-order', String(Math.min(sectionIndex, 8)));
+      counters.set(section, sectionIndex + 1);
+      motionItems.push(element);
+    });
+  });
+
+  if (!motionItems.length) {
+    return;
+  }
+
+  body.classList.add('has-local-visual-motion');
+
+  const activate = (element) => {
+    element.classList.add('motion-in');
+  };
+
+  if ('IntersectionObserver' in window) {
+    const motionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        activate(entry.target);
+        motionObserver.unobserve(entry.target);
+      });
+    }, {
+      rootMargin: '0px 0px -18% 0px',
+      threshold: 0.18
+    });
+
+    motionItems.forEach((element) => motionObserver.observe(element));
+  } else {
+    motionItems.forEach(activate);
   }
 };
 
@@ -427,10 +510,11 @@ if (heroImages.length && !prefersReducedMotion) {
 
   const updateHeroDepth = () => {
     const progress = Math.min(window.scrollY / Math.max(window.innerHeight, 1), 1);
+    const depthStrength = window.innerWidth < 768 ? 115 : 260;
 
     heroImages.forEach((image) => {
       const depth = Number(image.dataset.heroDepth || 0);
-      image.style.setProperty('--hero-shift', `${progress * depth * 260}px`);
+      image.style.setProperty('--hero-shift', `${progress * depth * depthStrength}px`);
     });
 
     ticking = false;
@@ -573,4 +657,5 @@ if (prefersReducedMotion) {
 }
 
 initLenis();
+initLocalVisualMotion();
 initGsapMotion();
