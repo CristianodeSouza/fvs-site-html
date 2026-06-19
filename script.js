@@ -347,8 +347,8 @@ const initLocalVisualMotion = () => {
         motionObserver.unobserve(entry.target);
       });
     }, {
-      rootMargin: '0px 0px -18% 0px',
-      threshold: 0.18
+      rootMargin: '0px 0px 14% 0px',
+      threshold: 0.04
     });
 
     motionItems.forEach((element) => motionObserver.observe(element));
@@ -614,8 +614,8 @@ if (prefersReducedMotion) {
       observer.unobserve(entry.target);
     });
   }, {
-    rootMargin: '0px 0px -12% 0px',
-    threshold: 0.12
+    rootMargin: '0px 0px 16% 0px',
+    threshold: 0.04
   });
 
   revealItems.forEach((item) => observer.observe(item));
