@@ -51,7 +51,7 @@ const initFallbackSmoothScroll = () => {
   const maxScroll = () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
 
   const animate = () => {
-    state.current += (state.target - state.current) * 0.085;
+    state.current += (state.target - state.current) * 0.065;
 
     if (Math.abs(state.target - state.current) < 0.45) {
       state.current = state.target;
@@ -95,7 +95,7 @@ const initFallbackSmoothScroll = () => {
     }
 
     event.preventDefault();
-    state.target = Math.max(0, Math.min(state.target + event.deltaY * 1.08, maxScroll()));
+    state.target = Math.max(0, Math.min(state.target + event.deltaY * 1.16, maxScroll()));
 
     if (!state.raf) {
       state.current = window.scrollY;
@@ -120,9 +120,10 @@ const initLenis = async () => {
     }
 
     smoothScroller = new window.Lenis({
-      duration: 1.55,
+      duration: 1.75,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      wheelMultiplier: 1.08,
       syncTouch: false,
       stopInertiaOnNavigate: true,
       prevent: (node) => node.closest('.menu-panel, .gallery-lightbox')
@@ -292,7 +293,7 @@ if (heroImages.length && !prefersReducedMotion) {
 
     heroImages.forEach((image) => {
       const depth = Number(image.dataset.heroDepth || 0);
-      image.style.setProperty('--hero-shift', `${progress * depth * 160}px`);
+      image.style.setProperty('--hero-shift', `${progress * depth * 260}px`);
     });
 
     ticking = false;
@@ -398,7 +399,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 const revealItems = document.querySelectorAll(
-  '.incorporadora-strip__inner, .manifesto__inner, .institucional-fvs__intro, .institucional-fvs__stats article, .institucional-fvs__grid article, .metodo-fvs__intro, .metodo-fvs__steps article, .metodo-fvs__proof, .gramado__media, .gramado__content, .leitura-mercado__intro, .leitura-mercado__data article, .investir-serra__intro, .investir-serra__grid article, .experiencia__content, .experiencia__moment, .section-heading, .empreendimento, .projeto-detalhe__intro, .projeto-detalhe__layout, .produto-especifico, .produto-especifico__grid article, .localizacao-produto, .produto-imagens__item, .projeto-detalhe__proofs figure, .projeto-detalhe__criteria article, .tipologias__intro, .tipologia-card, .decisao__intro, .decisao__card, .decisao__notes, .seguranca-decisao__intro, .seguranca-decisao__grid article, .confianca-fvs__intro, .confianca-fvs__grid article, .galeria__intro, .galeria__item, .galeria-proof, .ernesto-gallery__intro, .ernesto-gallery__item, .page-list__item, .page-facts li, .investment-article, .investment-pillar, .investment-proof-card, .cta-consultivo .container'
+  '.manifesto__inner, .institucional-fvs__intro, .institucional-fvs__stats article, .institucional-fvs__grid article, .metodo-fvs__intro, .metodo-fvs__steps article, .metodo-fvs__proof, .gramado__media, .gramado__content, .leitura-mercado__intro, .leitura-mercado__data article, .investir-serra__intro, .investir-serra__grid article, .experiencia__content, .experiencia__moment, .section-heading, .empreendimento, .projeto-detalhe__intro, .projeto-detalhe__layout, .produto-especifico, .produto-especifico__grid article, .localizacao-produto, .produto-imagens__item, .projeto-detalhe__proofs figure, .projeto-detalhe__criteria article, .tipologias__intro, .tipologia-card, .decisao__intro, .decisao__card, .decisao__notes, .seguranca-decisao__intro, .seguranca-decisao__grid article, .confianca-fvs__intro, .confianca-fvs__grid article, .galeria__intro, .galeria__item, .galeria-proof, .ernesto-gallery__intro, .ernesto-gallery__item, .page-list__item, .page-facts li, .investment-article, .investment-pillar, .investment-proof-card, .cta-consultivo .container'
 );
 
 const revealGroups = new Map();
@@ -408,7 +409,7 @@ revealItems.forEach((item) => {
   const group = item.closest('section, .hero-transition, footer, main') || body;
   const order = revealGroups.get(group) || 0;
 
-  item.style.setProperty('--reveal-order', String(Math.min(order, 6)));
+  item.style.setProperty('--reveal-order', String(Math.min(order, 7)));
   revealGroups.set(group, order + 1);
 });
 

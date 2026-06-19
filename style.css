@@ -857,42 +857,10 @@ body:not(.is-loaded) .hero__image--main {
   text-wrap: auto;
 }
 
-.incorporadora-strip {
-  background: var(--branco-quente);
-  color: var(--verde-profundo);
-  margin-top: -1px;
-  scroll-margin-top: calc(var(--header-height) + 28px);
-}
-
-.incorporadora-strip__inner {
-  align-items: center;
-  border-bottom: 1px solid color-mix(in srgb, var(--pedra) 38%, transparent);
-  display: flex;
-  min-height: clamp(3.9rem, 5.6vw, 5rem);
-}
-
-.incorporadora-strip__inner span {
-  color: var(--pedra);
-  display: inline-flex;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
 .manifesto {
   background: var(--branco-quente);
-  padding: clamp(3.6rem, 5.6vw, 5.8rem) 0 clamp(5.8rem, 8.5vw, 8.5rem);
+  padding: clamp(5.2rem, 7.4vw, 7.4rem) 0 clamp(5.8rem, 8.5vw, 8.5rem);
   scroll-margin-top: calc(var(--header-height) + 2rem);
-}
-
-.incorporadora-strip + .manifesto {
-  padding-top: clamp(2.2rem, 3.8vw, 3.8rem);
-}
-
-.incorporadora-strip + .manifesto .manifesto__inner {
-  border-top: 0;
-  padding-top: 0;
 }
 
 .manifesto__inner {
@@ -1629,7 +1597,10 @@ body:not(.is-loaded) .hero__image--main {
     linear-gradient(180deg, color-mix(in srgb, var(--verde-profundo) 4%, transparent), color-mix(in srgb, var(--verde-profundo) 28%, transparent)),
     var(--empreendimento-image) center/cover no-repeat;
   min-height: 620px;
-  transition: transform var(--motion-slow) var(--ease-smooth);
+  transition:
+    filter 680ms var(--ease-smooth),
+    transform 1350ms var(--ease-smooth);
+  will-change: transform, filter;
 }
 
 .empreendimento--manhattan {
@@ -1641,7 +1612,8 @@ body:not(.is-loaded) .hero__image--main {
 }
 
 .empreendimento:hover .empreendimento__image {
-  transform: scale(1.035);
+  filter: saturate(1.05) contrast(1.05);
+  transform: scale(1.065) translateY(-10px);
 }
 
 .empreendimento__content {
@@ -2180,6 +2152,15 @@ body:not(.is-loaded) .hero__image--main {
   overflow: hidden;
   padding: 1.2rem;
   position: relative;
+  transition:
+    filter 680ms var(--ease-smooth),
+    transform 1350ms var(--ease-smooth);
+  will-change: transform, filter;
+}
+
+.produto-imagens__item:hover {
+  filter: saturate(1.04) contrast(1.04);
+  transform: translateY(-12px) scale(1.018);
 }
 
 .produto-imagens__item::after {
@@ -2208,6 +2189,10 @@ body:not(.is-loaded) .hero__image--main {
   transform: translateY(clamp(1.5rem, 4vw, 3rem));
 }
 
+.produto-imagens__item--manhattan-living:hover {
+  transform: translateY(calc(clamp(1.5rem, 4vw, 3rem) - 12px)) scale(1.018);
+}
+
 .produto-imagens__item--manhattan-hall {
   --product-image: url("assets/images/manhattan-hall.jpg");
 }
@@ -2219,6 +2204,10 @@ body:not(.is-loaded) .hero__image--main {
 .produto-imagens__item--ernesto-estar {
   --product-image: url("assets/images/ernesto-living-varanda.jpg");
   transform: translateY(clamp(1.5rem, 4vw, 3rem));
+}
+
+.produto-imagens__item--ernesto-estar:hover {
+  transform: translateY(calc(clamp(1.5rem, 4vw, 3rem) - 12px)) scale(1.018);
 }
 
 .produto-imagens__item--ernesto-suite {
@@ -2746,11 +2735,15 @@ body:not(.is-loaded) .hero__image--main {
   background-size: cover;
   height: 100%;
   min-height: inherit;
-  transition: transform var(--motion-slow) var(--ease-smooth);
+  transition:
+    filter 680ms var(--ease-smooth),
+    transform 1350ms var(--ease-smooth);
+  will-change: transform, filter;
 }
 
 .galeria__item:hover .galeria__image {
-  transform: scale(1.035);
+  filter: saturate(1.05) contrast(1.05);
+  transform: scale(1.07) translateY(-8px);
 }
 
 .galeria__item::after {
@@ -2939,13 +2932,16 @@ body:not(.is-loaded) .hero__image--main {
   display: block;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--motion-slow) var(--ease-smooth), filter var(--motion-fast) var(--ease-smooth);
+  transition:
+    filter 680ms var(--ease-smooth),
+    transform 1350ms var(--ease-smooth);
   width: 100%;
+  will-change: transform, filter;
 }
 
 .ernesto-gallery__item:hover img {
-  filter: saturate(0.96) contrast(1.04);
-  transform: scale(1.035);
+  filter: saturate(1.05) contrast(1.05);
+  transform: scale(1.075) translateY(-8px);
 }
 
 .ernesto-gallery__item--featured {
@@ -3239,20 +3235,21 @@ body:not(.is-loaded) .hero__image--main {
 }
 
 [data-reveal] {
-  filter: blur(8px);
+  filter: blur(5px);
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(42px) scale(0.985);
   transition:
-    opacity 900ms var(--ease-smooth),
-    transform 900ms var(--ease-smooth),
-    filter 900ms var(--ease-smooth);
-  transition-delay: calc(var(--reveal-order, 0) * 75ms);
+    opacity 980ms var(--ease-smooth),
+    transform 1050ms var(--ease-smooth),
+    filter 980ms var(--ease-smooth);
+  transition-delay: calc(var(--reveal-order, 0) * 115ms);
+  will-change: opacity, transform, filter;
 }
 
 [data-reveal].is-visible {
   filter: blur(0);
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .page-main {
