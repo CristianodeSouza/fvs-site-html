@@ -60,16 +60,15 @@ const closeSiteIntro = () => {
   }
 
   siteIntro.classList.add('is-hidden');
+  siteIntro.setAttribute('aria-hidden', 'true');
   body.classList.remove('site-intro-is-open');
-  window.setTimeout(() => {
-    siteIntro.remove();
-  }, 900);
 };
 
 if (siteIntro && siteIntroVideo && !prefersReducedMotion) {
   body.classList.add('site-intro-is-open');
-  siteIntroVideo.addEventListener('ended', closeSiteIntro, { once: true });
-  window.setTimeout(closeSiteIntro, 3600);
+  siteIntro.setAttribute('aria-hidden', 'false');
+  siteIntroVideo.play().catch(() => {});
+  window.setTimeout(closeSiteIntro, 4800);
 } else {
   closeSiteIntro();
 }
