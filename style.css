@@ -586,13 +586,6 @@ p {
   z-index: 2;
 }
 
-.home-logo-intro-playing .header,
-.home-logo-intro-playing .hero__content {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 520ms var(--ease-smooth);
-}
-
 .hero__eyebrow {
   color: var(--pedra-clara);
   display: block;
@@ -5765,6 +5758,133 @@ main > section,
     text-align: center;
   }
 
+  .section-kicker,
+  .page-eyebrow,
+  .page-card span,
+  .empreendimento__facts dt,
+  .gramado__thesis span {
+    font-family: var(--font-body);
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.45;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.15rem, 8.4vw, 2.65rem);
+    line-height: 1.04;
+    max-width: 20.5rem;
+  }
+
+  .manifesto__text,
+  .hero-transition__content > p,
+  .gramado__thesis p,
+  .seguranca-decisao__close,
+  .footer__lead p {
+    font-family: var(--font-display);
+    font-size: clamp(1.72rem, 6.4vw, 2.08rem);
+    font-weight: 400;
+    line-height: 1.12;
+    max-width: 20rem;
+  }
+
+  .institucional-fvs__intro h2,
+  .metodo-fvs__intro h2,
+  .gramado__content h2,
+  .leitura-mercado__intro h2,
+  .investir-serra__intro h2,
+  .experiencia h2,
+  .section-heading h2,
+  .projeto-detalhe__intro h2,
+  .tipologias__intro h2,
+  .decisao__intro h2,
+  .seguranca-decisao__intro h2,
+  .confianca-fvs__intro h2,
+  .galeria__intro h2,
+  .ernesto-gallery__intro h2,
+  .cta-consultivo h2,
+  .page-section__heading h2,
+  .page-hero__content h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.62rem, 6.2vw, 2rem);
+    font-weight: 400;
+    line-height: 1.12;
+    max-width: 20rem;
+  }
+
+  .gramado__block h3,
+  .investir-serra__grid h3,
+  .metodo-fvs__steps h3,
+  .empreendimento__content h3,
+  .projeto-detalhe__argument h3,
+  .produto-especifico__intro h3,
+  .localizacao-produto h3,
+  .tipologia-card h3,
+  .decisao__card h3,
+  .seguranca-decisao__grid h3,
+  .confianca-fvs__grid h3,
+  .page-card h2,
+  .page-card h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.22rem, 4.6vw, 1.46rem);
+    font-weight: 400;
+    line-height: 1.16;
+  }
+
+  .hero__subtitle,
+  .manifesto__support,
+  .institucional-fvs__intro p,
+  .metodo-fvs__intro p,
+  .gramado__block p,
+  .leitura-mercado__intro p,
+  .leitura-mercado__data p,
+  .investir-serra__intro p,
+  .investir-serra__grid p,
+  .experiencia p,
+  .empreendimento__concept,
+  .empreendimento__description,
+  .empreendimento__facts dd,
+  .projeto-detalhe__intro p,
+  .projeto-detalhe__argument p,
+  .produto-especifico__intro p,
+  .produto-especifico__grid p,
+  .tipologias__intro p,
+  .tipologia-card p,
+  .decisao__intro p,
+  .decisao__card p,
+  .seguranca-decisao__intro p,
+  .seguranca-decisao__grid p,
+  .confianca-fvs__intro p,
+  .confianca-fvs__grid p,
+  .galeria__intro p,
+  .ernesto-gallery__intro p,
+  .cta-consultivo__content p,
+  .page-section__heading p,
+  .page-hero__content p,
+  .page-copy p,
+  .page-card p,
+  .page-card li,
+  .page-list li {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.66;
+    max-width: 20rem;
+  }
+
+  .empreendimento__link,
+  .page-card a,
+  .page-link,
+  .decisao__card a {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    line-height: 1.42;
+    max-width: 20rem;
+  }
+
   .has-local-visual-motion [data-motion] {
     transition-delay: calc(var(--motion-order, 0) * 70ms);
   }
@@ -5796,25 +5916,7 @@ main > section,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  html {
     scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-    transition-delay: 0ms !important;
-  }
-
-  [data-reveal],
-  .hero__eyebrow,
-  .hero__title,
-  .hero__subtitle,
-  .hero__actions,
-  .hero__proof,
-  .menu-panel__nav a {
-    filter: none !important;
-    opacity: 1 !important;
-    transform: none !important;
   }
 }

@@ -4,7 +4,7 @@ const menuPanel = document.querySelector('#site-menu');
 const menuClose = document.querySelector('.menu-panel__close');
 const menuLinks = document.querySelectorAll('.menu-panel__nav a');
 const heroImages = document.querySelectorAll('[data-hero-depth]');
-const heroVideo = document.querySelector('.hero__video[data-loop-src]');
+const heroVideo = document.querySelector('.hero__video');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let smoothScroller = null;
 let fallbackSmoothScroll = null;
@@ -157,10 +157,6 @@ const initLenis = async () => {
 };
 
 const initGsapMotion = async () => {
-  if (prefersReducedMotion) {
-    return;
-  }
-
   try {
     await loadScriptCandidates([
       'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js',
@@ -287,10 +283,6 @@ const initGsapMotion = async () => {
 };
 
 const initLocalVisualMotion = () => {
-  if (prefersReducedMotion) {
-    return;
-  }
-
   const motionGroups = [
     {
       selector: '.manifesto__text, .section-heading h2, .projeto-detalhe__intro h2, .tipologias__intro h2, .decisao__intro h2, .investment-article h2, .page-section__heading h2',
@@ -336,6 +328,10 @@ const initLocalVisualMotion = () => {
 
   body.classList.add('has-local-visual-motion');
 
+  if (prefersReducedMotion) {
+    body.classList.add('has-site-visual-motion');
+  }
+
   const activate = (element) => {
     element.classList.add('motion-in');
   };
@@ -369,56 +365,13 @@ const playVideo = (video) => {
   }
 };
 
-const switchHomeHeroToLoop = () => {
-  if (!heroVideo || heroVideo.dataset.loopStarted === 'true') {
+const startHomeHeroSequence = () => {
+  if (!heroVideo) {
     return;
   }
 
-  const loopSrc = heroVideo.dataset.loopSrc;
-
-  if (!loopSrc) {
-    return;
-  }
-
-  heroVideo.dataset.loopStarted = 'true';
   heroVideo.loop = true;
   heroVideo.setAttribute('loop', '');
-  const source = heroVideo.querySelector('source');
-
-  if (source) {
-    source.setAttribute('src', loopSrc);
-    heroVideo.removeAttribute('src');
-  } else {
-    heroVideo.src = loopSrc;
-  }
-
-  heroVideo.load();
-  playVideo(heroVideo);
-  body.classList.remove('home-logo-intro-playing');
-};
-
-const startHomeHeroSequence = () => {
-  if (!heroVideo || !body.classList.contains('home-logo-intro')) {
-    return;
-  }
-
-  if (prefersReducedMotion) {
-    switchHomeHeroToLoop();
-    return;
-  }
-
-  body.classList.add('home-logo-intro-playing');
-  heroVideo.loop = false;
-  heroVideo.removeAttribute('loop');
-
-  try {
-    heroVideo.currentTime = 0;
-  } catch (error) {
-    // Some browsers can reject seeking before metadata is ready.
-  }
-
-  heroVideo.addEventListener('ended', switchHomeHeroToLoop, { once: true });
-  window.setTimeout(switchHomeHeroToLoop, 5200);
   playVideo(heroVideo);
 };
 
