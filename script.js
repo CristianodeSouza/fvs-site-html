@@ -6,6 +6,68 @@ const menuLinks = document.querySelectorAll('.menu-panel__nav a');
 const heroImages = document.querySelectorAll('[data-hero-depth]');
 const heroVideo = document.querySelector('.hero__video[data-loop-src]');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let smoothScroller = null;
+
+const loadScript = (src) => new Promise((resolve, reject) => {
+  const existingScript = document.querySelector(`script[src="${src}"]`);
+
+  if (existingScript) {
+    if (existingScript.dataset.loaded === 'true') {
+      resolve();
+      return;
+    }
+
+    existingScript.addEventListener('load', resolve, { once: true });
+    existingScript.addEventListener('error', reject, { once: true });
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = src;
+  script.async = true;
+  script.dataset.motionVendor = 'lenis';
+
+  script.addEventListener('load', () => {
+    script.dataset.loaded = 'true';
+    resolve();
+  }, { once: true });
+
+  script.addEventListener('error', reject, { once: true });
+  document.head.appendChild(script);
+});
+
+const initLenis = async () => {
+  if (prefersReducedMotion || smoothScroller || window.innerWidth < 768) {
+    return;
+  }
+
+  try {
+    await loadScript('https://unpkg.com/lenis@1.3.23/dist/lenis.min.js');
+
+    if (!window.Lenis) {
+      return;
+    }
+
+    smoothScroller = new window.Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      syncTouch: false,
+      stopInertiaOnNavigate: true,
+      prevent: (node) => node.closest('.menu-panel, .gallery-lightbox')
+    });
+
+    const raf = (time) => {
+      smoothScroller?.raf(time);
+      window.requestAnimationFrame(raf);
+    };
+
+    window.requestAnimationFrame(raf);
+    body.classList.add('has-smooth-scroll');
+  } catch (error) {
+    body.classList.remove('has-smooth-scroll');
+  }
+};
 
 const playVideo = (video) => {
   const promise = video.play();
@@ -93,6 +155,7 @@ const setMenuState = (isOpen) => {
   body.classList.toggle('menu-is-open', isOpen);
   menuButton.setAttribute('aria-expanded', String(isOpen));
   menuPanel.setAttribute('aria-hidden', String(!isOpen));
+  smoothScroller?.[isOpen ? 'stop' : 'start']();
 };
 
 if (menuButton && menuPanel) {
@@ -131,6 +194,15 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
     event.preventDefault();
     setMenuState(false);
+
+    if (smoothScroller && !prefersReducedMotion) {
+      smoothScroller.scrollTo(target, {
+        offset: -96,
+        duration: 1.05
+      });
+      return;
+    }
+
     target.scrollIntoView({
       behavior: prefersReducedMotion ? 'auto' : 'smooth',
       block: 'start'
@@ -201,6 +273,7 @@ const openGalleryLightbox = (index) => {
   setGalleryImage(index);
   galleryLightbox.setAttribute('aria-hidden', 'false');
   body.classList.add('gallery-lightbox-is-open');
+  smoothScroller?.stop();
   galleryLightboxClose?.focus({ preventScroll: true });
 };
 
@@ -212,6 +285,7 @@ const closeGalleryLightbox = () => {
   galleryLightbox.setAttribute('aria-hidden', 'true');
   body.classList.remove('gallery-lightbox-is-open');
   galleryLightboxImage?.removeAttribute('src');
+  smoothScroller?.start();
   galleryLinks[activeGalleryIndex]?.focus({ preventScroll: true });
 };
 
@@ -248,7 +322,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 const revealItems = document.querySelectorAll(
-  '.manifesto__inner, .institucional-fvs__intro, .institucional-fvs__stats article, .institucional-fvs__grid article, .metodo-fvs__intro, .metodo-fvs__steps article, .metodo-fvs__proof, .gramado__media, .gramado__content, .leitura-mercado__intro, .leitura-mercado__data article, .investir-serra__intro, .investir-serra__grid article, .experiencia__content, .experiencia__moment, .section-heading, .empreendimento, .projeto-detalhe__intro, .projeto-detalhe__layout, .produto-especifico, .produto-especifico__grid article, .localizacao-produto, .produto-imagens__item, .projeto-detalhe__proofs figure, .projeto-detalhe__criteria article, .tipologias__intro, .tipologia-card, .decisao__intro, .decisao__card, .decisao__notes, .seguranca-decisao__intro, .seguranca-decisao__grid article, .confianca-fvs__intro, .confianca-fvs__grid article, .galeria__intro, .galeria__item, .galeria-proof, .ernesto-gallery__intro, .ernesto-gallery__item, .cta-consultivo .container'
+  '.incorporadora-strip__inner, .manifesto__inner, .institucional-fvs__intro, .institucional-fvs__stats article, .institucional-fvs__grid article, .metodo-fvs__intro, .metodo-fvs__steps article, .metodo-fvs__proof, .gramado__media, .gramado__content, .leitura-mercado__intro, .leitura-mercado__data article, .investir-serra__intro, .investir-serra__grid article, .experiencia__content, .experiencia__moment, .section-heading, .empreendimento, .projeto-detalhe__intro, .projeto-detalhe__layout, .produto-especifico, .produto-especifico__grid article, .localizacao-produto, .produto-imagens__item, .projeto-detalhe__proofs figure, .projeto-detalhe__criteria article, .tipologias__intro, .tipologia-card, .decisao__intro, .decisao__card, .decisao__notes, .seguranca-decisao__intro, .seguranca-decisao__grid article, .confianca-fvs__intro, .confianca-fvs__grid article, .galeria__intro, .galeria__item, .galeria-proof, .ernesto-gallery__intro, .ernesto-gallery__item, .page-list__item, .page-facts li, .investment-article, .investment-pillar, .investment-proof-card, .cta-consultivo .container'
 );
 
 const revealGroups = new Map();
@@ -283,3 +357,5 @@ if (prefersReducedMotion) {
 } else {
   revealItems.forEach((item) => item.classList.add('is-visible'));
 }
+
+initLenis();
