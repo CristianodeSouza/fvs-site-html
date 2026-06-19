@@ -21,15 +21,22 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="video" href="assets/videos/fvs-logo-intro.mp4" type="video/mp4">
   <link rel="preload" as="video" href="assets/videos/fvs-incorporadora-gramado.mp4" type="video/mp4">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="canonical" href="https://fvsinc.com.br/">
-  <link rel="stylesheet" href="/style.css?v=home-folds-20260618">
+  <link rel="stylesheet" href="/style.css?v=front-logo-intro-20260618">
 
   <title>FVS Incorporações | Residências em Gramado</title>
 </head>
 <body>
+  <div class="site-intro" id="site-intro" aria-hidden="true">
+    <video class="site-intro__video" autoplay muted playsinline preload="auto">
+      <source src="assets/videos/fvs-logo-intro.mp4" type="video/mp4">
+    </video>
+  </div>
+
   <header class="header">
     <nav class="header__nav" aria-label="Navegação principal">
       <button class="header__menu-button" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Abrir menu">
@@ -319,6 +326,6 @@
     </div>
   </footer>
 
-  <script src="/script.js?v=seo-routes-20260612"></script>
+  <script src="/script.js?v=front-logo-intro-20260618"></script>
 </body>
 </html>

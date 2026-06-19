@@ -4,6 +4,8 @@ const menuPanel = document.querySelector('#site-menu');
 const menuClose = document.querySelector('.menu-panel__close');
 const menuLinks = document.querySelectorAll('.menu-panel__nav a');
 const heroImages = document.querySelectorAll('[data-hero-depth]');
+const siteIntro = document.querySelector('#site-intro');
+const siteIntroVideo = siteIntro?.querySelector('video');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const setLoadedState = () => {
@@ -51,6 +53,26 @@ document.addEventListener('keydown', (event) => {
 
 setHeaderContrast();
 window.addEventListener('scroll', setHeaderContrast, { passive: true });
+
+const closeSiteIntro = () => {
+  if (!siteIntro) {
+    return;
+  }
+
+  siteIntro.classList.add('is-hidden');
+  body.classList.remove('site-intro-is-open');
+  window.setTimeout(() => {
+    siteIntro.remove();
+  }, 900);
+};
+
+if (siteIntro && siteIntroVideo && !prefersReducedMotion) {
+  body.classList.add('site-intro-is-open');
+  siteIntroVideo.addEventListener('ended', closeSiteIntro, { once: true });
+  window.setTimeout(closeSiteIntro, 3600);
+} else {
+  closeSiteIntro();
+}
 
 setLoadedState();
 
