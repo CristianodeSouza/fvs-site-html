@@ -48,6 +48,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
+      <image:loc>https://fvsinc.com.br/assets/images/empreendimentos-fvs-gramado-ernesto-living.jpg</image:loc>
+      <image:title>Empreendimentos FVS em Gramado</image:title>
+      <image:caption>Living integrado de empreendimento FVS em Gramado, representando conforto, arquitetura e valor patrimonial</image:caption>
+      <image:geo_location>Gramado, Rio Grande do Sul, Brasil</image:geo_location>
+    </image:image>
+    <image:image>
       <image:loc>https://fvsinc.com.br/assets/images/manhattan-fachada-noturna.jpg</image:loc>
       <image:title>Manhattan Residence em Gramado</image:title>
       <image:caption>Fachada noturna do Manhattan Residence no bairro Planalto em Gramado</image:caption>
