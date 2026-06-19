@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css?v=ernesto-gallery-20260618">
+  <link rel="stylesheet" href="/style.css?v=ernesto-lightbox-20260618">
 
   <title>Ernesto 142 | Imóvel em Lançamento no Centro de Gramado</title>
 </head>
@@ -278,6 +278,22 @@
     </section>
   </main>
 
-  <script src="/script.js?v=seo-routes-20260612"></script>
+  <div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true">
+    <button class="gallery-lightbox__backdrop" type="button" aria-label="Fechar imagem ampliada"></button>
+    <div class="gallery-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Imagem ampliada da galeria Ernesto 142">
+      <button class="gallery-lightbox__close" type="button" aria-label="Fechar imagem ampliada">Fechar</button>
+      <button class="gallery-lightbox__control gallery-lightbox__control--prev" type="button" aria-label="Imagem anterior">Anterior</button>
+      <figure class="gallery-lightbox__figure">
+        <img class="gallery-lightbox__image" src="" alt="">
+        <figcaption class="gallery-lightbox__caption">
+          <span class="gallery-lightbox__count">01 / 32</span>
+          Ernesto 142
+        </figcaption>
+      </figure>
+      <button class="gallery-lightbox__control gallery-lightbox__control--next" type="button" aria-label="Próxima imagem">Próxima</button>
+    </div>
+  </div>
+
+  <script src="/script.js?v=ernesto-lightbox-20260618"></script>
 </body>
 </html>

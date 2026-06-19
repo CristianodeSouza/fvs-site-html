@@ -102,6 +102,86 @@ if (heroImages.length && !prefersReducedMotion) {
   window.addEventListener('scroll', requestHeroDepth, { passive: true });
 }
 
+const galleryLinks = Array.from(document.querySelectorAll('.ernesto-gallery__item'));
+const galleryLightbox = document.querySelector('#gallery-lightbox');
+const galleryLightboxImage = galleryLightbox?.querySelector('.gallery-lightbox__image');
+const galleryLightboxCount = galleryLightbox?.querySelector('.gallery-lightbox__count');
+const galleryLightboxClose = galleryLightbox?.querySelector('.gallery-lightbox__close');
+const galleryLightboxBackdrop = galleryLightbox?.querySelector('.gallery-lightbox__backdrop');
+const galleryLightboxPrev = galleryLightbox?.querySelector('.gallery-lightbox__control--prev');
+const galleryLightboxNext = galleryLightbox?.querySelector('.gallery-lightbox__control--next');
+let activeGalleryIndex = 0;
+
+const setGalleryImage = (index) => {
+  if (!galleryLightboxImage || !galleryLightboxCount || !galleryLinks.length) {
+    return;
+  }
+
+  activeGalleryIndex = (index + galleryLinks.length) % galleryLinks.length;
+
+  const activeLink = galleryLinks[activeGalleryIndex];
+  const activeImage = activeLink.querySelector('img');
+  const imageNumber = String(activeGalleryIndex + 1).padStart(2, '0');
+
+  galleryLightboxImage.src = activeLink.href;
+  galleryLightboxImage.alt = activeImage?.alt || `Imagem ${imageNumber} do Ernesto 142`;
+  galleryLightboxCount.textContent = `${imageNumber} / ${String(galleryLinks.length).padStart(2, '0')}`;
+};
+
+const openGalleryLightbox = (index) => {
+  if (!galleryLightbox) {
+    return;
+  }
+
+  setGalleryImage(index);
+  galleryLightbox.setAttribute('aria-hidden', 'false');
+  body.classList.add('gallery-lightbox-is-open');
+  galleryLightboxClose?.focus({ preventScroll: true });
+};
+
+const closeGalleryLightbox = () => {
+  if (!galleryLightbox) {
+    return;
+  }
+
+  galleryLightbox.setAttribute('aria-hidden', 'true');
+  body.classList.remove('gallery-lightbox-is-open');
+  galleryLightboxImage?.removeAttribute('src');
+  galleryLinks[activeGalleryIndex]?.focus({ preventScroll: true });
+};
+
+if (galleryLinks.length && galleryLightbox) {
+  galleryLinks.forEach((link, index) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      openGalleryLightbox(index);
+    });
+  });
+
+  galleryLightboxClose?.addEventListener('click', closeGalleryLightbox);
+  galleryLightboxBackdrop?.addEventListener('click', closeGalleryLightbox);
+  galleryLightboxPrev?.addEventListener('click', () => setGalleryImage(activeGalleryIndex - 1));
+  galleryLightboxNext?.addEventListener('click', () => setGalleryImage(activeGalleryIndex + 1));
+}
+
+document.addEventListener('keydown', (event) => {
+  if (!galleryLightbox || galleryLightbox.getAttribute('aria-hidden') === 'true') {
+    return;
+  }
+
+  if (event.key === 'Escape') {
+    closeGalleryLightbox();
+  }
+
+  if (event.key === 'ArrowLeft') {
+    setGalleryImage(activeGalleryIndex - 1);
+  }
+
+  if (event.key === 'ArrowRight') {
+    setGalleryImage(activeGalleryIndex + 1);
+  }
+});
+
 const revealItems = document.querySelectorAll(
   '.manifesto__inner, .institucional-fvs__intro, .institucional-fvs__stats article, .institucional-fvs__grid article, .metodo-fvs__intro, .metodo-fvs__steps article, .metodo-fvs__proof, .gramado__media, .gramado__content, .leitura-mercado__intro, .leitura-mercado__data article, .investir-serra__intro, .investir-serra__grid article, .experiencia__content, .experiencia__moment, .section-heading, .empreendimento, .projeto-detalhe__intro, .projeto-detalhe__layout, .produto-especifico, .produto-especifico__grid article, .localizacao-produto, .produto-imagens__item, .projeto-detalhe__proofs figure, .projeto-detalhe__criteria article, .tipologias__intro, .tipologia-card, .decisao__intro, .decisao__card, .decisao__notes, .seguranca-decisao__intro, .seguranca-decisao__grid article, .confianca-fvs__intro, .confianca-fvs__grid article, .galeria__intro, .galeria__item, .galeria-proof, .ernesto-gallery__intro, .ernesto-gallery__item, .cta-consultivo .container'
 );
