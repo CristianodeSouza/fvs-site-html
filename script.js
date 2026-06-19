@@ -7,6 +7,7 @@ const heroImages = document.querySelectorAll('[data-hero-depth]');
 const heroVideo = document.querySelector('.hero__video[data-loop-src]');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let smoothScroller = null;
+let fallbackSmoothScroll = null;
 
 const loadScript = (src) => new Promise((resolve, reject) => {
   const existingScript = document.querySelector(`script[src="${src}"]`);
@@ -36,8 +37,77 @@ const loadScript = (src) => new Promise((resolve, reject) => {
   document.head.appendChild(script);
 });
 
+const initFallbackSmoothScroll = () => {
+  if (fallbackSmoothScroll || prefersReducedMotion || window.innerWidth < 768) {
+    return;
+  }
+
+  const state = {
+    current: window.scrollY,
+    target: window.scrollY,
+    raf: null
+  };
+
+  const maxScroll = () => Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+
+  const animate = () => {
+    state.current += (state.target - state.current) * 0.085;
+
+    if (Math.abs(state.target - state.current) < 0.45) {
+      state.current = state.target;
+      window.scrollTo(0, state.current);
+      state.raf = null;
+      return;
+    }
+
+    window.scrollTo(0, state.current);
+    state.raf = window.requestAnimationFrame(animate);
+  };
+
+  fallbackSmoothScroll = {
+    scrollTo(target, options = {}) {
+      const targetTop = typeof target === 'number'
+        ? target
+        : target.getBoundingClientRect().top + window.scrollY + (options.offset || 0);
+
+      state.target = Math.max(0, Math.min(targetTop, maxScroll()));
+
+      if (!state.raf) {
+        state.current = window.scrollY;
+        state.raf = window.requestAnimationFrame(animate);
+      }
+    },
+    start() {
+      body.classList.remove('smooth-scroll-paused');
+    },
+    stop() {
+      body.classList.add('smooth-scroll-paused');
+    }
+  };
+
+  window.addEventListener('wheel', (event) => {
+    if (body.classList.contains('menu-is-open') || body.classList.contains('gallery-lightbox-is-open')) {
+      return;
+    }
+
+    if (event.ctrlKey || event.metaKey || event.target.closest('.menu-panel, .gallery-lightbox')) {
+      return;
+    }
+
+    event.preventDefault();
+    state.target = Math.max(0, Math.min(state.target + event.deltaY * 1.08, maxScroll()));
+
+    if (!state.raf) {
+      state.current = window.scrollY;
+      state.raf = window.requestAnimationFrame(animate);
+    }
+  }, { passive: false });
+
+  body.classList.add('has-smooth-scroll', 'has-smooth-scroll-fallback');
+};
+
 const initLenis = async () => {
-  if (prefersReducedMotion || smoothScroller || window.innerWidth < 768) {
+  if (prefersReducedMotion || smoothScroller) {
     return;
   }
 
@@ -45,11 +115,12 @@ const initLenis = async () => {
     await loadScript('https://unpkg.com/lenis@1.3.23/dist/lenis.min.js');
 
     if (!window.Lenis) {
+      initFallbackSmoothScroll();
       return;
     }
 
     smoothScroller = new window.Lenis({
-      duration: 1.15,
+      duration: 1.55,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       syncTouch: false,
@@ -63,9 +134,9 @@ const initLenis = async () => {
     };
 
     window.requestAnimationFrame(raf);
-    body.classList.add('has-smooth-scroll');
+    body.classList.add('has-smooth-scroll', 'has-lenis-scroll');
   } catch (error) {
-    body.classList.remove('has-smooth-scroll');
+    initFallbackSmoothScroll();
   }
 };
 
@@ -156,6 +227,7 @@ const setMenuState = (isOpen) => {
   menuButton.setAttribute('aria-expanded', String(isOpen));
   menuPanel.setAttribute('aria-hidden', String(!isOpen));
   smoothScroller?.[isOpen ? 'stop' : 'start']();
+  fallbackSmoothScroll?.[isOpen ? 'stop' : 'start']();
 };
 
 if (menuButton && menuPanel) {
@@ -195,8 +267,10 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     event.preventDefault();
     setMenuState(false);
 
-    if (smoothScroller && !prefersReducedMotion) {
-      smoothScroller.scrollTo(target, {
+    const activeSmoothScroll = smoothScroller || fallbackSmoothScroll;
+
+    if (activeSmoothScroll && !prefersReducedMotion) {
+      activeSmoothScroll.scrollTo(target, {
         offset: -96,
         duration: 1.05
       });
@@ -274,6 +348,7 @@ const openGalleryLightbox = (index) => {
   galleryLightbox.setAttribute('aria-hidden', 'false');
   body.classList.add('gallery-lightbox-is-open');
   smoothScroller?.stop();
+  fallbackSmoothScroll?.stop();
   galleryLightboxClose?.focus({ preventScroll: true });
 };
 
@@ -286,6 +361,7 @@ const closeGalleryLightbox = () => {
   body.classList.remove('gallery-lightbox-is-open');
   galleryLightboxImage?.removeAttribute('src');
   smoothScroller?.start();
+  fallbackSmoothScroll?.start();
   galleryLinks[activeGalleryIndex]?.focus({ preventScroll: true });
 };
 

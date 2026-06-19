@@ -868,7 +868,7 @@ body:not(.is-loaded) .hero__image--main {
   align-items: center;
   border-bottom: 1px solid color-mix(in srgb, var(--pedra) 38%, transparent);
   display: flex;
-  min-height: clamp(4.6rem, 7vw, 6.4rem);
+  min-height: clamp(3.9rem, 5.6vw, 5rem);
 }
 
 .incorporadora-strip__inner span {
@@ -882,12 +882,12 @@ body:not(.is-loaded) .hero__image--main {
 
 .manifesto {
   background: var(--branco-quente);
-  padding: clamp(4.6rem, 7vw, 7rem) 0 clamp(5.8rem, 8.5vw, 8.5rem);
+  padding: clamp(3.6rem, 5.6vw, 5.8rem) 0 clamp(5.8rem, 8.5vw, 8.5rem);
   scroll-margin-top: calc(var(--header-height) + 2rem);
 }
 
 .incorporadora-strip + .manifesto {
-  padding-top: clamp(3.2rem, 5vw, 5.2rem);
+  padding-top: clamp(2.2rem, 3.8vw, 3.8rem);
 }
 
 .incorporadora-strip + .manifesto .manifesto__inner {
@@ -904,9 +904,9 @@ body:not(.is-loaded) .hero__image--main {
 
 .manifesto__intro {
   display: grid;
-  gap: clamp(1.8rem, 3.4vw, 3.8rem) clamp(4rem, 9vw, 9rem);
+  gap: clamp(1.4rem, 2.8vw, 3rem) clamp(4rem, 9vw, 9rem);
   grid-template-columns: minmax(0, 0.78fr) minmax(280px, 0.34fr);
-  min-height: clamp(440px, 58vh, 620px);
+  min-height: clamp(360px, 48vh, 520px);
 }
 
 .manifesto__intro .section-kicker {
