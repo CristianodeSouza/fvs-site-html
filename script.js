@@ -4,9 +4,69 @@ const menuPanel = document.querySelector('#site-menu');
 const menuClose = document.querySelector('.menu-panel__close');
 const menuLinks = document.querySelectorAll('.menu-panel__nav a');
 const heroImages = document.querySelectorAll('[data-hero-depth]');
-const siteIntro = document.querySelector('#site-intro');
-const siteIntroVideo = siteIntro?.querySelector('video');
+const heroVideo = document.querySelector('.hero__video[data-loop-src]');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const playVideo = (video) => {
+  const promise = video.play();
+
+  if (promise && typeof promise.catch === 'function') {
+    promise.catch(() => {});
+  }
+};
+
+const switchHomeHeroToLoop = () => {
+  if (!heroVideo || heroVideo.dataset.loopStarted === 'true') {
+    return;
+  }
+
+  const loopSrc = heroVideo.dataset.loopSrc;
+
+  if (!loopSrc) {
+    return;
+  }
+
+  heroVideo.dataset.loopStarted = 'true';
+  heroVideo.loop = true;
+  heroVideo.setAttribute('loop', '');
+  const source = heroVideo.querySelector('source');
+
+  if (source) {
+    source.setAttribute('src', loopSrc);
+    heroVideo.removeAttribute('src');
+  } else {
+    heroVideo.src = loopSrc;
+  }
+
+  heroVideo.load();
+  playVideo(heroVideo);
+  body.classList.remove('home-logo-intro-playing');
+};
+
+const startHomeHeroSequence = () => {
+  if (!heroVideo || !body.classList.contains('home-logo-intro')) {
+    return;
+  }
+
+  if (prefersReducedMotion) {
+    switchHomeHeroToLoop();
+    return;
+  }
+
+  body.classList.add('home-logo-intro-playing');
+  heroVideo.loop = false;
+  heroVideo.removeAttribute('loop');
+
+  try {
+    heroVideo.currentTime = 0;
+  } catch (error) {
+    // Some browsers can reject seeking before metadata is ready.
+  }
+
+  heroVideo.addEventListener('ended', switchHomeHeroToLoop, { once: true });
+  window.setTimeout(switchHomeHeroToLoop, 5200);
+  playVideo(heroVideo);
+};
 
 const setLoadedState = () => {
   if (prefersReducedMotion) {
@@ -54,25 +114,7 @@ document.addEventListener('keydown', (event) => {
 setHeaderContrast();
 window.addEventListener('scroll', setHeaderContrast, { passive: true });
 
-const closeSiteIntro = () => {
-  if (!siteIntro) {
-    return;
-  }
-
-  siteIntro.classList.add('is-hidden');
-  siteIntro.setAttribute('aria-hidden', 'true');
-  body.classList.remove('site-intro-is-open');
-};
-
-if (siteIntro && siteIntroVideo && !prefersReducedMotion) {
-  body.classList.add('site-intro-is-open');
-  siteIntro.setAttribute('aria-hidden', 'false');
-  siteIntroVideo.play().catch(() => {});
-  window.setTimeout(closeSiteIntro, 4800);
-} else {
-  closeSiteIntro();
-}
-
+startHomeHeroSequence();
 setLoadedState();
 
 menuLinks.forEach((link, index) => {

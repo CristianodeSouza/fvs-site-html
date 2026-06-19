@@ -51,96 +51,6 @@ body::selection {
   color: var(--verde-profundo);
 }
 
-body.site-intro-is-open {
-  overflow: hidden;
-}
-
-.site-intro {
-  align-items: center;
-  background: #000;
-  display: grid;
-  inset: 0;
-  opacity: 1;
-  pointer-events: none;
-  position: fixed;
-  transition: opacity 820ms var(--ease-smooth), visibility 820ms var(--ease-smooth);
-  visibility: visible;
-  z-index: 5000;
-}
-
-.site-intro > * {
-  grid-area: 1 / 1;
-}
-
-.site-intro.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.site-intro__video {
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.site-intro__fallback {
-  align-items: center;
-  display: grid;
-  gap: 1.15rem;
-  justify-items: center;
-  opacity: 1;
-  z-index: 0;
-}
-
-.site-intro__fallback img {
-  animation: introFallbackUp 900ms var(--ease-smooth) 180ms both;
-  width: clamp(104px, 12vw, 152px);
-}
-
-.site-intro__fallback span {
-  animation: introFallbackLine 900ms var(--ease-smooth) 850ms both;
-  background: var(--pedra);
-  display: block;
-  height: 1px;
-  width: 160px;
-}
-
-.site-intro__fallback p {
-  animation: introFallbackUp 900ms var(--ease-smooth) 1.05s both;
-  color: color-mix(in srgb, var(--branco-quente) 62%, transparent);
-  font-size: 0.68rem;
-  font-weight: 400;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-}
-
-.site-intro__video {
-  position: relative;
-  z-index: 1;
-}
-
-@keyframes introFallbackUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes introFallbackLine {
-  from {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-  to {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -657,6 +567,13 @@ p {
   padding-bottom: clamp(1rem, 4vw, 4rem);
   position: relative;
   z-index: 2;
+}
+
+.home-logo-intro-playing .header,
+.home-logo-intro-playing .hero__content {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 520ms var(--ease-smooth);
 }
 
 .hero__eyebrow {
