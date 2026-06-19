@@ -165,7 +165,7 @@ if (heroImages.length && !prefersReducedMotion) {
   window.addEventListener('scroll', requestHeroDepth, { passive: true });
 }
 
-const galleryLinks = Array.from(document.querySelectorAll('.ernesto-gallery__item'));
+const galleryLinks = Array.from(document.querySelectorAll('[data-gallery-item], .ernesto-gallery__item'));
 const galleryLightbox = document.querySelector('#gallery-lightbox');
 const galleryLightboxImage = galleryLightbox?.querySelector('.gallery-lightbox__image');
 const galleryLightboxCount = galleryLightbox?.querySelector('.gallery-lightbox__count');
@@ -186,8 +186,10 @@ const setGalleryImage = (index) => {
   const activeImage = activeLink.querySelector('img');
   const imageNumber = String(activeGalleryIndex + 1).padStart(2, '0');
 
+  const galleryTitle = galleryLightbox?.dataset.galleryTitle || 'galeria';
+
   galleryLightboxImage.src = activeLink.href;
-  galleryLightboxImage.alt = activeImage?.alt || `Imagem ${imageNumber} do Ernesto 142`;
+  galleryLightboxImage.alt = activeImage?.alt || `Imagem ${imageNumber} da ${galleryTitle}`;
   galleryLightboxCount.textContent = `${imageNumber} / ${String(galleryLinks.length).padStart(2, '0')}`;
 };
 
