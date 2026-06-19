@@ -372,7 +372,21 @@ const startHomeHeroSequence = () => {
 
   heroVideo.loop = true;
   heroVideo.setAttribute('loop', '');
+  heroVideo.muted = true;
+  heroVideo.setAttribute('muted', '');
+  heroVideo.setAttribute('playsinline', '');
+  heroVideo.setAttribute('webkit-playsinline', '');
   playVideo(heroVideo);
+
+  const retryPlay = () => playVideo(heroVideo);
+
+  document.addEventListener('touchstart', retryPlay, { once: true, passive: true });
+  document.addEventListener('pointerdown', retryPlay, { once: true, passive: true });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      retryPlay();
+    }
+  });
 };
 
 const setLoadedState = () => {
