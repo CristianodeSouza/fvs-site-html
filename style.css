@@ -249,12 +249,13 @@ p {
 .header__logo {
   color: var(--branco-quente);
   text-shadow: 0 1px 22px color-mix(in srgb, var(--preto-quente) 42%, transparent);
-  width: clamp(2.35rem, 3.4vw, 3.15rem);
+  width: clamp(4.2rem, 5.4vw, 5.6rem);
 }
 
 .brand-signature {
   align-items: center;
-  display: inline-flex;
+  display: inline-grid;
+  gap: 0.28rem;
   justify-items: center;
   line-height: 1;
   text-transform: uppercase;
@@ -263,8 +264,20 @@ p {
 .brand-signature__image {
   display: block;
   height: auto;
-  max-width: 100%;
+  max-width: 3.15rem;
   width: 100%;
+}
+
+.brand-signature__descriptor {
+  color: currentColor;
+  display: block;
+  font-family: var(--font-body);
+  font-size: clamp(0.38rem, 0.48vw, 0.5rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  opacity: 0.92;
+  text-align: center;
 }
 
 .brand-signature__image--dark {
@@ -401,6 +414,15 @@ p {
 
 .menu-panel__brand .brand-signature__mark {
   font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+}
+
+.menu-panel__brand {
+  color: var(--branco-quente);
+  width: clamp(4.6rem, 7vw, 6.2rem);
+}
+
+.menu-panel__brand .brand-signature__image {
+  max-width: 3.3rem;
 }
 
 .menu-panel__nav {
@@ -3174,6 +3196,15 @@ body:not(.is-loaded) .hero__image--main {
   width: clamp(8rem, 13vw, 12rem);
 }
 
+.footer__logo .brand-signature__image {
+  max-width: 100%;
+}
+
+.footer__logo .brand-signature__descriptor {
+  font-size: clamp(0.5rem, 0.75vw, 0.68rem);
+  letter-spacing: 0.28em;
+}
+
 .footer__logo .brand-signature__mark {
   font-size: clamp(2.4rem, 5vw, 4.8rem);
 }
@@ -5356,7 +5387,7 @@ main > section,
     justify-self: start;
     order: 1;
     text-shadow: none;
-    width: 2.7rem;
+    width: 4.7rem;
   }
 
   .header__logo .brand-signature__image--light {
@@ -5390,6 +5421,15 @@ main > section,
   .brand-signature__tagline {
     font-size: 0.36rem;
     letter-spacing: 0.34em;
+  }
+
+  .brand-signature__image {
+    max-width: 2.8rem;
+  }
+
+  .brand-signature__descriptor {
+    font-size: 0.34rem;
+    letter-spacing: 0.2em;
   }
 
   .menu-panel__inner {
