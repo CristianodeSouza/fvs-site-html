@@ -3406,6 +3406,157 @@ body:not(.is-loaded) .hero__image--main {
   border-bottom: 1px solid color-mix(in srgb, var(--pedra) 24%, transparent);
 }
 
+.investment-hero .page-hero__content h1 {
+  max-width: 13.5ch;
+}
+
+.investment-section--lead {
+  padding-top: clamp(3rem, 5vw, 4.8rem);
+}
+
+.investment-article {
+  max-width: 900px;
+}
+
+.investment-article--lead {
+  display: grid;
+  gap: 1rem;
+}
+
+.investment-article__heading {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: clamp(1.7rem, 3vw, 2.8rem);
+  max-width: 780px;
+}
+
+.investment-article__heading h2 {
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 3.35rem);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.investment-article p,
+.investment-list li,
+.investment-pillar p,
+.investment-faq__item p {
+  color: color-mix(in srgb, currentColor 76%, transparent);
+  font-size: clamp(0.96rem, 1vw, 1.04rem);
+  font-weight: 300;
+  line-height: 1.82;
+}
+
+.investment-article p + p,
+.investment-pillar p + p {
+  margin-top: 1rem;
+}
+
+.investment-data-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.investment-data-grid article {
+  border: 1px solid color-mix(in srgb, var(--pedra) 32%, transparent);
+  display: grid;
+  gap: 0.35rem;
+  min-height: 8.8rem;
+  padding: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+.investment-data-grid span,
+.investment-pillar span {
+  color: var(--pedra);
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.investment-data-grid strong {
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.investment-quote-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: clamp(1.8rem, 3vw, 2.6rem) 0;
+}
+
+.investment-quote-grid blockquote {
+  border-left: 2px solid var(--pedra);
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.2vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.12;
+  padding: 0.2rem 0 0.2rem clamp(1rem, 2vw, 1.5rem);
+}
+
+.investment-pillars {
+  display: grid;
+  gap: 1rem;
+}
+
+.investment-pillar {
+  border: 1px solid color-mix(in srgb, var(--pedra) 28%, transparent);
+  display: grid;
+  gap: 0.95rem;
+  padding: clamp(1.35rem, 2.4vw, 2rem);
+}
+
+.investment-pillar h3,
+.investment-faq__item h3 {
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.investment-criteria-card {
+  background: color-mix(in srgb, var(--branco-quente) 70%, var(--off-white));
+}
+
+.investment-list {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: clamp(1.4rem, 2.4vw, 2rem) 0;
+}
+
+.investment-list li {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  padding: 0.85rem 0;
+}
+
+.investment-list li:last-child {
+  border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+}
+
+.investment-faq__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.investment-faq__item {
+  border: 1px solid color-mix(in srgb, var(--pedra) 28%, transparent);
+  display: grid;
+  gap: 0.8rem;
+  padding: clamp(1.25rem, 2vw, 1.7rem);
+}
+
 .page-facts {
   display: grid;
   gap: 1px;
@@ -5462,6 +5613,12 @@ main > section,
   .page-grid,
   .page-split,
   .page-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .investment-data-grid,
+  .investment-quote-grid,
+  .investment-faq__grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
