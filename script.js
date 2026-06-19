@@ -9,7 +9,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 let smoothScroller = null;
 let fallbackSmoothScroll = null;
 
-const loadScript = (src) => new Promise((resolve, reject) => {
+const loadScript = (src, vendor = 'motion') => new Promise((resolve, reject) => {
   const existingScript = document.querySelector(`script[src="${src}"]`);
 
   if (existingScript) {
@@ -26,7 +26,7 @@ const loadScript = (src) => new Promise((resolve, reject) => {
   const script = document.createElement('script');
   script.src = src;
   script.async = true;
-  script.dataset.motionVendor = 'lenis';
+  script.dataset.motionVendor = vendor;
 
   script.addEventListener('load', () => {
     script.dataset.loaded = 'true';
@@ -36,6 +36,21 @@ const loadScript = (src) => new Promise((resolve, reject) => {
   script.addEventListener('error', reject, { once: true });
   document.head.appendChild(script);
 });
+
+const loadScriptCandidates = async (sources, vendor) => {
+  let lastError = null;
+
+  for (const src of sources) {
+    try {
+      await loadScript(src, vendor);
+      return src;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError;
+};
 
 const initFallbackSmoothScroll = () => {
   if (fallbackSmoothScroll || prefersReducedMotion || window.innerWidth < 768) {
@@ -112,7 +127,7 @@ const initLenis = async () => {
   }
 
   try {
-    await loadScript('https://unpkg.com/lenis@1.3.23/dist/lenis.min.js');
+    await loadScript('https://unpkg.com/lenis@1.3.23/dist/lenis.min.js', 'lenis');
 
     if (!window.Lenis) {
       initFallbackSmoothScroll();
@@ -138,6 +153,128 @@ const initLenis = async () => {
     body.classList.add('has-smooth-scroll', 'has-lenis-scroll');
   } catch (error) {
     initFallbackSmoothScroll();
+  }
+};
+
+const initGsapMotion = async () => {
+  if (prefersReducedMotion) {
+    return;
+  }
+
+  try {
+    await loadScriptCandidates([
+      'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'
+    ], 'gsap');
+
+    await loadScriptCandidates([
+      'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'
+    ], 'gsap-scrolltrigger');
+
+    if (!window.gsap || !window.ScrollTrigger) {
+      return;
+    }
+
+    const { gsap, ScrollTrigger } = window;
+    gsap.registerPlugin(ScrollTrigger);
+    body.classList.add('has-gsap-motion');
+
+    const animateIn = (selector, options = {}) => {
+      gsap.utils.toArray(selector).forEach((element, index) => {
+        gsap.fromTo(element, {
+          autoAlpha: 0,
+          y: options.y ?? 72,
+          scale: options.scale ?? 0.96,
+          filter: options.filter ?? 'blur(10px)'
+        }, {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          filter: 'blur(0px)',
+          duration: options.duration ?? 1.25,
+          delay: Math.min(index * (options.stagger ?? 0.08), 0.32),
+          ease: options.ease ?? 'power3.out',
+          overwrite: 'auto',
+          scrollTrigger: {
+            trigger: element,
+            start: options.start ?? 'top 82%',
+            once: true
+          }
+        });
+      });
+    };
+
+    animateIn('.section-heading, .manifesto__inner, .projeto-detalhe__intro, .galeria__intro, .ernesto-gallery__intro, .investment-article', {
+      y: 88,
+      scale: 0.97,
+      duration: 1.35
+    });
+
+    animateIn('.empreendimento, .produto-especifico__grid article, .tipologia-card, .decisao__card, .confianca-fvs__grid article, .page-card, .investment-pillar, .investment-proof-card', {
+      y: 68,
+      scale: 0.94,
+      stagger: 0.1,
+      duration: 1.2
+    });
+
+    animateIn('.produto-imagens__item, .galeria__item, .galeria-proof, .ernesto-gallery__item', {
+      y: 96,
+      scale: 0.92,
+      filter: 'blur(8px)',
+      stagger: 0.055,
+      duration: 1.15
+    });
+
+    gsap.utils.toArray('.hero__content').forEach((element) => {
+      gsap.fromTo(element, {
+        autoAlpha: 0,
+        y: 58,
+        scale: 0.98,
+        filter: 'blur(8px)'
+      }, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        filter: 'blur(0px)',
+        duration: 1.35,
+        ease: 'power3.out',
+        delay: 0.28
+      });
+    });
+
+    gsap.to('.hero__image--main', {
+      yPercent: 10,
+      scale: 1.09,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.8
+      }
+    });
+
+    gsap.utils.toArray('.empreendimento__image, .galeria__image, .produto-imagens__item, .ernesto-gallery__item img').forEach((element) => {
+      gsap.fromTo(element, {
+        yPercent: -5,
+        scale: 1.04
+      }, {
+        yPercent: 7,
+        scale: 1.1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: element.closest('section, article, a') || element,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.75
+        }
+      });
+    });
+
+    ScrollTrigger.refresh();
+  } catch (error) {
+    body.classList.remove('has-gsap-motion');
   }
 };
 
@@ -436,3 +573,4 @@ if (prefersReducedMotion) {
 }
 
 initLenis();
+initGsapMotion();
