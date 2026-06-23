@@ -1636,20 +1636,11 @@ body:not(.is-loaded) .hero__image--main {
 }
 
 .empreendimento__content {
-  align-content: end;
+  align-content: center;
   background: var(--off-white);
   display: grid;
   min-width: 0;
-  padding: clamp(1.8rem, 4vw, 4rem);
-}
-
-.empreendimento__number {
-  color: var(--pedra);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  margin-bottom: clamp(2.8rem, 8vw, 8rem);
-  text-transform: uppercase;
+  padding: clamp(2.2rem, 4.4vw, 4.4rem);
 }
 
 .empreendimento__location {
@@ -1657,7 +1648,7 @@ body:not(.is-loaded) .hero__image--main {
   font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.14em;
-  margin-bottom: 0.95rem;
+  margin-bottom: clamp(0.85rem, 1.2vw, 1.15rem);
   text-transform: uppercase;
 }
 
@@ -1665,14 +1656,14 @@ body:not(.is-loaded) .hero__image--main {
   color: var(--verde-profundo);
   font-size: clamp(3.2rem, 6vw, 6.4rem);
   line-height: 0.9;
-  margin-bottom: clamp(1.2rem, 2vw, 1.8rem);
+  margin-bottom: clamp(1rem, 1.8vw, 1.55rem);
 }
 
 .empreendimento__concept {
   color: color-mix(in srgb, var(--preto-quente) 78%, var(--verde-serra));
   font-size: clamp(1.08rem, 1.35vw, 1.28rem);
   line-height: 1.8;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(1.7rem, 3.2vw, 2.5rem);
   max-width: 34rem;
   overflow-wrap: anywhere;
 }
@@ -4724,10 +4715,6 @@ main > section,
     max-width: min(20rem, calc(100vw - 3rem));
   }
 
-  .empreendimento__number {
-    margin-bottom: 3rem;
-  }
-
   .empreendimento__name {
     font-size: clamp(2.8rem, 16vw, 4.2rem);
   }
@@ -5841,20 +5828,16 @@ main > section,
 
   .empreendimento__content {
     align-content: start;
-    padding: 1.45rem 1.1rem 1.6rem;
+    padding: 1.55rem 1.1rem 1.65rem;
   }
 
   .empreendimento__content > * {
     max-width: min(19rem, calc(100vw - 3rem));
   }
 
-  .empreendimento__number {
-    margin-bottom: 1.15rem;
-  }
-
   .empreendimento__location {
     line-height: 1.45;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.7rem;
   }
 
   .empreendimento__name {
