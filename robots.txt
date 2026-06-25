@@ -29,3 +29,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://fvsinc.com.br/sitemap.xml
+Sitemap: https://fvsinc.com.br/sitemap-pages.xml
+Sitemap: https://fvsinc.com.br/sitemap-images.xml
