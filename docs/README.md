@@ -16,6 +16,7 @@ Qualquer documento enviado com briefing, revisao, regra de conteudo, SEO, GEO, d
 - `MOTION_SYSTEM.md` - padroes de movimento e animacoes.
 - `PRD_REESTRUTURACAO_SITE_FVS.md` - PRD completo da reestruturacao de usabilidade e interacao.
 - `README_CODEX_REESTRUTURACAO.md` - instrucoes de leitura, prioridade e fluxo de trabalho para o Codex.
+- `RELATORIO_FASE_1_FUNDACAO.md` - registro da primeira entrega tecnica da Fase 1, com tracking GA4 sem redesenho.
 - `SEO.md` - diretrizes de SEO, indexacao e sitemap.
 - `USABILIDADE_INTERACAO_SITE_FVS.pdf` - PDF original de usabilidade e interacao enviado como fonte primaria.
 - `USABILIDADE_INTERACAO_SITE_FVS.md` - versao em Markdown extraida do PDF para leitura e busca no repositorio.

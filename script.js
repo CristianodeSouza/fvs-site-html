@@ -9,6 +9,52 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 let smoothScroller = null;
 let fallbackSmoothScroll = null;
 
+const cleanText = (value = '') => value.replace(/\s+/g, ' ').trim();
+
+const getLinkLabel = (link) => cleanText(link?.textContent || link?.getAttribute('aria-label') || 'link');
+
+const getInternalPath = (href = '') => {
+  try {
+    const url = new URL(href, window.location.origin);
+
+    if (url.origin !== window.location.origin) {
+      return url.hostname;
+    }
+
+    return `${url.pathname}${url.hash}`;
+  } catch (error) {
+    return href.split('?')[0];
+  }
+};
+
+const trackEvent = (eventName, params = {}) => {
+  if (typeof window.gtag !== 'function') {
+    return;
+  }
+
+  window.gtag('event', eventName, {
+    page_path: window.location.pathname,
+    page_title: document.title,
+    ...params
+  });
+};
+
+const getProjectSlugFromHref = (href = '') => {
+  if (href.includes('manhattan-residence')) {
+    return 'manhattan-residence';
+  }
+
+  if (href.includes('ernesto-142')) {
+    return 'ernesto-142';
+  }
+
+  if (href.includes('empreendimentos-imobiliarios')) {
+    return 'empreendimentos';
+  }
+
+  return undefined;
+};
+
 const loadScript = (src, vendor = 'motion') => new Promise((resolve, reject) => {
   const existingScript = document.querySelector(`script[src="${src}"]`);
 
@@ -554,18 +600,41 @@ const closeGalleryLightbox = () => {
   galleryLinks[activeGalleryIndex]?.focus({ preventScroll: true });
 };
 
+const trackGalleryNavigation = (direction) => {
+  const activeLink = galleryLinks[activeGalleryIndex];
+  const activeImage = activeLink?.querySelector('img');
+
+  trackEvent('navigate_gallery', {
+    gallery_title: galleryLightbox?.dataset.galleryTitle || document.title,
+    navigation_direction: direction,
+    image_index: activeGalleryIndex + 1,
+    image_alt: cleanText(activeImage?.alt || '')
+  });
+};
+
 if (galleryLinks.length && galleryLightbox) {
   galleryLinks.forEach((link, index) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
       openGalleryLightbox(index);
+      trackEvent('open_gallery', {
+        gallery_title: galleryLightbox.dataset.galleryTitle || document.title,
+        image_index: index + 1,
+        image_path: getInternalPath(link.href)
+      });
     });
   });
 
   galleryLightboxClose?.addEventListener('click', closeGalleryLightbox);
   galleryLightboxBackdrop?.addEventListener('click', closeGalleryLightbox);
-  galleryLightboxPrev?.addEventListener('click', () => setGalleryImage(activeGalleryIndex - 1));
-  galleryLightboxNext?.addEventListener('click', () => setGalleryImage(activeGalleryIndex + 1));
+  galleryLightboxPrev?.addEventListener('click', () => {
+    setGalleryImage(activeGalleryIndex - 1);
+    trackGalleryNavigation('previous');
+  });
+  galleryLightboxNext?.addEventListener('click', () => {
+    setGalleryImage(activeGalleryIndex + 1);
+    trackGalleryNavigation('next');
+  });
 }
 
 document.addEventListener('keydown', (event) => {
@@ -579,10 +648,88 @@ document.addEventListener('keydown', (event) => {
 
   if (event.key === 'ArrowLeft') {
     setGalleryImage(activeGalleryIndex - 1);
+    trackGalleryNavigation('keyboard_previous');
   }
 
   if (event.key === 'ArrowRight') {
     setGalleryImage(activeGalleryIndex + 1);
+    trackGalleryNavigation('keyboard_next');
+  }
+});
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a');
+
+  if (!link || !link.href) {
+    return;
+  }
+
+  const href = link.getAttribute('href') || '';
+  const label = getLinkLabel(link);
+  const destination = getInternalPath(link.href);
+  const projectSlug = getProjectSlugFromHref(href);
+  const isProjectCard = Boolean(link.closest('.empreendimento, .page-card'));
+  const isPrimaryCta = Boolean(link.closest('.cta-consultivo, .page-cta, .hero__actions') || link.className.includes('button') || link.className.includes('cta'));
+  const isMenuLink = Boolean(link.closest('.header__nav, .menu-panel__nav, .footer'));
+
+  if (href.includes('wa.me')) {
+    trackEvent('click_whatsapp', {
+      cta_label: label,
+      cta_position: link.closest('footer') ? 'footer' : link.closest('.menu-panel') ? 'menu' : link.closest('.cta-consultivo') ? 'cta_consultivo' : 'content',
+      project_slug: projectSlug
+    });
+    return;
+  }
+
+  if (href.includes('instagram.com')) {
+    trackEvent('click_social', {
+      network: 'instagram',
+      cta_label: label,
+      cta_position: link.closest('footer') ? 'footer' : link.closest('.menu-panel') ? 'menu' : 'content'
+    });
+    return;
+  }
+
+  if (href.startsWith('mailto:')) {
+    trackEvent('click_email', {
+      cta_label: label,
+      email_type: href.includes('engenharia') ? 'engenharia' : 'comercial'
+    });
+    return;
+  }
+
+  if (href.startsWith('tel:')) {
+    trackEvent('click_phone', {
+      cta_label: label
+    });
+    return;
+  }
+
+  if (isProjectCard && projectSlug) {
+    trackEvent('click_project_card', {
+      cta_label: label,
+      project_slug: projectSlug,
+      destination
+    });
+    return;
+  }
+
+  if (isPrimaryCta) {
+    trackEvent('click_primary_cta', {
+      cta_label: label,
+      cta_position: link.closest('section')?.id || link.closest('main, footer')?.tagName?.toLowerCase() || 'content',
+      project_slug: projectSlug,
+      destination
+    });
+    return;
+  }
+
+  if (isMenuLink) {
+    trackEvent('click_navigation', {
+      cta_label: label,
+      navigation_area: link.closest('.menu-panel') ? 'menu_panel' : link.closest('footer') ? 'footer' : 'header',
+      destination
+    });
   }
 });
 
