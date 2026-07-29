@@ -227,21 +227,21 @@ const initGsapMotion = async () => {
       gsap.utils.toArray(selector).forEach((element, index) => {
         gsap.fromTo(element, {
           autoAlpha: 0,
-          y: isMobileViewport ? (options.mobileY ?? 44) : (options.y ?? 72),
-          scale: isMobileViewport ? (options.mobileScale ?? 0.97) : (options.scale ?? 0.96),
-          filter: isMobileViewport ? (options.mobileFilter ?? 'blur(6px)') : (options.filter ?? 'blur(10px)')
+          y: isMobileViewport ? (options.mobileY ?? 22) : (options.y ?? 72),
+          scale: isMobileViewport ? (options.mobileScale ?? 0.99) : (options.scale ?? 0.96),
+          filter: isMobileViewport ? (options.mobileFilter ?? 'blur(2px)') : (options.filter ?? 'blur(10px)')
         }, {
           autoAlpha: 1,
           y: 0,
           scale: 1,
           filter: 'blur(0px)',
-          duration: options.duration ?? 1.25,
-          delay: Math.min(index * (options.stagger ?? 0.08), 0.32),
+          duration: isMobileViewport ? (options.mobileDuration ?? 0.58) : (options.duration ?? 1.25),
+          delay: isMobileViewport ? Math.min(index * (options.mobileStagger ?? 0.035), 0.1) : Math.min(index * (options.stagger ?? 0.08), 0.32),
           ease: options.ease ?? 'power3.out',
           overwrite: 'auto',
           scrollTrigger: {
             trigger: element,
-            start: options.start ?? 'top 82%',
+            start: isMobileViewport ? (options.mobileStart ?? 'top 94%') : (options.start ?? 'top 82%'),
             once: true
           }
         });
@@ -250,30 +250,37 @@ const initGsapMotion = async () => {
 
     animateIn('.section-heading, .manifesto__inner, .projeto-detalhe__intro, .galeria__intro, .ernesto-gallery__intro, .investment-article', {
       y: 88,
-      mobileY: 56,
+      mobileY: 20,
       scale: 0.97,
-      mobileScale: 0.98,
-      duration: 1.35
+      mobileScale: 0.99,
+      mobileFilter: 'blur(1px)',
+      duration: 1.35,
+      mobileDuration: 0.54
     });
 
     animateIn('.empreendimento, .produto-especifico__grid article, .tipologia-card, .decisao__card, .confianca-fvs__grid article, .page-card, .investment-pillar, .investment-proof-card', {
       y: 68,
-      mobileY: 46,
+      mobileY: 18,
       scale: 0.94,
-      mobileScale: 0.97,
+      mobileScale: 0.99,
+      mobileFilter: 'blur(0px)',
       stagger: 0.1,
-      duration: 1.2
+      duration: 1.2,
+      mobileDuration: 0.48,
+      mobileStagger: 0.02
     });
 
     animateIn('.produto-imagens__item, .galeria__item, .galeria-proof, .ernesto-gallery__item', {
       y: 96,
-      mobileY: 52,
+      mobileY: 18,
       scale: 0.92,
-      mobileScale: 0.96,
+      mobileScale: 0.99,
       filter: 'blur(8px)',
-      mobileFilter: 'blur(5px)',
+      mobileFilter: 'blur(0px)',
       stagger: 0.055,
-      duration: 1.15
+      duration: 1.15,
+      mobileDuration: 0.48,
+      mobileStagger: 0.015
     });
 
     gsap.utils.toArray('.hero__content').forEach((element) => {
@@ -329,6 +336,7 @@ const initGsapMotion = async () => {
 };
 
 const initLocalVisualMotion = () => {
+  const isMobileViewport = window.matchMedia('(max-width: 760px)').matches;
   const motionGroups = [
     {
       selector: '.manifesto__text, .section-heading h2, .projeto-detalhe__intro h2, .tipologias__intro h2, .decisao__intro h2, .investment-article h2, .page-section__heading h2',
@@ -393,8 +401,8 @@ const initLocalVisualMotion = () => {
         motionObserver.unobserve(entry.target);
       });
     }, {
-      rootMargin: '0px 0px 14% 0px',
-      threshold: 0.04
+      rootMargin: isMobileViewport ? '0px 0px 46% 0px' : '0px 0px 14% 0px',
+      threshold: isMobileViewport ? 0.01 : 0.04
     });
 
     motionItems.forEach((element) => motionObserver.observe(element));
