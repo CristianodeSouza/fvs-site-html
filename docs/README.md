@@ -7,11 +7,26 @@ Qualquer documento enviado com briefing, revisao, regra de conteudo, SEO, GEO, d
 ## Documentos Atuais
 
 - `ACCEPTANCE_CRITERIA.md` - criterios de aceite do projeto.
+- `AUDITORIA_TECNICA_OBRIGATORIA.md` - auditoria tecnica obrigatoria antes de grandes implementacoes.
 - `CONTENT_STRUCTURE.md` - estrutura editorial e organizacao de conteudo.
 - `DEPLOYMENT.md` - fluxo de publicacao e deploy.
 - `DESIGN_SYSTEM.md` - padroes visuais, componentes, tipografia e UI.
+- `IMPLEMENTATION_PLAN_REESTRUTURACAO.md` - plano tecnico de execucao para a reestruturacao.
 - `MOTION_SYSTEM.md` - padroes de movimento e animacoes.
+- `PRD_REESTRUTURACAO_SITE_FVS.md` - PRD completo da reestruturacao de usabilidade e interacao.
+- `README_CODEX_REESTRUTURACAO.md` - instrucoes de leitura, prioridade e fluxo de trabalho para o Codex.
 - `SEO.md` - diretrizes de SEO, indexacao e sitemap.
+- `USABILIDADE_INTERACAO_SITE_FVS.pdf` - PDF original de usabilidade e interacao enviado como fonte primaria.
+- `USABILIDADE_INTERACAO_SITE_FVS.md` - versao em Markdown extraida do PDF para leitura e busca no repositorio.
+
+## Ordem De Leitura Para Reestruturacao
+
+1. `README_CODEX_REESTRUTURACAO.md`
+2. `PRD_REESTRUTURACAO_SITE_FVS.md`
+3. `USABILIDADE_INTERACAO_SITE_FVS.pdf`
+4. `USABILIDADE_INTERACAO_SITE_FVS.md` como apoio pesquisavel ao PDF
+5. `AUDITORIA_TECNICA_OBRIGATORIA.md`
+6. `IMPLEMENTATION_PLAN_REESTRUTURACAO.md`
 
 ## Como Registrar Novas Orientacoes
 
