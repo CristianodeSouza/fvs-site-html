@@ -204,6 +204,10 @@ p {
   color: var(--pedra);
 }
 
+.header__link[aria-current="page"] {
+  color: var(--pedra);
+}
+
 .header__link {
   white-space: nowrap;
 }
@@ -472,6 +476,11 @@ p {
   color: var(--pedra-clara);
   border-color: color-mix(in srgb, var(--pedra-clara) 44%, transparent);
   transform: translateX(0.4rem);
+}
+
+.menu-panel__nav a[aria-current="page"] {
+  color: var(--pedra-clara);
+  border-color: color-mix(in srgb, var(--pedra-clara) 44%, transparent);
 }
 
 .menu-panel__context {

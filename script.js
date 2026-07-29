@@ -452,6 +452,31 @@ const setHeaderContrast = () => {
   body.classList.toggle('header-is-scrolled', window.scrollY > 24);
 };
 
+const markActiveNavigation = () => {
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+
+  document.querySelectorAll('.header__link, .menu-panel__nav a').forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    const path = getInternalPath(link.href).split('#')[0].replace(/\/$/, '') || '/';
+    const isMenuPanelLink = Boolean(link.closest('.menu-panel__nav'));
+    let isActive = path === currentPath;
+
+    if (currentPath === '/' && isMenuPanelLink) {
+      isActive = href === '/';
+    } else if (currentPath === '/' && href.includes('#manifesto')) {
+      isActive = true;
+    } else if (currentPath.startsWith('/empreendimentos-imobiliarios') && path === '/empreendimentos-imobiliarios') {
+      isActive = true;
+    }
+
+    if (isActive) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+};
+
 const setMenuState = (isOpen) => {
   if (!menuButton || !menuPanel) {
     return;
@@ -481,6 +506,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 setHeaderContrast();
+markActiveNavigation();
 window.addEventListener('scroll', setHeaderContrast, { passive: true });
 
 startHomeHeroSequence();
