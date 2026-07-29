@@ -216,11 +216,18 @@ p {
   align-items: center;
   display: inline-flex;
   gap: 0.74rem;
+  justify-content: center;
+  min-height: 2.75rem;
+  min-width: 2.95rem;
+  padding: 0.6rem 0.38rem;
+  position: relative;
+  z-index: 45;
 }
 
 .header__menu-button span {
   background: currentColor;
   display: block;
+  flex: 0 0 auto;
   height: 1px;
   position: relative;
   width: 2.2rem;
@@ -339,7 +346,7 @@ p {
   pointer-events: none;
   position: fixed;
   transform: translateY(-1.5rem);
-  transition: opacity var(--motion-normal) var(--ease-smooth), transform var(--motion-normal) var(--ease-smooth), visibility var(--motion-normal) var(--ease-smooth);
+  transition: opacity var(--motion-normal) var(--ease-smooth), transform var(--motion-normal) var(--ease-smooth);
   visibility: hidden;
   z-index: 40;
 }
@@ -371,6 +378,18 @@ p {
   pointer-events: auto;
   transform: none;
   visibility: visible;
+}
+
+body.menu-is-open .menu-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  visibility: visible;
+}
+
+body.menu-is-open .menu-panel__nav a {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .menu-panel__inner {
