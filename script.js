@@ -312,22 +312,24 @@ const initGsapMotion = async () => {
       }
     });
 
-    gsap.utils.toArray('.empreendimento__image, .galeria__image, .produto-imagens__item, .ernesto-gallery__item img').forEach((element) => {
-      gsap.fromTo(element, {
-        yPercent: isMobileViewport ? -2 : -5,
-        scale: isMobileViewport ? 1.015 : 1.04
-      }, {
-        yPercent: isMobileViewport ? 3 : 7,
-        scale: isMobileViewport ? 1.04 : 1.1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: element.closest('section, article, a') || element,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 0.75
-        }
+    if (!isMobileViewport) {
+      gsap.utils.toArray('.empreendimento__image, .galeria__image, .produto-imagens__item, .ernesto-gallery__item img').forEach((element) => {
+        gsap.fromTo(element, {
+          yPercent: -5,
+          scale: 1.04
+        }, {
+          yPercent: 7,
+          scale: 1.1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: element.closest('section, article, a') || element,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.75
+          }
+        });
       });
-    });
+    }
 
     ScrollTrigger.refresh();
   } catch (error) {

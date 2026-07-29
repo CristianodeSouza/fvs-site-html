@@ -6397,3 +6397,54 @@ main > section,
     line-height: 1.58;
   }
 }
+
+@media (max-width: 760px) {
+  .empreendimento,
+  .page-card--image,
+  .projeto-detalhe__proofs figure,
+  .produto-imagens__item,
+  .galeria__item,
+  .galeria-proof,
+  .ernesto-gallery__item {
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .empreendimento__image,
+  .projeto-detalhe__thumb,
+  .galeria__image,
+  .galeria-proof,
+  .ernesto-gallery__item img {
+    transform: none !important;
+    transition: filter 420ms var(--ease-smooth);
+    will-change: auto;
+  }
+
+  .empreendimento:hover .empreendimento__image,
+  .projeto-detalhe__proofs figure:hover .projeto-detalhe__thumb,
+  .galeria__item:hover .galeria__image,
+  .ernesto-gallery__item:hover img {
+    filter: none;
+    transform: none !important;
+  }
+
+  .empreendimento__image {
+    display: block;
+    flex: none;
+    min-height: clamp(260px, 78vw, 390px);
+    position: relative;
+    z-index: 0;
+  }
+
+  .empreendimento__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .ernesto-gallery__item img {
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+  }
+}
