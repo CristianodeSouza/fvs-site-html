@@ -8,6 +8,7 @@ Qualquer documento enviado com briefing, revisao, regra de conteudo, SEO, GEO, d
 
 - `ACCEPTANCE_CRITERIA.md` - criterios de aceite do projeto.
 - `AUDITORIA_ATUAL_SITE_FVS.md` - auditoria tecnica do estado atual do site antes da reestruturacao.
+- `AUDITORIA_COMPARATIVA_PRD_IMPLEMENTACAO.md` - comparativo entre PRD/PDF, criterios de aceite e o que esta publicado em producao.
 - `AUDITORIA_TECNICA_OBRIGATORIA.md` - auditoria tecnica obrigatoria antes de grandes implementacoes.
 - `CONTENT_STRUCTURE.md` - estrutura editorial e organizacao de conteudo.
 - `DEPLOYMENT.md` - fluxo de publicacao e deploy.
