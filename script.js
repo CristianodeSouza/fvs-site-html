@@ -203,6 +203,10 @@ const initLenis = async () => {
 };
 
 const initGsapMotion = async () => {
+  if (window.matchMedia('(max-width: 760px)').matches) {
+    return;
+  }
+
   try {
     await loadScriptCandidates([
       'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js',
@@ -339,6 +343,11 @@ const initGsapMotion = async () => {
 
 const initLocalVisualMotion = () => {
   const isMobileViewport = window.matchMedia('(max-width: 760px)').matches;
+  if (isMobileViewport) {
+    body.classList.add('has-mobile-safe-motion');
+    return;
+  }
+
   const motionGroups = [
     {
       selector: '.manifesto__text, .section-heading h2, .projeto-detalhe__intro h2, .tipologias__intro h2, .decisao__intro h2, .investment-article h2, .page-section__heading h2',
@@ -510,7 +519,7 @@ const initContactForm = () => {
     submit.disabled = true;
     submit.classList.add('is-loading');
     submit.setAttribute('aria-busy', 'true');
-    status.textContent = 'Preparando sua conversa...';
+    status.textContent = 'Abrindo o WhatsApp para continuar o atendimento...';
     status.dataset.state = 'loading';
     window.setTimeout(() => {
       form.classList.remove('is-error');
@@ -521,7 +530,7 @@ const initContactForm = () => {
       submit.removeAttribute('aria-busy');
       trackEvent('submit_contact_form', { interest: data.get('interest') });
       window.location.assign(whatsappUrl);
-    }, 420);
+    }, 700);
   });
 };
 
