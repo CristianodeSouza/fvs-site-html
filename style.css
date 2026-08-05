@@ -5207,6 +5207,48 @@ main > section,
   }
 }
 
+/* Home now presents only the essential paths; the full material lives on its owner pages. */
+.home-architecture-preview {
+  padding: clamp(4.5rem, 9vw, 8rem) 0;
+  border-top: 1px solid rgba(140, 106, 63, 0.24);
+  background: var(--branco-quente);
+}
+
+.home-architecture-preview--territory {
+  background: var(--off-white);
+}
+
+.home-architecture-preview__inner {
+  max-width: 52rem;
+}
+
+.home-architecture-preview h2 {
+  max-width: 44rem;
+  margin: 1rem 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.15rem, 4vw, 4.4rem);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.home-architecture-preview p {
+  max-width: 40rem;
+  margin: 0 0 1.65rem;
+  font-size: clamp(1rem, 1.4vw, 1.16rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 760px) {
+  .home-architecture-preview {
+    padding: 3.5rem 0;
+  }
+
+  .home-architecture-preview h2 {
+    font-size: clamp(2.15rem, 10vw, 3.15rem);
+    line-height: 1.02;
+  }
+}
+
 @media (max-width: 460px) {
   .header__menu-button {
     font-size: 0;
