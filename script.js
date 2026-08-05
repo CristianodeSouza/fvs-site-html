@@ -487,6 +487,44 @@ const markActiveNavigation = () => {
   });
 };
 
+const initContactForm = () => {
+  const form = document.querySelector('[data-contact-form]');
+  const status = form?.querySelector('[data-form-status]');
+  const submit = form?.querySelector('button[type="submit"]');
+
+  if (!form || !status || !submit) return;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.classList.add('is-error');
+      status.textContent = 'Confira os campos obrigatórios para continuar.';
+      status.dataset.state = 'error';
+      form.querySelector(':invalid')?.focus();
+      return;
+    }
+
+    const data = new FormData(form);
+    const message = `Olá, vim pelo site da FVS. Meu nome é ${data.get('name')}. Interesse: ${data.get('interest')}. ${data.get('message')}`;
+    const whatsappUrl = `https://wa.me/5554999214824?text=${encodeURIComponent(message)}`;
+    submit.disabled = true;
+    submit.classList.add('is-loading');
+    submit.setAttribute('aria-busy', 'true');
+    status.textContent = 'Preparando sua conversa...';
+    status.dataset.state = 'loading';
+    window.setTimeout(() => {
+      form.classList.remove('is-error');
+      status.textContent = 'Tudo certo. Abrindo o WhatsApp para continuar o atendimento.';
+      status.dataset.state = 'success';
+      submit.classList.remove('is-loading');
+      submit.disabled = false;
+      submit.removeAttribute('aria-busy');
+      trackEvent('submit_contact_form', { interest: data.get('interest') });
+      window.location.assign(whatsappUrl);
+    }, 420);
+  });
+};
+
 const setMenuState = (isOpen) => {
   if (!menuButton || !menuPanel) {
     return;
@@ -809,3 +847,4 @@ if (prefersReducedMotion) {
 initLenis();
 initLocalVisualMotion();
 initGsapMotion();
+initContactForm();
