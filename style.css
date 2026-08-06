@@ -3886,20 +3886,43 @@ body:not(.is-loaded) .hero__image--main {
 }
 
 .page-cta a {
-  border: 1px solid currentColor;
-  color: inherit;
+  border: 0;
+  color: var(--verde-profundo);
   display: inline-flex;
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.12em;
-  padding: 0.9rem 1.2rem;
+  padding: 0 0 0.35rem;
+  position: relative;
   text-transform: uppercase;
 }
 
+.page-cta a::after {
+  background: currentColor;
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-fast) var(--ease-smooth);
+  width: 100%;
+}
+
 .page-cta a:hover {
-  background: var(--pedra);
-  border-color: var(--pedra);
-  color: var(--verde-profundo);
+  color: var(--pedra);
+}
+
+.page-cta a:hover::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 760px) {
+  .page-cta a {
+    justify-content: flex-start;
+    text-align: left;
+  }
 }
 
 /* Site-wide editorial composition pass */
