@@ -3419,6 +3419,10 @@ body:not(.is-loaded) .hero__image--main {
   max-width: 560px;
 }
 
+.page-hero__cta {
+  margin-top: 1.55rem;
+}
+
 .page-section {
   padding: clamp(4.2rem, 6.8vw, 6.8rem) clamp(1.25rem, 4vw, 4rem);
 }
