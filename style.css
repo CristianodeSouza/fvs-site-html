@@ -2995,6 +2995,10 @@ body:not(.is-loaded) .hero__image--main {
   grid-row: span 2;
 }
 
+.project-gallery__open {
+  display: none;
+}
+
 .gallery-lightbox {
   align-items: center;
   display: grid;
@@ -5920,6 +5924,59 @@ main > section,
   .contact-form input, .contact-form select, .contact-form textarea, .contact-form__submit { min-height: 48px; }
   .contact-form textarea { min-height: 112px; }
   .page-section__heading p, .page-card p, .page-card li { max-width: none; }
+
+  .project-gallery {
+    grid-auto-rows: 150px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-gallery > :nth-child(n + 7) {
+    display: none;
+  }
+
+  .project-gallery .ernesto-gallery__item--featured,
+  .project-gallery .ernesto-gallery__item--wide {
+    grid-column: span 2;
+  }
+
+  .project-gallery .ernesto-gallery__item--tall,
+  .project-gallery .ernesto-gallery__item--featured {
+    grid-row: span 2;
+  }
+
+  .project-gallery__open {
+    align-items: center;
+    background: transparent;
+    border: 1px solid color-mix(in srgb, var(--verde-profundo) 42%, transparent);
+    color: var(--verde-profundo);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 600;
+    gap: 0.7rem;
+    justify-content: space-between;
+    letter-spacing: 0.12em;
+    margin-top: 1rem;
+    min-height: 3.25rem;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .project-gallery__open span {
+    color: color-mix(in srgb, var(--verde-profundo) 64%, transparent);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .project-gallery__open:focus-visible,
+  .project-gallery a:focus-visible {
+    outline: 2px solid var(--pedra);
+    outline-offset: 3px;
+  }
 }
 
 .cta-consultivo__panel p {

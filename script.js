@@ -629,115 +629,67 @@ if (heroImages.length && !prefersReducedMotion) {
   window.addEventListener('scroll', requestHeroDepth, { passive: true });
 }
 
-const galleryLinks = Array.from(document.querySelectorAll('[data-gallery-item], .ernesto-gallery__item'));
-const galleryLightbox = document.querySelector('#gallery-lightbox');
-const galleryLightboxImage = galleryLightbox?.querySelector('.gallery-lightbox__image');
-const galleryLightboxCount = galleryLightbox?.querySelector('.gallery-lightbox__count');
-const galleryLightboxClose = galleryLightbox?.querySelector('.gallery-lightbox__close');
-const galleryLightboxBackdrop = galleryLightbox?.querySelector('.gallery-lightbox__backdrop');
-const galleryLightboxPrev = galleryLightbox?.querySelector('.gallery-lightbox__control--prev');
-const galleryLightboxNext = galleryLightbox?.querySelector('.gallery-lightbox__control--next');
-let activeGalleryIndex = 0;
+const projectGalleries = Array.from(document.querySelectorAll('[data-project-gallery]'));
 
-const setGalleryImage = (index) => {
-  if (!galleryLightboxImage || !galleryLightboxCount || !galleryLinks.length) {
+const initializeProjectGalleries = async () => {
+  if (!projectGalleries.length) {
     return;
   }
 
-  activeGalleryIndex = (index + galleryLinks.length) % galleryLinks.length;
+  const { default: PhotoSwipeLightbox } = await import('/assets/vendor/photoswipe/photoswipe-lightbox.esm.js');
 
-  const activeLink = galleryLinks[activeGalleryIndex];
-  const activeImage = activeLink.querySelector('img');
-  const imageNumber = String(activeGalleryIndex + 1).padStart(2, '0');
+  projectGalleries.forEach((gallery) => {
+    const items = Array.from(gallery.querySelectorAll('a[data-gallery-item]'));
+    const openButton = gallery.parentElement?.querySelector('[data-project-gallery-open]');
 
-  const galleryTitle = galleryLightbox?.dataset.galleryTitle || 'galeria';
+    if (!items.length) {
+      return;
+    }
 
-  galleryLightboxImage.src = activeLink.href;
-  galleryLightboxImage.alt = activeImage?.alt || `Imagem ${imageNumber} da ${galleryTitle}`;
-  galleryLightboxCount.textContent = `${imageNumber} / ${String(galleryLinks.length).padStart(2, '0')}`;
-};
+    const lightbox = new PhotoSwipeLightbox({
+      arrowNextTitle: 'Próxima imagem',
+      arrowPrevTitle: 'Imagem anterior',
+      bgOpacity: 0.96,
+      children: 'a[data-gallery-item]',
+      closeTitle: 'Fechar galeria',
+      errorMsg: 'Não foi possível carregar esta imagem.',
+      gallery,
+      pinchToClose: true,
+      preload: [1, 2],
+      pswpModule: () => import('/assets/vendor/photoswipe/photoswipe.esm.js'),
+      returnFocus: true,
+      showHideAnimationType: 'zoom',
+      zoomTitle: 'Ampliar imagem'
+    });
 
-const openGalleryLightbox = (index) => {
-  if (!galleryLightbox) {
-    return;
-  }
+    lightbox.on('change', () => {
+      const current = lightbox.pswp?.currSlide?.data?.element;
+      const image = current?.querySelector('img');
 
-  setGalleryImage(index);
-  galleryLightbox.setAttribute('aria-hidden', 'false');
-  body.classList.add('gallery-lightbox-is-open');
-  smoothScroller?.stop();
-  fallbackSmoothScroll?.stop();
-  galleryLightboxClose?.focus({ preventScroll: true });
-};
-
-const closeGalleryLightbox = () => {
-  if (!galleryLightbox) {
-    return;
-  }
-
-  galleryLightbox.setAttribute('aria-hidden', 'true');
-  body.classList.remove('gallery-lightbox-is-open');
-  galleryLightboxImage?.removeAttribute('src');
-  smoothScroller?.start();
-  fallbackSmoothScroll?.start();
-  galleryLinks[activeGalleryIndex]?.focus({ preventScroll: true });
-};
-
-const trackGalleryNavigation = (direction) => {
-  const activeLink = galleryLinks[activeGalleryIndex];
-  const activeImage = activeLink?.querySelector('img');
-
-  trackEvent('navigate_gallery', {
-    gallery_title: galleryLightbox?.dataset.galleryTitle || document.title,
-    navigation_direction: direction,
-    image_index: activeGalleryIndex + 1,
-    image_alt: cleanText(activeImage?.alt || '')
-  });
-};
-
-if (galleryLinks.length && galleryLightbox) {
-  galleryLinks.forEach((link, index) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      openGalleryLightbox(index);
-      trackEvent('open_gallery', {
-        gallery_title: galleryLightbox.dataset.galleryTitle || document.title,
-        image_index: index + 1,
-        image_path: getInternalPath(link.href)
+      trackEvent('navigate_gallery', {
+        gallery_title: gallery.getAttribute('aria-label') || document.title,
+        image_alt: cleanText(image?.alt || ''),
+        image_index: (lightbox.pswp?.currIndex || 0) + 1
       });
     });
+
+    lightbox.on('afterInit', () => {
+      trackEvent('open_gallery', {
+        gallery_title: gallery.getAttribute('aria-label') || document.title,
+        image_index: (lightbox.pswp?.currIndex || 0) + 1
+      });
+    });
+
+    lightbox.init();
+
+    openButton?.addEventListener('click', () => {
+      lightbox.loadAndOpen(0, { gallery });
+    });
   });
+};
 
-  galleryLightboxClose?.addEventListener('click', closeGalleryLightbox);
-  galleryLightboxBackdrop?.addEventListener('click', closeGalleryLightbox);
-  galleryLightboxPrev?.addEventListener('click', () => {
-    setGalleryImage(activeGalleryIndex - 1);
-    trackGalleryNavigation('previous');
-  });
-  galleryLightboxNext?.addEventListener('click', () => {
-    setGalleryImage(activeGalleryIndex + 1);
-    trackGalleryNavigation('next');
-  });
-}
-
-document.addEventListener('keydown', (event) => {
-  if (!galleryLightbox || galleryLightbox.getAttribute('aria-hidden') === 'true') {
-    return;
-  }
-
-  if (event.key === 'Escape') {
-    closeGalleryLightbox();
-  }
-
-  if (event.key === 'ArrowLeft') {
-    setGalleryImage(activeGalleryIndex - 1);
-    trackGalleryNavigation('keyboard_previous');
-  }
-
-  if (event.key === 'ArrowRight') {
-    setGalleryImage(activeGalleryIndex + 1);
-    trackGalleryNavigation('keyboard_next');
-  }
+initializeProjectGalleries().catch(() => {
+  // Native image links remain available when the optional lightbox cannot load.
 });
 
 document.addEventListener('click', (event) => {
