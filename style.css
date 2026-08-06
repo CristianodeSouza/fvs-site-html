@@ -3467,6 +3467,10 @@ body:not(.is-loaded) .hero__image--main {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.page-grid--fvs-vision {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .page-grid--projects .page-card--image {
   grid-template-rows: clamp(15rem, 25vw, 23rem) minmax(0, 1fr);
 }
@@ -3988,6 +3992,7 @@ body:not(.is-loaded) .hero__image--main {
   .page-split,
   .page-grid,
   .page-grid--projects,
+  .page-grid--fvs-vision,
   .page-facts {
     grid-template-columns: minmax(0, 1fr);
   }
