@@ -3463,6 +3463,24 @@ body:not(.is-loaded) .hero__image--main {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.page-grid--projects {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.page-grid--projects .page-card--image {
+  grid-template-rows: clamp(15rem, 25vw, 23rem) minmax(0, 1fr);
+}
+
+.page-grid--projects .page-card__image {
+  aspect-ratio: auto;
+  block-size: 100%;
+}
+
+.page-grid--projects .page-card__content {
+  align-content: start;
+  min-block-size: 100%;
+}
+
 .page-card {
   border: 1px solid color-mix(in srgb, var(--pedra) 28%, transparent);
   display: grid;
@@ -3969,6 +3987,7 @@ body:not(.is-loaded) .hero__image--main {
   .confianca-fvs__intro,
   .page-split,
   .page-grid,
+  .page-grid--projects,
   .page-facts {
     grid-template-columns: minmax(0, 1fr);
   }
