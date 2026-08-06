@@ -514,7 +514,7 @@ const initContactForm = () => {
     }
 
     const data = new FormData(form);
-    const message = `Olá, vim pelo site da FVS. Meu nome é ${data.get('name')}. Interesse: ${data.get('interest')}. ${data.get('message')}`;
+    const message = `Olá, vim pelo site da FVS. Meu nome é ${data.get('name')}. Meu WhatsApp é ${data.get('whatsapp')}. Meu e-mail é ${data.get('email')}. Interesse: ${data.get('interest')}. ${data.get('message')}`;
     const whatsappUrl = `https://wa.me/5554999214824?text=${encodeURIComponent(message)}`;
     submit.disabled = true;
     submit.classList.add('is-loading');
